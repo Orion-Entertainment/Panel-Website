@@ -1,0 +1,15 @@
+{
+  "name": "panel-home",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "bluebird": "^2.9.24",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "^4.16.3",
+    "hbs": "^4.0.1",
+    "request": "^2.83.0",
+    "serve-favicon": "^2.5.0"
+  }
+}

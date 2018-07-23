@@ -43,6 +43,7 @@ app.use((req, res, next) => {
 });
 
 const index = require('../routes/index'); app.use('/', index);
+const killfeed = require('../routes/killfeed'); app.use('/killfeed', killfeed);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

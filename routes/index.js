@@ -26,4 +26,16 @@ router.get('/terms-of-service', async(req, res, next) => {
     }
 });
 
+
+
+
+
+router.get('/killfeed', async(req, res, next) => {
+    try {
+        return res.render('killfeed', { title: 'Orion-Entertainment' });
+    } catch (error) {
+        return res.render('error', { error: error });
+    }
+});
+
 module.exports = router;

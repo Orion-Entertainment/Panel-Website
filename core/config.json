@@ -2,7 +2,7 @@
     "SteamAPI": "0B8C1D0033544093E3E6E97A841EE1B4",
     "Sessions": {
         "host": "127.0.0.1",
-        "user": "oe_web",
+        "user": "oe-web",
         "password": "19bf5ba52bc28d70fd780182d51b015ca1bbc3b1901459b32de269cc9bd6a8d7",
         "database": "orion-entertainment",
         "port": 3306,

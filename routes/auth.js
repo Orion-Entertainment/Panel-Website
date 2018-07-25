@@ -27,7 +27,7 @@ var openid  = require('openid'),
     Promise = require('bluebird/js/main/promise')();
 
 var relyingParty, apiKey, useSession = true;
-middleware = function(opts) {
+function middleware(opts) {
 	relyingParty = new openid.RelyingParty(
 		opts.verify,
 		opts.realm,
@@ -54,7 +54,7 @@ middleware = function(opts) {
 	};
 }
 
-enforceLogin = function(redirect) {
+function enforceLogin(redirect) {
 	return function(req, res, next) {
 		if(!req.user)
 			return res.redirect(redirect);
@@ -62,7 +62,7 @@ enforceLogin = function(redirect) {
 	};
 }
 
-verify = function() {
+function verify() {
 	return function(req, res, next) {
 		relyingParty.verifyAssertion(req, function(err, result) {
 			if(err)
@@ -90,7 +90,7 @@ verify = function() {
 	};
 }
 
-authenticate = function() {
+function authenticate() {
 	return function(req, res, next) {
 		relyingParty.authenticate('https://steamcommunity.com/openid', false, function(err, authURL) {
 			if(err) 

@@ -4,19 +4,19 @@ const express = require('express'),
     steam = require('steam-login');
 
 
-app.get('/', function(req, res) {
+router.get('/', function(req, res) {
     res.send(req.user == null ? 'not logged in' : 'hello ' + req.user.username).end();
 });
  
-app.get('/authenticate', steam.authenticate(), function(req, res) {
+router.get('/authenticate', steam.authenticate(), function(req, res) {
     res.redirect('/');
 });
  
-app.get('/verify', steam.verify(), function(req, res) {
+router.get('/verify', steam.verify(), function(req, res) {
     res.send(req.user).end();
 });
  
-app.get('/logout', steam.enforceLogin('/'), function(req, res) {
+router.get('/logout', steam.enforceLogin('/'), function(req, res) {
     req.logout();
     res.redirect('/');
 });

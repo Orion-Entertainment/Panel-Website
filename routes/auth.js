@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
     res.send(req.user == null ? 'not logged in' : 'hello ' + req.user.username).end();
 });
  
-router.get('/authenticate', steam.authenticate(), function(req, res) {
+router.get('/login', steam.authenticate(), function(req, res) {
     res.redirect('/');
 });
  

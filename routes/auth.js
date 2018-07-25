@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
-const request = require('request');
-const steam = require('steam-login');
+const express = require('express'),
+    router = express.Router(),
+    request = require('request'),
+    steam = require('steam-login');
 
 
 router.get('/', function(req, res) {

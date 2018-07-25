@@ -44,6 +44,7 @@ app.use((req, res, next) => {
 const index = require('../routes/index'); app.use('/', index);
 
 const auth = require('../routes/auth'); app.use('/auth', auth);
+const steam = require('steam-login');
 app.use(steam.middleware({
     realm: 'https://orion-entertainment.net/auth', 
     verify: 'https://orion-entertainment.net/auth/verify',

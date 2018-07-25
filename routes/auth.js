@@ -2,57 +2,10 @@ const express = require('express'),
     router = express.Router(),
     request = require('request-promise');
 
-
-router.get('/', function(req, res) {
-    console.log(req.session.SteamUser)
-    return res.send(req.user == null ? 'not logged in' : 'hello ' + req.user.username).end();
-});
- 
-router.get('/login', authenticate(), function(req, res) {
-    return res.redirect('/');
-});
- 
-router.get('/verify', verify(), function(req, res) {
-    return res.send(req.user["_json"].steamid).end();
-});
- 
-router.get('/logout', enforceLogin('/'), function(req, res) {
-    req.logout();
-    return res.redirect('/');
-});
-module.exports = router;
-
-
-var openid  = require('openid'),
+    var openid  = require('openid'),
     Promise = require('bluebird/js/main/promise')();
 
 var relyingParty, apiKey, useSession = true;
-function middleware(opts) {
-	relyingParty = new openid.RelyingParty(
-		opts.verify,
-		opts.realm,
-		true,
-		true,
-		[]
-	);
-
-	apiKey = opts.apiKey;
-	useSession = true;
-	if(opts.useSession !== undefined)
-	{
-		useSession = opts.useSession;
-	}
-
-	return function(req, res, next) {
-		if(req.session && req.session.steamUser)
-		{
-			req.user = req.session.steamUser;
-			req.logout = logout(req);
-		}
-
-		next();
-	};
-}
 
 function enforceLogin(redirect) {
 	return function(req, res, next) {
@@ -136,3 +89,22 @@ function logout(req) {
 	}
 }
 
+
+router.get('/', function(req, res) {
+    console.log(req.session.SteamUser)
+    return res.send(req.user == null ? 'not logged in' : 'hello ' + req.user.username).end();
+});
+ 
+router.get('/login', authenticate(), function(req, res) {
+    return res.redirect('/');
+});
+ 
+router.get('/verify', verify(), function(req, res) {
+    return res.send(req.user["_json"].steamid).end();
+});
+ 
+router.get('/logout', enforceLogin('/'), function(req, res) {
+    req.logout();
+    return res.redirect('/');
+});
+module.exports = router;

@@ -1,8 +1,7 @@
 const express = require('express'),
     router = express.Router(),
-    request = require('request-promise');
-
-    var openid  = require('openid'),
+    request = require('request-promise'),
+    openid  = require('openid'),
     Promise = require('bluebird/js/main/promise')();
 
 var relyingParty, apiKey, useSession = true;
@@ -27,8 +26,7 @@ function verify() {
 			fetchIdentifier(result.claimedIdentifier)
 				.then(function(user) {
 					req.user = user;
-					if(useSession)
-					{
+					if (useSession) {
 						req.session.steamUser = req.user;
 						req.logout = logout(req);
 					}
@@ -38,7 +36,6 @@ function verify() {
 				{
 					next(err);
 				});
-			
 		});
 	};
 }

@@ -5,20 +5,20 @@ const express = require('express'),
 
 
 router.get('/', function(req, res) {
-    res.send(req.user == null ? 'not logged in' : 'hello ' + req.user.username).end();
+    return res.send(req.user == null ? 'not logged in' : 'hello ' + req.user.username).end();
 });
  
 router.get('/login', steam.authenticate(), function(req, res) {
-    res.redirect('/');
+    return res.redirect('/');
 });
  
 router.get('/verify', steam.verify(), function(req, res) {
-    res.send(req.user).end();
+    return res.send(req.user).end();
 });
  
 router.get('/logout', steam.enforceLogin('/'), function(req, res) {
     req.logout();
-    res.redirect('/');
+    return res.redirect('/');
 });
 
 module.exports = router;

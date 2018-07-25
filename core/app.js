@@ -33,6 +33,38 @@ hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
 app.enable('trust proxy');
 //app.use(favicon(path.join(__dirname,'../public', '/images/Favicon.ico')));
 
+
+const mysql = require('promise-mysql');
+const session = require('express-session');
+const MySQLStore = require('express-mysql-session')(session);
+
+const Sessions = mysql.createPool({
+    host: config.Sessions.host,
+    user: config.Sessions.user,
+    password: config.Sessions.password,
+    database: config.Sessions.database,
+    port: config.Sessions.port,
+    connectionLimit: config.Sessions.connectionLimit,
+});
+
+const sessionStore = new MySQLStore({
+    checkExpirationInterval: config.Sessions.checkExpirationInterval, //Currently: 1 Min
+    expiration: config.Sessions.expiration, //Currently: 1 Day
+    createDatabaseTable: true,
+}, Sessions);
+app.use(session({
+    name: 'Orion-Entertainment',
+    secret: 'c792f47c6db87de6c57da882f6505737421eea56811ac0d72ab891ee9edda523',
+    cookie: {
+        secure: true,
+        maxAge: 7 * 24 * 60 * 60 * 1000 //7 Days
+    },
+    saveUninitialized: false,
+    resave: true,
+    store: sessionStore
+}));
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());

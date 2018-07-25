@@ -5,7 +5,7 @@ const express = require('express'),
 
 
 router.get('/', function(req, res) {
-    console.log(req.session.SteamUser["_json"].steamid)
+    console.log(req.session.SteamUser)
     return res.send(req.user == null ? 'not logged in' : 'hello ' + req.user.username).end();
 });
  

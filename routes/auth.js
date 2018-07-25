@@ -13,7 +13,7 @@ router.get('/login', steam.authenticate(), function(req, res) {
 });
  
 router.get('/verify', steam.verify(), function(req, res) {
-    return res.send(req.user).end();
+    return res.send(req.user["_json"].steamid).end();
 });
  
 router.get('/logout', steam.enforceLogin('/'), function(req, res) {

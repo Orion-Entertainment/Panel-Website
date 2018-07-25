@@ -38,11 +38,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use((req, res, next) => {
-    req.APIKey = config.APIKey;
     next();
 });
 
 const index = require('../routes/index'); app.use('/', index);
+
+const auth = require('../routes/auth'); app.use('/auth', auth);
+app.use(steam.middleware({
+    realm: 'https://orion-entertainment.net/auth', 
+    verify: 'https://orion-entertainment.net/auth/verify',
+    apiKey: config.SteamAPI}
+));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

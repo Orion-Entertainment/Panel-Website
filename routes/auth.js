@@ -11,15 +11,20 @@ RequireLogin = function(redirect) {
 }
 
 router.get('/', function(req, res) {
-    console.log(req.session.SteamUser)
-    return res.send(req.user == null ? 'not logged in' : 'hello ' + req.user.username).end();
+    return res.send(req.login !== true ? 'Not Logged In' : 'Successfully Logged In: ' + req.session.Account).end();
 });
- 
-router.get('/login', steam.authenticate(), function(req, res) {
+
+router.get('/logout', RequireLogin('/'), function(req, res) {
+	delete req.session.Account;
+	req.login = null;
+    return res.redirect('/');
+});
+
+router.get('/Steam/login', steam.authenticate(), function(req, res) {
 	return res.redirect('/');
 });
- 
-router.get('/verify', steam.verify(), function(req, res) {
+
+router.get('/Steam/verify', steam.verify(), function(req, res) {
 	req.session.Account = {SteamID:req.session.steamUser.steamid};
 	req.user = null;
 	delete req.session.steamUser;
@@ -27,12 +32,6 @@ router.get('/verify', steam.verify(), function(req, res) {
 
 	console.log(req.session.Account)
     return res.send(req.login).end();
-});
- 
-router.get('/logout', RequireLogin('/'), function(req, res) {
-	delete req.session.Account;
-	req.login = null;
-    return res.redirect('/');
 });
 
 module.exports = router;

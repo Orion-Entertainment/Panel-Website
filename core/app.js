@@ -70,6 +70,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use((req, res, next) => {
+    if (req.query.ReturnURL !== undefined) 
+        req.session.ReturnURL = req.query.ReturnURL;
+    
     next();
 });
 

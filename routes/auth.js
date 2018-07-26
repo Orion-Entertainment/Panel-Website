@@ -21,7 +21,13 @@ router.get('/logout', RequireLogin('/'), function(req, res) {
 });
 
 router.get('/login/steam', steam.authenticate(), function(req, res) {
-	return res.redirect('/');
+	if (req.session.ReturnURL !== undefined) {
+		ReturnURL = req.session.ReturnURL;
+		delete req.session.ReturnURL;
+		return res.redirect(ReturnURL);
+	} else {
+		return res.redirect('/');
+	}
 });
 
 router.get('/verify/steam', steam.verify(), function(req, res) {
@@ -30,7 +36,13 @@ router.get('/verify/steam', steam.verify(), function(req, res) {
 	delete req.session.steamUser;
 	req.login = true;
 
-    return res.send(req.login).end();
+	if (req.session.ReturnURL !== undefined) {
+		ReturnURL = req.session.ReturnURL;
+		delete req.session.ReturnURL;
+		return res.redirect(ReturnURL);
+	} else {
+		return res.redirect('/');
+	}
 });
 
 module.exports = router;

@@ -11,9 +11,9 @@ router.get('/login', steam.authenticate(), function(req, res) {
 	return res.redirect('/');
 });
  
-router.get('/verify', function(req, res) {
-	console.log(req.body)
-    return res.send(req.body).end();
+router.get('/verify', steam.verify(), function(req, res) {
+	console.log(req.user)
+    return res.send(req.session).end();
 });
  
 router.get('/logout', steam.enforceLogin('/'), function(req, res) {

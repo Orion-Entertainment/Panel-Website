@@ -11,6 +11,10 @@ body {
     background: -webkit-linear-gradient(top, #04afb2 0%,#08e8d5 50%,#04afb2 100%);
     background: linear-gradient(to bottom, #04afb2 0%,#08e8d5 50%,#04afb2 100%);
 }
+a,a:hover {
+    color: rgba(0,0,0,.9);
+    text-decoration: none;
+}
 
 .navbar {
     -webkit-border-radius: 0 0 7px 7px;
@@ -28,4 +32,10 @@ body {
     border-radius: 4px 4px 4px 4px;
     /*box-shadow: 1px 2px gray;*/
     border-style: outset;
+}
+
+.centerIMG {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

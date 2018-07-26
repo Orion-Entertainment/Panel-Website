@@ -30,7 +30,7 @@ router.get('/terms-of-service', async(req, res, next) => {
 
 router.get('/login', async(req, res, next) => {
     try {
-        if (!req.login) {
+        if (req.session.Account == undefined) {
             return res.render('login', { title: req.WebTitle+'Login' });
         } else {
             if (req.session.ReturnURL !== undefined) {

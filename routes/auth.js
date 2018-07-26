@@ -4,7 +4,7 @@ const express = require('express'),
 
 RequireLogin = function(redirect) {
 	return function(req, res, next) {
-		if(!req.login)
+		if (req.session.Account == undefined)
 			return res.redirect(redirect);
 		next();
 	};
@@ -13,7 +13,6 @@ RequireLogin = function(redirect) {
 
 router.get('/logout', RequireLogin('/'), function(req, res) {
 	delete req.session.Account;
-	req.login = null;
     return res.redirect('/');
 });
 
@@ -31,7 +30,6 @@ router.get('/verify/steam', steam.verify(), function(req, res) {
 	req.session.Account = {SteamID:req.session.steamUser.steamid};
 	req.user = null;
 	delete req.session.steamUser;
-	req.login = true;
 
 	if (req.session.ReturnURL !== undefined) {
 		ReturnURL = req.session.ReturnURL;

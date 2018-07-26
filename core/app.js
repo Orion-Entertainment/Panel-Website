@@ -79,8 +79,9 @@ app.use((req, res, next) => {
     next();
 });
 
+/* Index */
 const index = require('../routes/index'); app.use('/', index);
-
+/* Auth */
 const auth = require('../routes/auth'); app.use('/auth', auth);
 const steam = require('steam-login');
 app.use(steam.middleware({
@@ -88,6 +89,8 @@ app.use(steam.middleware({
     verify: 'https://panel.orion-entertainment.net/auth/verify/steam',
     apiKey: config.SteamAPI}
 ));
+/* Players */
+const Players = require('../routes/Players/index'); app.use('/Players', Players);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -27,7 +27,6 @@ router.get('/terms-of-service', async(req, res, next) => {
     }
 });
 
-
 router.get('/login', async(req, res, next) => {
     try {
         if (req.session.Account == undefined) {

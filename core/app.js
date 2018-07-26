@@ -31,7 +31,7 @@ hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
 });
 
 app.enable('trust proxy');
-//app.use(favicon(path.join(__dirname,'../public', '/images/Favicon.ico')));
+app.use(favicon(path.join(__dirname,'../public', '/images/Favicon.ico')));
 
 
 const mysql = require('promise-mysql');

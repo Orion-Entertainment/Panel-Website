@@ -10,9 +10,6 @@ RequireLogin = function(redirect) {
 	};
 }
 
-router.get('/', function(req, res) {
-    return res.send(req.login !== true ? 'Not Logged In' : 'Successfully Logged In: ' + req.session.Account).end();
-});
 
 router.get('/logout', RequireLogin('/'), function(req, res) {
 	delete req.session.Account;
@@ -20,6 +17,7 @@ router.get('/logout', RequireLogin('/'), function(req, res) {
     return res.redirect('/');
 });
 
+/* Steam Login */
 router.get('/login/steam', steam.authenticate(), function(req, res) {
 	if (req.session.ReturnURL !== undefined) {
 		ReturnURL = req.session.ReturnURL;
@@ -29,7 +27,6 @@ router.get('/login/steam', steam.authenticate(), function(req, res) {
 		return res.redirect('/');
 	}
 });
-
 router.get('/verify/steam', steam.verify(), function(req, res) {
 	req.session.Account = {SteamID:req.session.steamUser.steamid};
 	req.user = null;

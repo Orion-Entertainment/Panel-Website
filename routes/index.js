@@ -4,7 +4,7 @@ const request = require('request');
 
 router.get('/', async(req, res, next) => {
     try {
-        return res.render('index', { title: 'Orion-Entertainment' });
+        return res.render('index', { title: req.WebTitle+'Home' });
     } catch (error) {
         return res.render('error', { error: error });
     }
@@ -12,7 +12,7 @@ router.get('/', async(req, res, next) => {
 
 router.get('/privacy-policy', async(req, res, next) => {
     try {
-        return res.render('privacypolicy', { title: 'Orion-Entertainment - Privacy Policy' });
+        return res.redirect('https://orion-entertainment.net/privacy-policy');
     } catch (error) {
         return res.render('error', { error: error });
     }
@@ -20,19 +20,25 @@ router.get('/privacy-policy', async(req, res, next) => {
 
 router.get('/terms-of-service', async(req, res, next) => {
     try {
-        return res.render('termsofservice', { title: 'Orion-Entertainment - Terms of Service' });
+        return res.redirect('https://orion-entertainment.net/terms-of-service');
     } catch (error) {
         return res.render('error', { error: error });
     }
 });
 
 
-
+router.get('/login', async(req, res, next) => {
+    try {
+        return res.render('login', { title: req.WebTitle+'Login' });
+    } catch (error) {
+        return res.render('error', { error: error });
+    }
+});
 
 
 router.get('/killfeed', async(req, res, next) => {
     try {
-        return res.render('killfeed', { title: 'Orion-Entertainment' });
+        return res.render('killfeed', { title: req.WebTitle+'Kill Feed' });
     } catch (error) {
         return res.render('error', { error: error });
     }

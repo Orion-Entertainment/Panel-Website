@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const request = require('request');
+const RequireLogin = require('./auth').RequireLogin;
 
 router.get('/', async(req, res, next) => {
     try {
@@ -29,7 +30,17 @@ router.get('/terms-of-service', async(req, res, next) => {
 
 router.get('/login', async(req, res, next) => {
     try {
-        return res.render('login', { title: req.WebTitle+'Login' });
+        if (req.login) {
+            if (req.session.ReturnURL !== undefined) {
+                ReturnURL = req.session.ReturnURL;
+                delete req.session.ReturnURL;
+                return res.redirect(ReturnURL);
+            } else {
+                return res.redirect('/');
+            }
+        } else {
+            return res.render('login', { title: req.WebTitle+'Login' });
+        }
     } catch (error) {
         return res.render('error', { error: error });
     }

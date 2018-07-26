@@ -28,10 +28,13 @@
 							Players
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="/Players/Search">Search Players</a>
 							<a class="dropdown-item" href="/Players/TopCharts">Top Charts</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="/Players/Report">Report a Player</a>
+							<a class="dropdown-item" href="/Players/KillFeed">Kill Feed</a>
+							<a class="dropdown-item" href="/Players/Search">Search Players</a>
+							{{#if Login}}
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="/Players/Report">Report a Player</a>
+							{{/if}}
 						</div>
 					</li>
 				</ul>

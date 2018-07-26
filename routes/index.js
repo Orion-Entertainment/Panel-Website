@@ -46,13 +46,4 @@ router.get('/login', async(req, res, next) => {
     }
 });
 
-
-router.get('/killfeed', async(req, res, next) => {
-    try {
-        return res.render('killfeed', { title: req.WebTitle+'Kill Feed' });
-    } catch (error) {
-        return res.render('error', { error: error });
-    }
-});
-
 module.exports = router;

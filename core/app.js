@@ -74,7 +74,7 @@ app.use((req, res, next) => {
     if (req.query.ReturnURL !== undefined) 
         req.session.ReturnURL = req.query.ReturnURL;
     if (req.session.Account !== undefined)
-        req.LoggedIn = true;
+        req.Login = true;
     
     next();
 });

@@ -5,7 +5,7 @@ const RequireLogin = require('./auth').RequireLogin;
 
 router.get('/', async(req, res, next) => {
     try {
-        return res.render('index', { title: req.WebTitle+'Home', Login: req.LoggedIn });
+        return res.render('index', { title: req.WebTitle+'Home', Login: req.Login });
     } catch (error) {
         return res.render('error', { error: error });
     }

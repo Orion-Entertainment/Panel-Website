@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <head>
+	<title>{{title}}</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous" />
+		<link rel="stylesheet" href="/stylesheets/main.full.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="/">Orion-Entertainment</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Home</a>
+					</li>
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle active" href="/Players" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Players
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/Players/TopCharts">Top Charts</a>
+							<a class="dropdown-item" href="/Players/KillFeed">Kill Feed</a>
+							{{#if Login}}
+							    <a class="dropdown-item active" href="/Players/Search">Search Players</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="/Players/Report">Report a Player</a>
+							{{/if}}
+						</div>
+					</li>
+				</ul>
+
+				<form class="form-inline my-2 my-lg-0">
+					{{#if Login}}
+						<a class="nav-link" href="/auth/logout">Logout</span></a>
+					{{else}}
+						<a class="nav-link" href="/login">Login</span></a>
+					{{/if}}
+				</form>
+			</div>
+		</nav>
+
+		<div class="Content">
+			<h1 class="MainText centerText">Search through Orion-Entertainment's Players</h1>
+			<!--<p class="SubText centerText">You will only find players who have joined Orion-Entertainment!</p>-->
+            <form class="form-inline active-cyan-3 active-cyan-4">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
+            </form>
+		</div>
+	</body>
+</html>

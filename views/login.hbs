@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <meta charset="UTF-8">
-  <head>
-		<title>{{title}}</title>
+	<head>
+	<title>{{title}}</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous" />
 		<link rel="stylesheet" href="/stylesheets/main.min.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	</head>
-	
+
 	<style>
 		body {
 			background: #04afb2;
@@ -18,17 +18,20 @@
 		}
 
 		.navbar {
-			-webkit-border-radius: 0;
-			-moz-border-radius: 0;
+			-webkit-border-radius: 0 0 7px 7px;
+			-moz-border-radius: 0 0 7px 7px;
 			border-radius: 0 0 7px 7px;
 		}
 
 		.Content {
 			margin: 10px;
 			padding: 5px;
-			border-color: black;
+			border-color: rgba(128,128,128, 0.3);
 			border-width: 2px;
-			box-shadow: 1px 2px;
+			-webkit-border-radius: 4px 4px 4px 4px;
+			-moz-border-radius: 4px 4px 4px 4px;
+			border-radius: 4px 4px 4px 4px;
+			/*box-shadow: 1px 2px gray;*/
 			border-style: outset;
 		}
 	</style>
@@ -39,7 +42,7 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 			</button>
-		
+
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
@@ -68,7 +71,7 @@
 			</form>
 			</div>
 		</nav>
-		
+
 		<div class="Content">
 			<h1>Orion-Entertainment Panel - Login</h1>
 		</div>

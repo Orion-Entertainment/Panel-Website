@@ -30,7 +30,6 @@ router.get('/Steam/verify', steam.verify(), function(req, res) {
 	delete req.session.steamUser;
 	req.login = true;
 
-	console.log(req.session.Account)
     return res.send(req.login).end();
 });
 

@@ -39,3 +39,8 @@ a,a:hover {
     margin-left: auto;
     margin-right: auto;
 }
+
+.MainText {
+    font-size: 2em;
+    text-align: center;
+}

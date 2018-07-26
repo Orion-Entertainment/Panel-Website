@@ -1,0 +1,31 @@
+html {
+    height: 100%;
+}
+body {
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    background: #04afb2;
+    background: -moz-linear-gradient(top, #04afb2 0%, #08e8d5 50%, #04afb2 100%);
+    background: -webkit-linear-gradient(top, #04afb2 0%,#08e8d5 50%,#04afb2 100%);
+    background: linear-gradient(to bottom, #04afb2 0%,#08e8d5 50%,#04afb2 100%);
+}
+
+.navbar {
+    -webkit-border-radius: 0 0 7px 7px;
+    -moz-border-radius: 0 0 7px 7px;
+    border-radius: 0 0 7px 7px;
+}
+
+.Content {
+    margin: 10px;
+    padding: 5px;
+    border-color: rgba(128,128,128, 0.3);
+    border-width: 2px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+    /*box-shadow: 1px 2px gray;*/
+    border-style: outset;
+}

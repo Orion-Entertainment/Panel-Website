@@ -30,7 +30,9 @@ router.get('/terms-of-service', async(req, res, next) => {
 
 router.get('/login', async(req, res, next) => {
     try {
-        if (req.login) {
+        if (!req.login) {
+            return res.render('login', { title: req.WebTitle+'Login' });
+        } else {
             if (req.session.ReturnURL !== undefined) {
                 ReturnURL = req.session.ReturnURL;
                 delete req.session.ReturnURL;
@@ -38,8 +40,6 @@ router.get('/login', async(req, res, next) => {
             } else {
                 return res.redirect('/');
             }
-        } else {
-            return res.render('login', { title: req.WebTitle+'Login' });
         }
     } catch (error) {
         return res.render('error', { error: error });

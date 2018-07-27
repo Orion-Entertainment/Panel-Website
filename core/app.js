@@ -33,11 +33,10 @@ hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
 app.enable('trust proxy');
 app.use(favicon(path.join(__dirname,'../public', '/images/Favicon.ico')));
 
-
+/* Sessions */
 const mysql = require('promise-mysql');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
-
 const Sessions = mysql.createPool({
     host: config.Sessions.host,
     user: config.Sessions.user,

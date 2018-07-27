@@ -31,13 +31,32 @@ router.get('/verify/steam', steam.verify(), function(req, res) {
 	req.user = null;
 	delete req.session.steamUser;
 
-	if (req.session.ReturnURL !== undefined) {
-		ReturnURL = req.session.ReturnURL;
-		delete req.session.ReturnURL;
-		return res.redirect(ReturnURL);
-	} else {
-		return res.redirect('/');
-	}
+	//Check if user has account
+	request.post(
+		'https://panelapi.orion-entertainment.net/v1/login/verify',
+		{ json: { 
+			"client_id": await req.APIKey["client_id"],
+			"token": await req.APIKey["token"],
+
+			"Option": "Steam",
+			"Steam64ID": req.session.Account.SteamID
+		} },
+		async function (error, response, body) {
+			if (!error && response.statusCode == 200) {
+				if (body.Error !== undefined) return res.render('errorCustom', { error: "API: "+body.Error });
+				else {
+					if (body.Check == true) {
+						req.session.Account.ID = body.ID;
+						if (req.session.ReturnURL !== undefined) {
+							ReturnURL = req.session.ReturnURL;
+							delete req.session.ReturnURL;
+							return res.redirect(ReturnURL);
+						} else return res.redirect('/');
+					} else return res.render('register', { Option: "Steam", SteamID: req.session.Account.SteamID });
+				}
+			} else return res.render('errorCustom', { error: "API: Response Error" });
+		}
+	);
 });
 
 module.exports = router;

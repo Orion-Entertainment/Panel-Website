@@ -68,7 +68,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+const APIKey = config.API;
 app.use((req, res, next) => {
+    req.APIKey = APIKey;
     req.WebTitle = "Orion-Entertainment Panel - ";
     if (req.query.ReturnURL !== undefined) 
         req.session.ReturnURL = req.query.ReturnURL;

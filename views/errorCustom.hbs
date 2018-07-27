@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <head>
+    <title>Error</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous" />
+  </head>
+  <body>
+    <h1>Error: {{error}}</h1>
+    <script>
+      setTimeout(function(){
+        return window.location.replace("/");
+      }, 5000);
+    </script>
+  </body>
+</html>

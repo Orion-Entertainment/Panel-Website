@@ -10,5 +10,9 @@
 
         "checkExpirationInterval": 60000,
         "expiration": 86400000
+    },
+    "API": {
+        "client_id": 4,
+        "token": "6vjswNsCIBVqzQEi5bz3uKbxfhHmtaoG-ZilasSDfJvmAkhVM5ioi7G1IeZ18zZi6"
     }
 }

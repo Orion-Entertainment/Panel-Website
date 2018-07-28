@@ -7,7 +7,7 @@ router.get('/Search', RequireLogin('/login?ReturnURL=/Players/Search'), async(re
     try {
         return res.render('./Players/search', { title: req.WebTitle+'Players' });
     } catch (error) {
-        return res.render('error', { error: error });
+        return res.render('errorCustom', { error: error });
     }
 });
 

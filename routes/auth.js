@@ -28,7 +28,7 @@ router.get('/login/steam', steam.authenticate(), function(req, res) {
 	}
 });
 router.get('/verify/steam', steam.verify(), async function(req, res) {
-	req.session.Check = {SteamID:req.session.steamUser.steamid};
+	req.session.Check = {Option:"Steam",SteamID:req.session.steamUser.steamid};
 	req.user = null;
 	delete req.session.steamUser;
 
@@ -39,8 +39,7 @@ router.get('/verify/steam', steam.verify(), async function(req, res) {
 			"client_id": await req.APIKey.client_id,
 			"token": await req.APIKey.token,
 
-			"Option": "Steam",
-			"Steam64ID": req.session.Check.SteamID
+			"Option": req.session.Check
 		} },
 		async function (error, response, body) {
 			if (!error && response.statusCode == 200) {
@@ -54,7 +53,7 @@ router.get('/verify/steam', steam.verify(), async function(req, res) {
 							delete req.session.ReturnURL;
 							return res.redirect(ReturnURL);
 						} else return res.redirect('/');
-					} else return res.render('register', { Title: req.WebTitle+'Register', Option: "Steam", SteamID: req.session.Check.SteamID });
+					} else return res.render('register', { Title: req.WebTitle+'Register', Option: req.session.Check });
 				}
 			} else return res.render('errorCustom', { error: "API: Response Error" });
 		}

@@ -52,14 +52,46 @@ router.post('/register', async(req, res, next) => {
         switch (req.session.Check.Option) {
             case "Steam":
                 if (req.body.Name == undefined | req.body.Steam64ID == undefined) return res.render('errorCustom', { error: "error" });
-                if (req.body.Name == "") return res.render('errorCustom', { error: "Name Can't Be Empty" });
+                else if (req.body.Name == "") return res.render('errorCustom', { error: "Name Can't Be Empty" });
+                else if (req.body.Email !== undefined) email = req.body.Email; else email = false;
 
                 const Data = JSON.stringify({
                     Name: req.body.Name,
+                    Email: email,
                     Steam64ID: req.session.Check.SteamID
                 });
-                console.log(Data)
-                return res.send('Done');
+
+                //Check if user has account
+                request.post(
+                    'https://panelapi.orion-entertainment.net/v1/login/register',
+                    { json: { 
+                        "client_id": await req.APIKey.client_id,
+                        "token": await req.APIKey.token,
+
+                        "Option": req.session.Check.Option,
+                        "Data": Data
+                    } },
+                    async function (error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                            if (body.Error !== undefined) return res.render('errorCustom', { error: "API: "+body.Error });
+                            else {
+                                if (body === "Already Registered") return res.render('errorCustom', { error: Data.Steam64ID+": Already linked to an account" });
+                                else {
+                                    req.session.Account.ID = body.ID;
+                                    delete req.session.Check;
+                                    
+                                    if (req.session.ReturnURL !== undefined) {
+                                        ReturnURL = req.session.ReturnURL;
+                                        delete req.session.ReturnURL;
+                                        return res.redirect(ReturnURL);
+                                    } else {
+                                        return res.redirect('/');
+                                    }
+                                }
+                            }
+                        } else return res.render('errorCustom', { error: "API: Response Error" });
+                    }
+                );
         }
     } catch (error) {
         return res.render('errorCustom', { error: error });

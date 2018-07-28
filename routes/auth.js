@@ -36,8 +36,8 @@ router.get('/verify/steam', steam.verify(), function(req, res) {
 	request.post(
 		'https://panelapi.orion-entertainment.net/v1/login/verify',
 		{ json: { 
-			"client_id": await req.APIKey["client_id"],
-			"token": await req.APIKey["token"],
+			"client_id": await req.APIKey.client_id,
+			"token": await req.APIKey.token,
 
 			"Option": "Steam",
 			"Steam64ID": req.session.Account.SteamID

@@ -54,7 +54,7 @@ router.get('/verify/steam', steam.verify(), async function(req, res) {
 							delete req.session.ReturnURL;
 							return res.redirect(ReturnURL);
 						} else return res.redirect('/');
-					} else return res.render('register', { Option: "Steam", SteamID: req.session.Check.SteamID });
+					} else return res.render('register', { Title: req.WebTitle+'Register', Option: "Steam", SteamID: req.session.Check.SteamID });
 				}
 			} else return res.render('errorCustom', { error: "API: Response Error" });
 		}

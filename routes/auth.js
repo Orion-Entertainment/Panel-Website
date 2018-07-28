@@ -46,7 +46,7 @@ router.get('/verify/steam', steam.verify(), async function(req, res) {
 				if (body.Error !== undefined) return res.render('errorCustom', { error: "API: "+body.Error });
 				else {
 					if (body.Check == true) {
-						req.session.Account.ID = body.ID;
+						req.session.Account = {ID: body.ID};
 						delete req.session.Check;
 						if (req.session.ReturnURL !== undefined) {
 							ReturnURL = req.session.ReturnURL;

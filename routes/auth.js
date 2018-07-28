@@ -28,7 +28,7 @@ router.get('/login/steam', steam.authenticate(), function(req, res) {
 	}
 });
 router.get('/verify/steam', steam.verify(), async function(req, res) {
-	req.session.Account = {SteamID:req.session.steamUser.steamid};
+	req.session.Check = {SteamID:req.session.steamUser.steamid};
 	req.user = null;
 	delete req.session.steamUser;
 
@@ -40,7 +40,7 @@ router.get('/verify/steam', steam.verify(), async function(req, res) {
 			"token": await req.APIKey.token,
 
 			"Option": "Steam",
-			"Steam64ID": req.session.Account.SteamID
+			"Steam64ID": req.session.Check.SteamID
 		} },
 		async function (error, response, body) {
 			if (!error && response.statusCode == 200) {
@@ -48,12 +48,13 @@ router.get('/verify/steam', steam.verify(), async function(req, res) {
 				else {
 					if (body.Check == true) {
 						req.session.Account.ID = body.ID;
+						delete req.session.Check;
 						if (req.session.ReturnURL !== undefined) {
 							ReturnURL = req.session.ReturnURL;
 							delete req.session.ReturnURL;
 							return res.redirect(ReturnURL);
 						} else return res.redirect('/');
-					} else return res.render('register', { Option: "Steam", SteamID: req.session.Account.SteamID });
+					} else return res.render('register', { Option: "Steam", SteamID: req.session.Check.SteamID });
 				}
 			} else return res.render('errorCustom', { error: "API: Response Error" });
 		}

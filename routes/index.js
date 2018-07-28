@@ -27,7 +27,7 @@ router.get('/terms-of-service', async(req, res, next) => {
     }
 });
 
-router.get('/login', async(req, res, next) => {
+router.get(['/login','/register'], async(req, res, next) => {
     try {
         if (req.session.Account == undefined) {
             return res.render('login', { title: req.WebTitle+'Login' });
@@ -47,11 +47,11 @@ router.get('/login', async(req, res, next) => {
 
 router.post('/register', async(req, res, next) => {
     try {
-        if (req.session.Check == undefined) return error;
+        if (req.session.Check == undefined) return res.render('errorCustom', { error: "Check undefined" });
 
         switch (req.session.Check.Option) {
             case "Steam":
-                if (req.body.Name == undefined | req.body.Steam64ID == undefined) return res.render('errorCustom', { error: "error" });
+                if (req.body.Name == undefined | req.body.Steam64ID == undefined) return res.render('errorCustom', { error: "Name/Steam64ID Undefined" });
                 else if (req.body.Name == "") return res.render('errorCustom', { error: "Name Can't Be Empty" });
                 else if (req.body.Email !== undefined) email = req.body.Email; else email = false;
 

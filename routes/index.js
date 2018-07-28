@@ -78,7 +78,7 @@ router.post('/register', async(req, res, next) => {
                             else {
                                 if (body === "Already Registered") return res.render('errorCustom', { error: Data.Steam64ID+": Already linked to an account" });
                                 else {
-                                    req.session.Account.ID = body.ID;
+                                    req.session.Account = {ID: body.ID};
                                     delete req.session.Check;
 
                                     if (req.session.ReturnURL !== undefined) {

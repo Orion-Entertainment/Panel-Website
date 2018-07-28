@@ -41,7 +41,7 @@ a,a:hover {
 .centerText {
     text-align: center;
 }
-.centerIMG {
+.centerIMG,.centerDIV {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -61,41 +61,6 @@ a,a:hover {
 .FontWeight {
     font-weight: 400;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .divider-text {
     position: relative;

@@ -39,8 +39,7 @@ router.get('/verify/steam', steam.verify(), async function(req, res) {
 			"client_id": await req.APIKey.client_id,
 			"token": await req.APIKey.token,
 
-			"Option": req.session.Check,
-			"IP": req.cf_ip
+			"Option": req.session.Check
 		} },
 		async function (error, response, body) {
 			if (!error && response.statusCode == 200) {

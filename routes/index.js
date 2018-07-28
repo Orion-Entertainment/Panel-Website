@@ -69,7 +69,8 @@ router.post('/register', async(req, res, next) => {
                         "token": await req.APIKey.token,
 
                         "Option": req.session.Check.Option,
-                        "Data": Data
+                        "Data": Data,
+                        "IP": req.cf_ip
                     } },
                     async function (error, response, body) {
                         if (!error && response.statusCode == 200) {
@@ -79,7 +80,7 @@ router.post('/register', async(req, res, next) => {
                                 else {
                                     req.session.Account.ID = body.ID;
                                     delete req.session.Check;
-                                    
+
                                     if (req.session.ReturnURL !== undefined) {
                                         ReturnURL = req.session.ReturnURL;
                                         delete req.session.ReturnURL;

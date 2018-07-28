@@ -5,6 +5,7 @@
   "dependencies": {
     "bluebird": "^2.9.24",
     "body-parser": "^1.18.2",
+    "cloudflare-express": "^1.0.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "^4.16.3",

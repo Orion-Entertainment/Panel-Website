@@ -33,6 +33,10 @@ hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
 app.enable('trust proxy');
 app.use(favicon(path.join(__dirname,'../public', '/images/Favicon.ico')));
 
+/* Cloudflare to get IPs */
+const cloudflare = require('cloudflare-express');
+app.use(cloudflare.restore());
+
 /* Sessions */
 const mysql = require('promise-mysql');
 const session = require('express-session');

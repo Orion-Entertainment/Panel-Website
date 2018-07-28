@@ -1,6 +1,7 @@
 const express = require('express'),
 	router = express.Router(),
-	steam = require('steam-login');
+	steam = require('steam-login'),
+	request = require('request');
 
 RequireLogin = function(redirect) {
 	return function(req, res, next) {

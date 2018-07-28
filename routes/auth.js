@@ -27,7 +27,7 @@ router.get('/login/steam', steam.authenticate(), function(req, res) {
 		return res.redirect('/');
 	}
 });
-router.get('/verify/steam', steam.verify(), function(req, res) {
+router.get('/verify/steam', steam.verify(), async function(req, res) {
 	req.session.Account = {SteamID:req.session.steamUser.steamid};
 	req.user = null;
 	delete req.session.steamUser;

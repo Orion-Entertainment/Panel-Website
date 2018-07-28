@@ -52,8 +52,12 @@
 		<!-- Header -->
 
 		<div class="Content">
-			<h1 class="MainText centerText">Orion-Entertainment Panel Home Page</h1>
-			<p class="SubText centerText">Register at <a href="https://panel.orion-entertainment.net/login">https://orion-entertainment.net/login</a></p>
+			<h1 class="MainText centerText">Orion-Entertainment Panel Home</h1>
+			{{#if Login}}
+				<p class="SubText centerText">This website currently in ~pre-alpha~</p>
+			{{else}}
+				<p class="SubText centerText">Register/Login at <a href="https://panel.orion-entertainment.net/login">https://orion-entertainment.net/login</a></p>
+			{{/if}}
 		</div>
 	</body>
 </html>

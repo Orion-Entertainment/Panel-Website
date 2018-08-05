@@ -102,12 +102,12 @@
 						},
 						success: function(data) {
 							if (data.Error !== undefined) {return console.log(data.Error)};
-							if (data == false) {
+							if (data.Results == false) {
 								console.log('false')
 							} else {
-								console.log(data.results)
-								for (i = 0; i < data.results.length; i++) {
-									player = data.results[i];
+								console.log(data.Results)
+								for (i = 0; i < data.Results.length; i++) {
+									player = data.Results[i];
 									$('#results > tbody:last-child').append('<tr><td>'+player["id"]+'</td><td>'+player["Last Name"]+'</td><td>'+player["Steam64ID"]+'</td></tr>');
 								};
 							}

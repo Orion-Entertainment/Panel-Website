@@ -66,6 +66,22 @@
                 </div>
             </div>
 
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Last Name Used</th>
+						<th scope="col">Steam64ID</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">0000</th>
+						<td>Test</td>
+						<td>23432423423</td>
+					</tr>
+				</tbody>
+			</table>
 
 			<script>
 				let q = 0;
@@ -90,6 +106,10 @@
 								console.log('false')
 							} else {
 								console.log(data)
+								for (i = 0; i < data.length; i++) {
+									player = data[i];
+									$('#results > tbody:last-child').append('<tr><td>'+player["id"]+'</td><td>'+player["Last Name"]+'</td><td>321</td></tr>');
+								};
 							}
 							q = 0;
 						},

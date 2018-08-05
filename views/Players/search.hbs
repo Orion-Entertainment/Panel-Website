@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-			<table class="table">
+			<table class="table" id="results">
 				<thead>
 					<tr>
 						<th scope="col">ID</th>
@@ -108,7 +108,7 @@
 								console.log(data)
 								for (i = 0; i < data.length; i++) {
 									player = data[i];
-									$('#results > tbody:last-child').append('<tr><td>'+player["id"]+'</td><td>'+player["Last Name"]+'</td><td>321</td></tr>');
+									$('#results > tbody:last-child').append('<tr><td>'+player["id"]+'</td><td>'+player["Last Name"]+'</td><td>'+player["Steam64ID"]+'</td></tr>');
 								};
 							}
 							q = 0;

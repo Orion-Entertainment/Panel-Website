@@ -105,9 +105,9 @@
 							if (data == false) {
 								console.log('false')
 							} else {
-								console.log(data)
-								for (i = 0; i < data.length; i++) {
-									player = data[i];
+								console.log(data.results)
+								for (i = 0; i < data.results.length; i++) {
+									player = data.results[i];
 									$('#results > tbody:last-child').append('<tr><td>'+player["id"]+'</td><td>'+player["Last Name"]+'</td><td>'+player["Steam64ID"]+'</td></tr>');
 								};
 							}

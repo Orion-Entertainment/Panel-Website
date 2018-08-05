@@ -60,11 +60,46 @@
 			<h1 class="MainText centerText">Search Player Database</h1>
 			<!--<p class="SubText centerText">You will only find players who have joined Orion-Entertainment!</p>-->
             <div class="input-group md-form form-sm form-2 pl-0" width="75%">
-                <input class="form-control my-0 py-1 lime-border" type="text" placeholder="Search" aria-label="Search">
+                <input class="form-control my-0 py-1 lime-border" type="text" id="search" autocomplete="off" placeholder="Type to Start Searching (PID, Name, GUID)" aria-label="Search">
                 <div class="input-group-append">
                     <span class="input-group-text lime lighten-2" id="basic-text1"><i class="fa fa-search text-grey" aria-hidden="true"></i></span>
                 </div>
             </div>
+
+
+			<script>
+				let q = 0;
+				$('#search').keyup(function(){
+					const searchField = $(this).val();
+					if (q > 0) {return};
+					if (searchField === '')  {
+						return;
+					}
+					if (searchField.length < 4) {return};
+					q = 1;
+					$.ajax({
+						async: true,
+						type: 'POST',
+						url: '/Players/Server',
+						data: {
+							SearchVal: searchField
+						},
+						success: function(data) {
+							if (data.Error !== undefined) {return console.log(data.Error)};
+							if (data == false) {
+								console.log('false')
+							} else {
+								console.log(data)
+							}
+							q = 0;
+						},
+						error: function(error) {
+							q = 0;
+							return alert(error);
+						}
+					});
+				});
+			</script>
 		</div>
 	</body>
 </html>

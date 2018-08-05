@@ -10,5 +10,30 @@ router.get('/Search', RequireLogin('/login?ReturnURL=/Players/Search'), async(re
         return res.render('errorCustom', { error: error });
     }
 });
+router.post('/Search', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
+    try {
+        if (req.body.SearchVal == undefined) return res.json({Error: "SearchVal Undefined"})
+
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/players/search',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "SearchVal": req.body.SearchVal
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.json({Error: body.Error})
+                    else {
+                        return res.send(body);
+                    }
+                } else return res.json({Error: "API: Response Error"})
+            }
+        );
+    } catch (error) {
+        return res.json({Error: error})
+    }
+});
 
 module.exports = router;

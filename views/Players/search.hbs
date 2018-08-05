@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-			<table class="table" id="results">
+			<table class="table" id="results" style="display: none;">
 				<thead>
 					<tr>
 						<th scope="col">ID</th>
@@ -92,6 +92,8 @@
 						return;
 					}
 					if (searchField.length < 4) {return};
+					
+					const ResultsTable = document.getElementById("results");
 					q = 1;
 					$.ajax({
 						async: true,
@@ -103,9 +105,18 @@
 						success: function(data) {
 							if (data.Error !== undefined) {return console.log(data.Error)};
 							if (data.Results == false) {
-								console.log('false')
+								if (ResultsTable.style.display === "none") {
+									ResultsTable.style.display = "block";
+								}
+
+								$("#results tbody").empty();
+								$('#results > tbody:last-child').append('<tr><td>-1</td><td>No Results Found</td><td>-1</td></tr>');
 							} else {
-								console.log(data.Results)
+								if (ResultsTable.style.display === "none") {
+									ResultsTable.style.display = "block";
+								}
+
+								$("#results tbody").empty();
 								for (i = 0; i < data.Results.length; i++) {
 									player = data.Results[i];
 									$('#results > tbody:last-child').append('<tr><td>'+player["id"]+'</td><td>'+player["Last Name"]+'</td><td>'+player["Steam64ID"]+'</td></tr>');

@@ -58,8 +58,7 @@ function LoadPlayer(playerID) {
                 }
             },
             error: function(error) {
-                q = 0;
-                return alert(error);
+                return console.log(error);
             }
         });
     });
@@ -155,8 +154,7 @@ function getPlayerData(playerID,item, option) {
             }
         },
         error: function(error) {
-            q = 0;
-            return alert(error);
+            return console.log(error);
         }
     });
 };
@@ -205,8 +203,7 @@ function LoadTopCharts(load) {
                     }
                 },
                 error: function(error) {
-                    q = 0;
-                    return alert(error);
+                    return console.log(error);
                 }
             });
         });
@@ -238,8 +235,7 @@ function LoadKillFeed() {
             }
         },
         error: function(error) {
-            q = 0;
-            return alert(error);
+            return console.log(error);
         }
     });
     

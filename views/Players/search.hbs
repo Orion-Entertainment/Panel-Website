@@ -84,10 +84,10 @@
 				$('#search').keyup(function(){
 					const searchField = $(this).val();
 					if (q > 0) {return};
-					if (searchField === '')  {
+					if (searchField == "" | searchField.length < 2)  {
+						$("#results tbody").empty();
 						return;
 					}
-					if (searchField.length < 2) {return};
 					
 					const ResultsTable = document.getElementById("results");
 					q = 1;

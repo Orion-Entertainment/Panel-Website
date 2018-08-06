@@ -224,14 +224,13 @@ function LoadKillFeed() {
         data: {
         },
         success: function(data) {
+            $('#Kills tbody').empty();
             if (data.Error !== undefined) {
                 return console.log(data.Error)
             } else if (data["Kills"] == false) {
-                $('#Kills tbody').empty();
                 $('#'+Category+' > tbody:last-child').append('<tr><td>No Kills Found</td></tr>');
             } else {
                 const Data = data["Kills"];
-                $('#Kills tbody').empty();
                 for (i = 0; i < Data.length; i++) {
                     info = Data[i];
                     $('#Kills > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td><strong>'+info["KillerName"]+'('+info["KillerGroup"]+')</strong></td><td><strong>'+info["KilledName"]+'('+info["KilledGroup"]+')</strong></td><td>'+info["Weapon"]+'</td><td>'+info["Distance"]+'</td><td>'+moment(info["Time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');

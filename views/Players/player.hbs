@@ -57,16 +57,6 @@
 		<!-- Header -->
 
 		<div class="Content">
-			<h1 class="MainText centerText">Search Player Database</h1>
-			<!--<p class="SubText centerText">You will only find players who have joined Orion-Entertainment!</p>-->
-            <div class="input-group md-form form-sm form-2 pl-0" width="75%">
-                <input class="form-control my-0 py-1 lime-border" type="text" id="search" autocomplete="off" placeholder="Type to Start Searching (Name, Steam64ID, GUID)" aria-label="Search">
-                <div class="input-group-append">
-                    <span class="input-group-text lime lighten-2" id="basic-text1"><i class="fa fa-search text-grey" aria-hidden="true"></i></span>
-                </div>
-            </div>
-
-            <hr width="75%">
             {{#if Info}}
                 <table class="table" id="player">
                     <thead>
@@ -89,7 +79,7 @@
 
                 </script>
             {{else}}
-                <h1>Player not found</h1>
+                <h1 class="centerText">Player not found</h1>
             {{/if}}
 		</div>
 	</body>

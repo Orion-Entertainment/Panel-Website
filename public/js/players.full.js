@@ -181,19 +181,19 @@ function LoadTopCharts(load) {
                 success: function(data) {
                     if (data.Error !== undefined) {
                         return console.log(data.Error)
-                    } else if (data[item] == false) {
-                        switch (item) {
+                    } else if (data[Category] == false) {
+                        switch (Category) {
                             case "EXP":
-                                $('#'+item+' > tbody:last-child').append('<tr><td>No Players Found</td></tr>');
+                                $('#'+Category+' > tbody:last-child').append('<tr><td>No Players Found</td></tr>');
                                 break;
                         }
                     } else {
                         const Data = data[item];
                         for (i = 0; i < Data.length; i++) {
                             info = Data[i];
-                            switch (item) {
+                            switch (Category) {
                                 case "EXP":
-                                    $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Name"]+'</td><td>'+info["exp_level"]+'</td><td>'+info["exp_total"]+'</td><td>'+info["exp_perkPoints"]+'</td></tr>');
+                                    $('#'+Category+' > tbody:last-child').append('<tr><td>'+info["Name"]+'</td><td>'+info["exp_level"]+'</td><td>'+info["exp_total"]+'</td><td>'+info["exp_perkPoints"]+'</td></tr>');
                                     break;
                             }
                         };

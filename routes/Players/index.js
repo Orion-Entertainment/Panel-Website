@@ -5,7 +5,7 @@ const RequireLogin = require('../auth').RequireLogin;
 
 router.get('/Search', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
     try {
-        return res.render('./Players/search', { title: req.WebTitle+'Players' });
+        return res.render('./Players/search', { title: req.WebTitle+'Players - Search' });
     } catch (error) {
         return res.render('errorCustom', { error: error });
     }
@@ -33,6 +33,14 @@ router.post('/Search', RequireLogin('/login?ReturnURL=/Players/Search'), async(r
         );
     } catch (error) {
         return res.json({Error: error})
+    }
+});
+
+router.get('/TopCharts', RequireLogin('/login?ReturnURL=/Players/TopCharts'), async(req, res, next) => {
+    try {
+        return res.render('./Players/topcharts', { title: req.WebTitle+'Players - Top Charts' });
+    } catch (error) {
+        return res.render('errorCustom', { error: error });
     }
 });
 

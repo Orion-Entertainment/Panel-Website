@@ -195,10 +195,10 @@ function LoadTopCharts(load) {
                                     $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["name"]+'</strong></td><td>'+info["exp_level"].toLocaleString()+'</td><td>'+info["exp_total"].toLocaleString()+'</td><td>'+info["exp_perkPoints"].toLocaleString()+'</td></tr>');
                                     break;
                                 case "GangFunds":
-                                    $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["name"]+'</strong></td><td>$'+info["Money"].toLocaleString()+'</td></tr>');
+                                    $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["name"]+'</strong></td><td>$'+info["bank"].toLocaleString()+'</td></tr>');
                                     break;
                                 case "Bounty":
-                                $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["name"]+'</strong></td><td>$'+info["Bounty"].toLocaleString()+'</td></tr>');
+                                    $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["wantedName"]+'</strong></td><td>$'+info["wantedBounty"].toLocaleString()+'</td></tr>');
                                     break;
                             }
                         };

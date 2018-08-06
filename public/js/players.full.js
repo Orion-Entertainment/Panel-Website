@@ -188,7 +188,7 @@ function LoadTopCharts(load) {
                                 break;
                         }
                     } else {
-                        const Data = data[item];
+                        const Data = data[Category];
                         for (i = 0; i < Data.length; i++) {
                             info = Data[i];
                             switch (Category) {

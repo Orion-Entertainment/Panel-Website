@@ -193,7 +193,7 @@ function LoadTopCharts(load) {
                             info = Data[i];
                             switch (Category) {
                                 case "EXP":
-                                    $('#'+Category+' > tbody:last-child').append('<tr><td>'+info["name"]+'</td><td>'+info["exp_level"]+'</td><td>'+info["exp_total"]+'</td><td>'+info["exp_perkPoints"]+'</td></tr>');
+                                    $('#'+Category+' > tbody:last-child').append('<tr><td>'+info["name"]+'</td><td>'+info["exp_level"].toLocaleString()+'</td><td>'+info["exp_total"].toLocaleString()+'</td><td>'+info["exp_perkPoints"].toLocaleString()+'</td></tr>');
                                     break;
                             }
                         };

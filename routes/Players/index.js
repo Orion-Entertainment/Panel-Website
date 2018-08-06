@@ -40,7 +40,11 @@ router.get('/:PlayerID', RequireLogin('/login?ReturnURL=/Players/Search'), async
     try {
         //Look into returning to playerid page if not logged
         if (req.params.PlayerID == undefined) return res.redirect('/Players/Search');
-        else if (req.params.PlayerID == "" | isNaN(req.params.PlayerID)) return res.render('errorCustom', { error: "Invalid PlayerID" });
+        else if (req.params.PlayerID == "" | isNaN(req.params.PlayerID)) {
+            const err = new Error('Not Found');
+            err.status = 404;
+            next(err);
+        }
 
         request.post(
             'https://panelapi.orion-entertainment.net/v1/players/info',
@@ -67,7 +71,7 @@ router.get('/:PlayerID', RequireLogin('/login?ReturnURL=/Players/Search'), async
 router.post('/:PlayerID/Info', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
     try {
         if (req.params.PlayerID == undefined) return res.redirect('/Players/Search');
-        else if (req.params.PlayerID == "" | isNaN(req.params.PlayerID)) return res.render('errorCustom', { error: "Invalid PlayerID" });
+        else if (req.params.PlayerID == "" | isNaN(req.params.PlayerID)) return res.json({Error: "Invalid PlayerID"})
         else if (req.body.Option == undefined) return res.json({Error: "Option Undefined"})
         else if (req.body.Option == "") return res.json({Error: "Option Invalid"})
 

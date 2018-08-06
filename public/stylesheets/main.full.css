@@ -83,3 +83,14 @@ a,a:hover {
     left: 0;
     z-index: 1;
 }
+
+::placeholder {
+    color: white;
+    opacity: 1;
+}
+:-ms-input-placeholder {
+    color: white;
+}
+::-ms-input-placeholder {
+    color: white;
+}

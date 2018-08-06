@@ -54,7 +54,7 @@ router.get('/:PlayerID', RequireLogin('/login?ReturnURL=/Players/Search'), async
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
                     else {
-                        return res.render('./Players/player', { title: req.WebTitle+'Players', Info: body });
+                        return res.render('./Players/player', { title: req.WebTitle+'Players', Info: body.Info });
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }

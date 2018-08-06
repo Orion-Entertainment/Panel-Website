@@ -109,8 +109,13 @@ a,a:hover {
     -moz-border-radius: 4px 4px 4px 4px;
     border-radius: 4px 4px 4px 4px;
     border-style: outset;
-}
-.PlayerBoxes .Item .table {
     max-height: 30em;
     overflow-y: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+    max-height: 200px;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
 }

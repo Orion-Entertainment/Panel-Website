@@ -86,19 +86,25 @@ a,a:hover {
 
 .form-control::placeholder {
     color: black;
+    opacity: 0.75;
 }
 .form-control::-webkit-input-placeholder {
     color: black;
+    opacity: 0.75;
 }
 .form-control:-moz-placeholder {
     color: black;
+    opacity: 0.75;
 }
 .form-control::-moz-placeholder {
     color: black;
+    opacity: 0.75;
 }
 .form-control:-ms-input-placeholder {
     color: black;
+    opacity: 0.75;
 }
 .form-control::-ms-input-placeholder {
     color: black;
+    opacity: 0.75;
 }

@@ -85,10 +85,48 @@
 
                 <div class="PlayerBoxes">
                     <div class="Item">
-                        <h1>test</h1>
+                        <p class="SubText centerText">Players Past Names</p>
+                        <hr width="25%">
+                        
+                        <table class="table" id="Names">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><scrong>Name</scrong></th>
+                                    <th scope="col"><scrong>Time Used</scrong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each Info.Names}}
+                                <tr>
+                                    <td>{{this.Name}}</td>
+                                    <td>{{this.Time}}</td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
                     </div>
                     <div class="Item">
-                        <h1>test2</h1>
+                        <p class="SubText centerText">Players Past/Current Bans</p>
+                        <hr width="25%">
+                        
+                        <table class="table" id="Names">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><scrong>Server</scrong></th>
+                                    <th scope="col"><scrong>Reason</scrong></th>
+                                    <th scope="col"><scrong>Created</scrong></th>
+                                    <th scope="col"><scrong>Expires</scrong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Loading...</td>
+                                    <td>Loading...</td>
+                                    <td>Loading...</td>
+                                    <td>Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 

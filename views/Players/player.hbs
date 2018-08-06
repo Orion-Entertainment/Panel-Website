@@ -119,6 +119,25 @@
                             </tbody>
                         </table>
                     </div>
+                    
+                    <div class="Item">
+                        <h1 class="AltText centerText">Kicks</h1>
+                        <hr width="75%">
+                        
+                        <table class="table TableScroll" id="Kicks">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><scrong>Server</scrong></th>
+                                    <th scope="col"><scrong>Name</scrong></th>
+                                    <th scope="col"><scrong>Reason</scrong></th>
+                                    <th scope="col"><scrong>Time</scrong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <script>
@@ -139,10 +158,13 @@
                                     } else if (data[item] == false) {
                                         switch (item) {
                                             case "Names": 
-                                                $('#'+item+' > tbody:last-child').append('<tr><td>No Names Found</td><td>-1</td></tr>');
+                                                $('#'+item+' > tbody:last-child').append('<tr><td>No Names Found</td><td></td></tr>');
                                                 break;
                                             case "Bans": 
-                                                $('#'+item+' > tbody:last-child').append('<tr><td>None</td><td>No Bans Found</td><td>-1</td><td>-1</td></tr>');
+                                                $('#'+item+' > tbody:last-child').append('<tr><td></td><td>No Bans Found</td><td></td><td></td></tr>');
+                                                break;
+                                            case "Kicks": 
+                                                $('#'+item+' > tbody:last-child').append('<tr><td></td><td>No Kicks Found</td><td></td><td></td></tr>');
                                                 break;
                                         }
                                     } else {
@@ -155,6 +177,9 @@
                                                     break;
                                                 case "Bans": 
                                                     $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Created"]+'</td><td>'+info["Expires"]+'</td></tr>');
+                                                    break;
+                                                case "Kicks": 
+                                                    $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Name"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Time"]+'</td></tr>');
                                                     break;
                                             }
                                         };

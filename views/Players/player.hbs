@@ -85,7 +85,7 @@
 
                 <div class="PlayerBoxes">
                     <div class="Item">
-                        <h1 class="AltText centerText">Players Past Names</h1>
+                        <h1 class="AltText centerText">Past Names</h1>
                         <hr width="75%">
                         
                         <table class="table TableScroll" id="Names">
@@ -106,7 +106,7 @@
                         </table>
                     </div>
                     <div class="Item">
-                        <h1 class="AltText centerText">Players Past/Current Bans</h1>
+                        <h1 class="AltText centerText">Past/Current Bans</h1>
                         <hr width="75%">
                         
                         <table class="table TableScroll" id="Bans">
@@ -132,7 +132,31 @@
 
                 <script>
                     window.onload = function () {
-                        
+                        $.ajax({
+                            async: true,
+                            type: 'POST',
+                            url: '/Players/{{Info.id}}/Info',
+                            data: {
+                                Option: "Get",
+                                Option2: "Bans"
+                            },
+                            success: function(data) {
+                                if (data.Error !== undefined) {
+                                    return console.log(data.Error)
+                                } else if (data == false) {
+                                    $('#Bans > tbody:last-child').append('<tr><td>None</td><td>No Bans Found</td><td>-1</td><td>-1</td></tr>');
+                                } else {
+                                    for (i = 0; i < data.Results.length; i++) {
+                                        info = data.Results[i];
+                                        $('#Bans > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Created"]+'</td><td>'+info["Expires"]+'</td></tr>');
+                                    };
+                                }
+                            },
+                            error: function(error) {
+                                q = 0;
+                                return alert(error);
+                            }
+                        });
                     }
                 </script>
             {{else}}

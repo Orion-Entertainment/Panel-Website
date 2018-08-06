@@ -40,7 +40,7 @@ router.get('/:PlayerID', RequireLogin('/login?ReturnURL=/Players/Search'), async
     try {
         //Look into returning to playerid page if not logged
         if (req.params.PlayerID == undefined) return res.redirect('/Players/Search');
-        if (req.params.PlayerID == "" | isNaN(req.params.PlayerID)) return res.render('errorCustom', { error: "Invalid PlayerID" });
+        else if (req.params.PlayerID == "" | isNaN(req.params.PlayerID)) return res.render('errorCustom', { error: "Invalid PlayerID" });
 
         request.post(
             'https://panelapi.orion-entertainment.net/v1/players/info',
@@ -61,6 +61,34 @@ router.get('/:PlayerID', RequireLogin('/login?ReturnURL=/Players/Search'), async
         );
     } catch (error) {
         return res.render('errorCustom', { error: error });
+    }
+});
+
+router.post('/:PlayerID/Info', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
+    try {
+        if (req.params.PlayerID == undefined) return res.redirect('/Players/Search');
+        else if (req.params.PlayerID == "" | isNaN(req.params.PlayerID)) return res.render('errorCustom', { error: "Invalid PlayerID" });
+        else if (req.body.Option == undefined) return res.json({Error: "Option Undefined"})
+        else if (req.body.Option == "") return res.json({Error: "Option Invalid"})
+
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/players/info',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "Option": req.body.Option,
+                "Option2": req.body.Option2
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.json({Error: body.Error})
+                    else {return res.send(body);}
+                } else return res.json({Error: "API: Response Error"})
+            }
+        );
+    } catch (error) {
+        return res.json({Error: error})
     }
 });
 

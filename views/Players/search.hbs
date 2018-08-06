@@ -121,7 +121,7 @@
 									{{#if someperms}}
 
 									{{else}}
-										$('#results > tbody:last-child').append('<tr><th scope="row">'+player["id"]+'</th><td>'+player["Last Name"]+'</td><td>'+player["Steam64ID"]+'</td></tr>');
+										$('#results > tbody:last-child').append('<tr class="clickable-row" data-href="/Players/'+player["id"]+'"><th scope="row">'+player["id"]+'</th><td>'+player["Last Name"]+'</td><td>'+player["Steam64ID"]+'</td></tr>');
 									{{/if}}
 								};
 							}
@@ -131,6 +131,12 @@
 							q = 0;
 							return alert(error);
 						}
+					});
+				});
+
+				jQuery(document).ready(function($) {
+					$(".clickable-row").click(function() {
+						window.location = $(this).data("href");
 					});
 				});
 			</script>

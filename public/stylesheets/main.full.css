@@ -34,7 +34,6 @@ a,a:hover {
     -webkit-border-radius: 4px 4px 4px 4px;
     -moz-border-radius: 4px 4px 4px 4px;
     border-radius: 4px 4px 4px 4px;
-    /*box-shadow: 1px 2px gray;*/
     border-style: outset;
 }
 
@@ -88,23 +87,21 @@ a,a:hover {
     color: black;
     opacity: 0.75;
 }
-.form-control::-webkit-input-placeholder {
-    color: black;
-    opacity: 0.75;
+
+.PlayerBoxes {
+    float: center;
 }
-.form-control:-moz-placeholder {
-    color: black;
-    opacity: 0.75;
-}
-.form-control::-moz-placeholder {
-    color: black;
-    opacity: 0.75;
-}
-.form-control:-ms-input-placeholder {
-    color: black;
-    opacity: 0.75;
-}
-.form-control::-ms-input-placeholder {
-    color: black;
-    opacity: 0.75;
+.PlayerBoxes .Item {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.35), 
+        rgba(0, 0, 0, 0.35)
+    );
+    margin: 10px;
+    padding: 5px;
+    border-color: rgba(128,128,128, 0.3);
+    border-width: 2px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+    border-style: outset;
 }

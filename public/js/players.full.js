@@ -241,4 +241,11 @@ function LoadKillFeed() {
             return alert(error);
         }
     });
+    
+    refreshKillFeed();
 };
+function refreshKillFeed() {
+    setTimeout(function(){
+        LoadKillFeed()
+    }, 5000);
+}

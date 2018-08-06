@@ -1,10 +1,10 @@
-$(document).ready(function(){
-    var Load = ['Names', 'Bans','Kicks','Kills'];
+function firstLoad(playerID) {
+    const Load = ['Names', 'Bans','Kicks','Kills'];
     Load.forEach(function(item) {
         $.ajax({
             async: true,
             type: 'POST',
-            url: '/Players/{{Info.id}}/Info',
+            url: '/Players/'+playerID+'/Info',
             data: {
                 Option: "Get",
                 Option2: item
@@ -54,7 +54,7 @@ $(document).ready(function(){
             }
         });
     });
-});
+};
 
 function getData(item, option) {
     $.ajax({

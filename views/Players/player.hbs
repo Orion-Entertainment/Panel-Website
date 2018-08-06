@@ -160,6 +160,12 @@
                         </table>
                     </div>
                 </div>
+
+                <script>
+                    $(document).ready(function(){
+                        firstLoad({{Info.id}})
+                    });
+                </script>
             {{else}}
                 <h1 class="centerText">Player not found</h1>
             {{/if}}

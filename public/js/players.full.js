@@ -1,5 +1,3 @@
-import "jquery";
-
 $(document).ready(function(){
     var Load = ['Names', 'Bans','Kicks','Kills'];
     Load.forEach(function(item) {

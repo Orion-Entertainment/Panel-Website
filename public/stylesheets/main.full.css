@@ -114,6 +114,12 @@ a,a:hover {
     border-style: outset;
 }
 
+.PlayerBoxes .Item .table td {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 0.75px solid rgb(225, 240, 235);
+}
+
 .PlayerBoxes .Item .TableScroll {
     display: block;
     max-height: 30em;

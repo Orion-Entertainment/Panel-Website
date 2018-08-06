@@ -231,8 +231,8 @@
                                             case "Bans": 
                                                 $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Created"]+'</td><td>'+info["Expires"]+'</td></tr>');
                                                 switch (option) {
-                                                    case "Expired":
-                                                        document.getElementById('#BansText').innerHTML = "Current/Expired Bans";
+                                                    case "All":
+                                                        $('#BansText').text("Current/Expired Bans");
                                                         break;
                                                 }
                                                 break;

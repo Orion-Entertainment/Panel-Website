@@ -80,6 +80,7 @@
 			</table>
 
 			<script>
+				const ResultsTable = document.getElementById("results");
 				let q = 0;
 				$('#search').keyup(function(){
 					const searchField = $(this).val();
@@ -92,7 +93,6 @@
 						return;
 					}
 					
-					const ResultsTable = document.getElementById("results");
 					q = 1;
 					$.ajax({
 						async: true,

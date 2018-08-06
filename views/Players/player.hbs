@@ -206,8 +206,8 @@
                                     if (data.Error !== undefined) {
                                         return console.log(data.Error)
                                     } else if (data[item] == false) {
+                                        $('#'+item+' tbody').empty();
                                         switch (item) {
-                                            $('#'+item+' tbody').empty();
                                             case "Names": 
                                                 $('#'+item+' > tbody:last-child').append('<tr><td>No Names Found</td><td></td></tr>');
                                                 break;

@@ -85,7 +85,10 @@ function getData(playerID,item, option) {
                         $('#'+item+' > tbody:last-child').append('<tr><td>No Bans Found</td></tr>');
                         switch (option) {
                             case "All":
-                                $('#BansText').text("Current/Expired Bans");
+                                $('#BansText').text('Current/Expired Bans <button type="button" class="btn-sm btn-elegant" onClick="getData({{'+playerID+'}},"Bans","");">Dont Show Expired</button>');
+                                break;
+                            case "":
+                                $('#BansText').text('Current/Expired Bans <button type="button" class="btn-sm btn-elegant" onClick="getData({{'+playerID+'}},"Bans","All");">Show Expired</button>');
                                 break;
                         }
                         break;
@@ -94,6 +97,14 @@ function getData(playerID,item, option) {
                         break;
                     case "Kills":
                         $('#'+item+' > tbody:last-child').append('<tr><td>No Kills Found</td></tr>');
+                        switch (option) {
+                            case "All":
+                                $('#KillsText').text('Current/Expired Bans <button type="button" class="btn-sm btn-elegant" onClick="getData({{'+playerID+'}},"Kills","");">Dont Show Deaths</button>');
+                                break;
+                            case "":
+                                $('#KillsText').text('Current/Expired Bans <button type="button" class="btn-sm btn-elegant" onClick="getData({{'+playerID+'}},"Kills","All");">Show Deaths</button>');
+                                break;
+                        }
                         break;
                     case "MaldenLife":
                         $('#'+item+' > tbody:last-child').append('<tr><td>Player has never joined server</td></tr>');
@@ -112,7 +123,10 @@ function getData(playerID,item, option) {
                             $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Created"]+'</td><td>'+info["Expires"]+'</td></tr>');
                             switch (option) {
                                 case "All":
-                                    $('#BansText').text("Current/Expired Bans");
+                                    $('#BansText').text('Current/Expired Bans <button type="button" class="btn-sm btn-elegant" onClick="getData({{'+playerID+'}},"Bans","");">Dont Show Expired</button>');
+                                    break;
+                                case "":
+                                    $('#BansText').text('Current/Expired Bans <button type="button" class="btn-sm btn-elegant" onClick="getData({{'+playerID+'}},"Bans","All");">Show Expired</button>');
                                     break;
                             }
                             break;
@@ -121,6 +135,14 @@ function getData(playerID,item, option) {
                             break;
                         case "Kills":
                             $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Name"]+'('+info["KilledGroup"]+')</td><td>'+info["Weapon"]+'</td><td>'+info["Time"]+'</td></tr>');
+                            switch (option) {
+                                case "All":
+                                    $('#KillsText').text('Current/Expired Bans <button type="button" class="btn-sm btn-elegant" onClick="getData({{'+playerID+'}},"Kills","");">Dont Show Deaths</button>');
+                                    break;
+                                case "":
+                                    $('#KillsText').text('Current/Expired Bans <button type="button" class="btn-sm btn-elegant" onClick="getData({{'+playerID+'}},"Kills","All");">Show Deaths</button>');
+                                    break;
+                            }
                             break;
                         case "MaldenLife":
                             $('#'+item+' > tbody:last-child').append('<tr><td>$'+info["Money"]+'</td><td>'+info["coplevel"]+'</td><td>'+info["mediclevel"]+'</td><td>'+info["donorlevel"]+'</td><td>'+info["exp_level"]+'</td><td>'+info["exp_total"]+'</td><td>'+info["exp_perkPoints"]+'</td></tr>');

@@ -77,6 +77,7 @@ router.post('/:PlayerID/Info', RequireLogin('/login?ReturnURL=/Players/Search'),
                 "client_id": await req.APIKey.client_id,
                 "token": await req.APIKey.token,
 
+                "PlayerID": req.params.PlayerID,
                 "Option": req.body.Option,
                 "Option2": req.body.Option2
             } },

@@ -218,7 +218,7 @@ function LoadTopCharts(load) {
 /* ---------------- */
 /* /player/killfeed */
 /* ---------------- */
-function LoadTopCharts() {
+function LoadKillFeed() {
     $.ajax({
         async: true,
         type: 'POST',

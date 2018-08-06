@@ -89,7 +89,9 @@ a,a:hover {
 }
 
 .PlayerBoxes {
-    float: center;
+    display: inline;
+    margin-left: auto;
+    margin-right: auto;
 }
 .PlayerBoxes .Item {
     background: linear-gradient(

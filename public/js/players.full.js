@@ -85,7 +85,7 @@ function getData(playerID,item, option) {
                         $('#'+item+' > tbody:last-child').append('<tr><td>No Bans Found</td></tr>');
                         switch (option) {
                             case "All":
-                                $('#BansText').html('Current/Expired Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getData('+playerID+',\'Bans\',\'\');">Dont Show Expired</button>');
+                                $('#BansText').html('Current/Expired Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getData('+playerID+',\'Bans\',\'\');">Show Expired</button>');
                                 break;
                             case "":
                                 $('#BansText').html('Current/Expired Bans <button type="button" class="btn-sm btn-elegant" onClick="getData('+playerID+',\'Bans\',\'All\');">Show Expired</button>');
@@ -99,7 +99,7 @@ function getData(playerID,item, option) {
                         $('#'+item+' > tbody:last-child').append('<tr><td>No Kills Found</td></tr>');
                         switch (option) {
                             case "All":
-                                $('#KillsText').html('Current/Expired Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getData('+playerID+',\'Kills\',\'\');">Dont Show Deaths</button>');
+                                $('#KillsText').html('Current/Expired Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getData('+playerID+',\'Kills\',\'\');">Show Deaths</button>');
                                 break;
                             case "":
                                 $('#KillsText').html('Current/Expired Bans <button type="button" class="btn-sm btn-elegant" onClick="getData('+playerID+',\'Kills\',\'All\');">Show Deaths</button>');
@@ -123,7 +123,7 @@ function getData(playerID,item, option) {
                             $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Created"]+'</td><td>'+info["Expires"]+'</td></tr>');
                             switch (option) {
                                 case "All":
-                                    $('#BansText').html('Current/Expired Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getData('+playerID+',\'Bans\',\'\');">Dont Show Expired</button>');
+                                    $('#BansText').html('Current/Expired Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getData('+playerID+',\'Bans\',\'\');">Show Expired</button>');
                                     break;
                                 case "":
                                     $('#BansText').html('Current/Expired Bans <button type="button" class="btn-sm btn-elegant" onClick="getData('+playerID+',\'Bans\',\'All\');">Show Expired</button>');
@@ -137,7 +137,7 @@ function getData(playerID,item, option) {
                             $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Name"]+'('+info["KilledGroup"]+')</td><td>'+info["Weapon"]+'</td><td>'+info["Time"]+'</td></tr>');
                             switch (option) {
                                 case "All":
-                                    $('#KillsText').html('Current/Expired Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getData('+playerID+',\'Kills\',\'\');">Dont Show Deaths</button>');
+                                    $('#KillsText').html('Current/Expired Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getData('+playerID+',\'Kills\',\'\');">Show Deaths</button>');
                                     break;
                                 case "":
                                     $('#KillsText').html('Current/Expired Bans <button type="button" class="btn-sm btn-elegant" onClick="getData('+playerID+',\'Kills\',\'All\');">Show Deaths</button>');

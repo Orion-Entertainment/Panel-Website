@@ -79,7 +79,8 @@ router.post('/:PlayerID/Info', RequireLogin('/login?ReturnURL=/Players/Search'),
 
                 "PlayerID": req.params.PlayerID,
                 "Option": req.body.Option,
-                "Option2": req.body.Option2
+                "Option2": req.body.Option2,
+                "Option3": req.body.Option3
             } },
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {

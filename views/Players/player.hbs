@@ -102,7 +102,7 @@
                     </div>
                     
                     <div class="Item">
-                        <h1 class="AltText centerText">Current Bans <button type="button" class="btn-sm btn-elegant" onClick="getData('Bans','All');">Show Expired</button></h1>
+                        <h1 class="AltText centerText" id="BansText">Current Bans <button type="button" class="btn-sm btn-elegant" onClick="getData('Bans','All');">Show Expired</button></h1>
                         <hr width="75%">
                         
                         <table class="table TableScroll" id="Bans">
@@ -230,6 +230,11 @@
                                                 break;
                                             case "Bans": 
                                                 $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Created"]+'</td><td>'+info["Expires"]+'</td></tr>');
+                                                switch (option) {
+                                                    case "Expired":
+                                                        $('#'+item+'Text').text("Current/Expired Bans");
+                                                        break;
+                                                }
                                                 break;
                                             case "Kicks": 
                                                 $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Name"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Time"]+'</td></tr>');
@@ -243,7 +248,7 @@
                                 return alert(error);
                             }
                         });
-                    }
+                    };
                 </script>
             {{else}}
                 <h1 class="centerText">Player not found</h1>

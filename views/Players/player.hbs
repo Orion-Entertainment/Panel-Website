@@ -96,15 +96,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{#each Info.Names}}
-                                <tr>
-                                    <td>{{this.Name}}</td>
-                                    <td>{{this.Time}}</td>
-                                </tr>
-                                {{/each}}
+                                
                             </tbody>
                         </table>
                     </div>
+                    
                     <div class="Item">
                         <h1 class="AltText centerText">Current Bans</h1>
                         <hr width="75%">
@@ -127,30 +123,48 @@
 
                 <script>
                     $(document).ready(function(){
-                        $.ajax({
-                            async: true,
-                            type: 'POST',
-                            url: '/Players/{{Info.id}}/Info',
-                            data: {
-                                Option: "Get",
-                                Option2: "Bans"
-                            },
-                            success: function(data) {
-                                if (data.Error !== undefined) {
-                                    return console.log(data.Error)
-                                } else if (data.Bans == false) {
-                                    $('#Bans > tbody:last-child').append('<tr><td>None</td><td>No Bans Found</td><td>-1</td><td>-1</td></tr>');
-                                } else {
-                                    for (i = 0; i < data.Bans.length; i++) {
-                                        info = data.Bans[i];
-                                        $('#Bans > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Created"]+'</td><td>'+info["Expires"]+'</td></tr>');
-                                    };
+                        var Load = ['Names', 'Bans'];
+                        Load.forEach(function(item) {
+                            $.ajax({
+                                async: true,
+                                type: 'POST',
+                                url: '/Players/{{Info.id}}/Info',
+                                data: {
+                                    Option: "Get",
+                                    Option2: item
+                                },
+                                success: function(data) {
+                                    if (data.Error !== undefined) {
+                                        return console.log(data.Error)
+                                    } else if (data[item] == false) {
+                                        switch (item) {
+                                            case "Names": 
+                                                $('#'+item+' > tbody:last-child').append('<tr><td>No Names Found</td><td>-1</td></tr>');
+                                                break;
+                                            case "Bans": 
+                                                $('#'+item+' > tbody:last-child').append('<tr><td>None</td><td>No Bans Found</td><td>-1</td><td>-1</td></tr>');
+                                                break;
+                                        }
+                                    } else {
+                                        const Data = data[item];
+                                        for (i = 0; i < Data.length; i++) {
+                                            info = Data[i];
+                                            switch (item) {
+                                                case "Names": 
+                                                    $('#'+item+' > tbody:last-child').append('<tr><td>No Names Found</td><td>-1</td></tr>');
+                                                    break;
+                                                case "Bans": 
+                                                    $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Created"]+'</td><td>'+info["Expires"]+'</td></tr>');
+                                                    break;
+                                            }
+                                        };
+                                    }
+                                },
+                                error: function(error) {
+                                    q = 0;
+                                    return alert(error);
                                 }
-                            },
-                            error: function(error) {
-                                q = 0;
-                                return alert(error);
-                            }
+                            });
                         });
                     });
                 </script>

@@ -101,12 +101,12 @@ a,a:hover {
 }
 .PlayerBoxes .Item {
     background: linear-gradient(
-        rgba(0, 0, 0, 0.35), 
-        rgba(0, 0, 0, 0.35)
+        rgba(0, 0, 0, 0.4), 
+        rgba(0, 0, 0, 0.4)
     );
     margin: 10px;
     padding: 5px;
-    border-color: rgba(128,128,128, 0.3);
+    border-color: rgba(128,128,128, 0.2);
     border-width: 2px;
     -webkit-border-radius: 4px 4px 4px 4px;
     -moz-border-radius: 4px 4px 4px 4px;

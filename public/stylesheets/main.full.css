@@ -101,8 +101,8 @@ a,a:hover {
 }
 .PlayerBoxes .Item {
     background: linear-gradient(
-        rgba(0, 0, 0, 0.4), 
-        rgba(0, 0, 0, 0.4)
+        rgba(0, 0, 0, 0.25), 
+        rgba(0, 0, 0, 0.2)
     );
     margin: 10px;
     padding: 5px;

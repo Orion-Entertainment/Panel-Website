@@ -87,7 +87,7 @@
                     <div class="Item">
                         <h1 class="AltText centerText">Past Names</h1>
                         <hr width="75%">
-                        
+
                         <table class="table TableScroll" id="Names">
                             <thead>
                                 <tr>
@@ -96,15 +96,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <div class="Item">
                         <h1 class="AltText centerText" id="BansText">Current Bans <button type="button" class="btn-sm btn-elegant" onClick="getData('Bans','All');">Show Expired</button></h1>
                         <hr width="75%">
-                        
+
                         <table class="table TableScroll" id="Bans">
                             <thead>
                                 <tr>
@@ -115,15 +115,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <div class="Item">
                         <h1 class="AltText centerText">Kicks</h1>
                         <hr width="75%">
-                        
+
                         <table class="table TableScroll" id="Kicks">
                             <thead>
                                 <tr>
@@ -134,7 +134,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="Item">
+                        <h1 class="AltText centerText">Recent Kills</h1>
+                        <hr width="75%">
+
+                        <table class="table TableScroll" id="Kills">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><scrong>Server</scrong></th>
+                                    <th scope="col"><scrong>Name(Group)</scrong></th>
+                                    <th scope="col"><scrong>Weapon</scrong></th>
+                                    <th scope="col"><scrong>Time</scrong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
                             </tbody>
                         </table>
                     </div>
@@ -142,7 +161,7 @@
 
                 <script>
                     $(document).ready(function(){
-                        var Load = ['Names', 'Bans','Kicks'];
+                        var Load = ['Names', 'Bans','Kicks','Kills'];
                         Load.forEach(function(item) {
                             $.ajax({
                                 async: true,
@@ -157,14 +176,17 @@
                                         return console.log(data.Error)
                                     } else if (data[item] == false) {
                                         switch (item) {
-                                            case "Names": 
+                                            case "Names":
                                                 $('#'+item+' > tbody:last-child').append('<tr><td>No Names Found</td><td></td></tr>');
                                                 break;
-                                            case "Bans": 
+                                            case "Bans":
                                                 $('#'+item+' > tbody:last-child').append('<tr><td></td><td>No Bans Found</td><td></td><td></td></tr>');
                                                 break;
-                                            case "Kicks": 
+                                            case "Kicks":
                                                 $('#'+item+' > tbody:last-child').append('<tr><td></td><td>No Kicks Found</td><td></td><td></td></tr>');
+                                                break;
+                                            case "Kills":
+                                                $('#'+item+' > tbody:last-child').append('<tr><td></td><td>No Kills Found</td><td></td><td></td></tr>');
                                                 break;
                                         }
                                     } else {
@@ -172,14 +194,17 @@
                                         for (i = 0; i < Data.length; i++) {
                                             info = Data[i];
                                             switch (item) {
-                                                case "Names": 
+                                                case "Names":
                                                     $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Name"]+'</td><td>'+info["Time"]+'</td></tr>');
                                                     break;
-                                                case "Bans": 
+                                                case "Bans":
                                                     $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Created"]+'</td><td>'+info["Expires"]+'</td></tr>');
                                                     break;
-                                                case "Kicks": 
+                                                case "Kicks":
                                                     $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Name"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Time"]+'</td></tr>');
+                                                    break;
+                                                case "Kills":
+                                                    $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Name"]+'('+info["KilledGroup"]+')</td><td>'+info["Weapon"]+'</td><td>'+info["Time"]+'</td></tr>');
                                                     break;
                                             }
                                         };
@@ -209,13 +234,18 @@
                                 } else if (data[item] == false) {
                                     $('#'+item+' tbody').empty();
                                     switch (item) {
-                                        case "Names": 
+                                        case "Names":
                                             $('#'+item+' > tbody:last-child').append('<tr><td>No Names Found</td><td></td></tr>');
                                             break;
-                                        case "Bans": 
+                                        case "Bans":
                                             $('#'+item+' > tbody:last-child').append('<tr><td></td><td>No Bans Found</td><td></td><td></td></tr>');
+                                            switch (option) {
+                                                case "All":
+                                                    $('#BansText').text("Current/Expired Bans");
+                                                    break;
+                                            }
                                             break;
-                                        case "Kicks": 
+                                        case "Kicks":
                                             $('#'+item+' > tbody:last-child').append('<tr><td></td><td>No Kicks Found</td><td></td><td></td></tr>');
                                             break;
                                     }
@@ -225,10 +255,10 @@
                                     for (i = 0; i < Data.length; i++) {
                                         info = Data[i];
                                         switch (item) {
-                                            case "Names": 
+                                            case "Names":
                                                 $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Name"]+'</td><td>'+info["Time"]+'</td></tr>');
                                                 break;
-                                            case "Bans": 
+                                            case "Bans":
                                                 $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Created"]+'</td><td>'+info["Expires"]+'</td></tr>');
                                                 switch (option) {
                                                     case "All":
@@ -236,7 +266,7 @@
                                                         break;
                                                 }
                                                 break;
-                                            case "Kicks": 
+                                            case "Kicks":
                                                 $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Name"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Time"]+'</td></tr>');
                                                 break;
                                         }

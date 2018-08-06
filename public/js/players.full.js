@@ -232,7 +232,7 @@ function LoadKillFeed() {
                 const Data = data["Kills"];
                 for (i = 0; i < Data.length; i++) {
                     info = Data[i];
-                    $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["KillerName"]+'('+info["KillerGroup"]+')</strong></td><td><strong>'+info["KilledName"]+'('+info["KilledGroup"]+')</strong></td><td>'+info["Weapon"]+'</td><td>'+info["Distance"]+'</td><td>$'+moment(info["Time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
+                    $('#Kills > tbody:last-child').append('<tr><td><strong>'+info["KillerName"]+'('+info["KillerGroup"]+')</strong></td><td><strong>'+info["KilledName"]+'('+info["KilledGroup"]+')</strong></td><td>'+info["Weapon"]+'</td><td>'+info["Distance"]+'</td><td>$'+moment(info["Time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
                 };
             }
         },

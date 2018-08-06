@@ -109,10 +109,8 @@ a,a:hover {
     -moz-border-radius: 4px 4px 4px 4px;
     border-radius: 4px 4px 4px 4px;
     border-style: outset;
-    max-height: 25%;
-    overflow-y: auto;
 }
 .PlayerBoxes .Item table {
-    max-height: 25%;
+    max-height: 30em;
     overflow-y: auto;
 }

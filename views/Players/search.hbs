@@ -72,6 +72,7 @@
 						<th scope="col"><scrong>ID</scrong></th>
 						<th scope="col"><scrong>Last Name Used</scrong></th>
 						<th scope="col"><scrong>Steam64ID</scrong></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -121,7 +122,7 @@
 									{{#if someperms}}
 
 									{{else}}
-										$('#results > tbody:last-child').append('<tr class="clickable-row" data-href="/Players/'+player["id"]+'"><th scope="row">'+player["id"]+'</th><td>'+player["Last Name"]+'</td><td>'+player["Steam64ID"]+'</td></tr>');
+										$('#results > tbody:last-child').append('<tr><th scope="row">'+player["id"]+'</th><td>'+player["Last Name"]+'</td><td>'+player["Steam64ID"]+'</td><td><a type="button" class="btn btn-info" href="/Players/'+player["id"]+'">View Player</a></td></tr>');
 									{{/if}}
 								};
 							}
@@ -131,12 +132,6 @@
 							q = 0;
 							return alert(error);
 						}
-					});
-				});
-
-				jQuery(document).ready(function($) {
-					$(".clickable-row").click(function() {
-						window.location = $(this).data("href");
 					});
 				});
 			</script>

@@ -18,7 +18,7 @@ function firstLoad(playerID) {
                             $('#'+item+' > tbody:last-child').append('<tr><td>No Names Found</td></tr>');
                             break;
                         case "Bans":
-                            $('#'+item+' > tbody:last-child').append('<tr><<td>No Bans Found</td></tr>');
+                            $('#'+item+' > tbody:last-child').append('<tr><td>No Bans Found</td></tr>');
                             break;
                         case "Kicks":
                             $('#'+item+' > tbody:last-child').append('<tr><td>No Kicks Found</td></tr>');

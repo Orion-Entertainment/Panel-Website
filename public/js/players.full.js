@@ -56,11 +56,11 @@ function firstLoad(playerID) {
     });
 };
 
-function getData(item, option) {
+function getData(playerID,item, option) {
     $.ajax({
         async: true,
         type: 'POST',
-        url: '/Players/{{Info.id}}/Info',
+        url: '/Players/'+playerID+'/Info',
         data: {
             Option: "Get",
             Option2: item,

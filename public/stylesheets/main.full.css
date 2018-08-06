@@ -109,4 +109,6 @@ a,a:hover {
     -moz-border-radius: 4px 4px 4px 4px;
     border-radius: 4px 4px 4px 4px;
     border-style: outset;
+    max-height: 25%;
+    overflow: auto;
 }

@@ -126,7 +126,7 @@
                 </div>
 
                 <script>
-                    window.onload = function () {
+                    $(document).ready(function(){
                         $.ajax({
                             async: true,
                             type: 'POST',
@@ -152,7 +152,7 @@
                                 return alert(error);
                             }
                         });
-                    }
+                    });
                 </script>
             {{else}}
                 <h1 class="centerText">Player not found</h1>

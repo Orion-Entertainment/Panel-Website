@@ -4,7 +4,7 @@ html {
 body {
     margin: 0;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: scroll;
 
     background: #04afb2;
     background: -moz-linear-gradient(top, #04afb2 0%, #08e8d5 50%, #04afb2 100%);

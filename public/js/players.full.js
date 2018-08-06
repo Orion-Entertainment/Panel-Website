@@ -1,5 +1,3 @@
-const moment = require('moment');
-
 /* ----------------- */
 /* /player/:playerid */
 /* ----------------- */
@@ -222,7 +220,7 @@ function LoadKillFeed() {
     $.ajax({
         async: true,
         type: 'POST',
-        url: '/Players/TopCharts',
+        url: '/Players/KillFeed',
         data: {
         },
         success: function(data) {

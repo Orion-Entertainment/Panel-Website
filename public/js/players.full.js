@@ -1,4 +1,7 @@
-function firstLoad(playerID) {
+/* ----------------- */
+/* /player/:playerid */
+/* ----------------- */
+function LoadPlayer(playerID) {
     const Load = ['Names', 'Bans','Kicks','Kills','MaldenLife'];
     Load.forEach(function(item) {
         $.ajax({
@@ -62,7 +65,7 @@ function firstLoad(playerID) {
     });
 };
 
-function getData(playerID,item, option) {
+function getPlayerData(playerID,item, option) {
     $.ajax({
         async: true,
         type: 'POST',
@@ -85,10 +88,10 @@ function getData(playerID,item, option) {
                         $('#'+item+' > tbody:last-child').append('<tr><td>No Bans Found</td></tr>');
                         switch (option) {
                             case "All":
-                                $('#BansText').html('Current Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getData('+playerID+',\'Bans\',\'\');">Show Expired</button>');
+                                $('#BansText').html('Current Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getPlayerData('+playerID+',\'Bans\',\'\');">Show Expired</button>');
                                 break;
                             case "":
-                                $('#BansText').html('Current Bans <button type="button" class="btn-sm btn-elegant" onClick="getData('+playerID+',\'Bans\',\'All\');">Show Expired</button>');
+                                $('#BansText').html('Current Bans <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData('+playerID+',\'Bans\',\'All\');">Show Expired</button>');
                                 break;
                         }
                         break;
@@ -99,10 +102,10 @@ function getData(playerID,item, option) {
                         $('#'+item+' > tbody:last-child').append('<tr><td>No Kills Found</td></tr>');
                         switch (option) {
                             case "All":
-                                $('#KillsText').html('Current Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getData('+playerID+',\'Kills\',\'\');">Show Deaths</button>');
+                                $('#KillsText').html('Current Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getPlayerData('+playerID+',\'Kills\',\'\');">Show Deaths</button>');
                                 break;
                             case "":
-                                $('#KillsText').html('Current Bans <button type="button" class="btn-sm btn-elegant" onClick="getData('+playerID+',\'Kills\',\'All\');">Show Deaths</button>');
+                                $('#KillsText').html('Current Bans <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData('+playerID+',\'Kills\',\'All\');">Show Deaths</button>');
                                 break;
                         }
                         break;
@@ -123,10 +126,10 @@ function getData(playerID,item, option) {
                             $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Created"]+'</td><td>'+info["Expires"]+'</td></tr>');
                             switch (option) {
                                 case "All":
-                                    $('#BansText').html('Current Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getData('+playerID+',\'Bans\',\'\');">Show Expired</button>');
+                                    $('#BansText').html('Current Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getPlayerData('+playerID+',\'Bans\',\'\');">Show Expired</button>');
                                     break;
                                 case "":
-                                    $('#BansText').html('Current Bans <button type="button" class="btn-sm btn-elegant" onClick="getData('+playerID+',\'Bans\',\'All\');">Show Expired</button>');
+                                    $('#BansText').html('Current Bans <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData('+playerID+',\'Bans\',\'All\');">Show Expired</button>');
                                     break;
                             }
                             break;
@@ -137,10 +140,10 @@ function getData(playerID,item, option) {
                             $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Name"]+'('+info["KilledGroup"]+')</td><td>'+info["Weapon"]+'</td><td>'+info["Time"]+'</td></tr>');
                             switch (option) {
                                 case "All":
-                                    $('#KillsText').html('Current Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getData('+playerID+',\'Kills\',\'\');">Show Deaths</button>');
+                                    $('#KillsText').html('Current Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getPlayerData('+playerID+',\'Kills\',\'\');">Show Deaths</button>');
                                     break;
                                 case "":
-                                    $('#KillsText').html('Current Bans <button type="button" class="btn-sm btn-elegant" onClick="getData('+playerID+',\'Kills\',\'All\');">Show Deaths</button>');
+                                    $('#KillsText').html('Current Bans <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData('+playerID+',\'Kills\',\'All\');">Show Deaths</button>');
                                     break;
                             }
                             break;
@@ -156,4 +159,51 @@ function getData(playerID,item, option) {
             return alert(error);
         }
     });
+};
+
+/* ----------------- */
+/* /player/topcharts */
+/* ----------------- */
+function LoadTopCharts(load) {
+    const Load = load;
+    for (i = 0; i < Load.length; i++) {
+        const Server = Load[i].Server;
+        const Data = Load[i].Data;
+        Data.forEach(function(Category) {
+            $.ajax({
+                async: true,
+                type: 'POST',
+                url: '/Players/TopCharts',
+                data: {
+                    Server: Server,
+                    Category: Category
+                },
+                success: function(data) {
+                    if (data.Error !== undefined) {
+                        return console.log(data.Error)
+                    } else if (data[item] == false) {
+                        switch (item) {
+                            case "EXP":
+                                $('#'+item+' > tbody:last-child').append('<tr><td>No Players Found</td></tr>');
+                                break;
+                        }
+                    } else {
+                        const Data = data[item];
+                        for (i = 0; i < Data.length; i++) {
+                            info = Data[i];
+                            switch (item) {
+                                case "EXP":
+                                    $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Name"]+'</td><td>'+info["exp_level"]+'</td><td>'+info["exp_total"]+'</td><td>'+info["exp_perkPoints"]+'</td></tr>');
+                                    break;
+                            }
+                        };
+                    }
+                },
+                error: function(error) {
+                    q = 0;
+                    return alert(error);
+                }
+            });
+        });
+    }
 };

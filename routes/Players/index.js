@@ -43,6 +43,32 @@ router.get('/TopCharts', RequireLogin('/login?ReturnURL=/Players/TopCharts'), as
         return res.render('errorCustom', { error: error });
     }
 });
+router.post('/TopCharts', RequireLogin('/login?ReturnURL=/Players/TopCharts'), async(req, res, next) => {
+    try {
+        if (req.body.Category == undefined) return res.json({Error: "Category Undefined"})
+        else if (req.body.Category == "") return res.json({Error: "Category Invalid"})
+
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/players/topcharts',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "Server": req.body.Server,
+                "Category": req.body.Category,
+                "Option": req.body.Option
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.json({Error: body.Error})
+                    else {return res.send(body);}
+                } else return res.json({Error: "API: Response Error"})
+            }
+        );
+    } catch (error) {
+        return res.json({Error: error})
+    }
+});
 
 router.get('/:PlayerID', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
     try {
@@ -71,7 +97,6 @@ router.get('/:PlayerID', RequireLogin('/login?ReturnURL=/Players/Search'), async
         return res.render('errorCustom', { error: error });
     }
 });
-
 router.post('/:PlayerID/Info', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
     try {
         if (req.params.PlayerID == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}

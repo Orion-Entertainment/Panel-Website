@@ -36,4 +36,32 @@ router.post('/Search', RequireLogin('/login?ReturnURL=/Players/Search'), async(r
     }
 });
 
+router.get('/:PlayerID', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
+    try {
+        //Look into returning to playerid page if not logged
+        if (req.params.PlayerID == undefined) return res.redirect('/Players/Search');
+        if (req.params.PlayerID == "" | isNaN(req.params.PlayerID)) return res.render('errorCustom', { error: "Invalid PlayerID" });
+
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/players/info',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "PlayerID": req.params.PlayerID
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
+                    else {
+                        return res.render('./Players/player', { title: req.WebTitle+'Players', Info: body });
+                    }
+                } else return res.render('errorCustom', { error: "API: Response Error" });
+            }
+        );
+    } catch (error) {
+        return res.render('errorCustom', { error: error });
+    }
+});
+
 module.exports = router;

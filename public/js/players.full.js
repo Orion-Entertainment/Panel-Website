@@ -79,10 +79,10 @@ function getData(playerID,item, option) {
                 $('#'+item+' tbody').empty();
                 switch (item) {
                     case "Names":
-                        $('#'+item+' > tbody:last-child').append('<tr><td>No Names Found</td><td></td></tr>');
+                        $('#'+item+' > tbody:last-child').append('<tr><td>No Names Found</td></tr>');
                         break;
                     case "Bans":
-                        $('#'+item+' > tbody:last-child').append('<tr><td></td><td>No Bans Found</td><td></td><td></td></tr>');
+                        $('#'+item+' > tbody:last-child').append('<tr><td>No Bans Found</td></tr>');
                         switch (option) {
                             case "All":
                                 $('#BansText').text("Current/Expired Bans");
@@ -90,7 +90,13 @@ function getData(playerID,item, option) {
                         }
                         break;
                     case "Kicks":
-                        $('#'+item+' > tbody:last-child').append('<tr><td></td><td>No Kicks Found</td><td></td><td></td></tr>');
+                        $('#'+item+' > tbody:last-child').append('<tr><td>No Kicks Found</td></tr>');
+                        break;
+                    case "Kills":
+                        $('#'+item+' > tbody:last-child').append('<tr><td>No Kills Found</td></tr>');
+                        break;
+                    case "MaldenLife":
+                        $('#'+item+' > tbody:last-child').append('<tr><td>Player has never joined server</td></tr>');
                         break;
                 }
             } else {
@@ -112,6 +118,12 @@ function getData(playerID,item, option) {
                             break;
                         case "Kicks":
                             $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Name"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Time"]+'</td></tr>');
+                            break;
+                        case "Kills":
+                            $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Name"]+'('+info["KilledGroup"]+')</td><td>'+info["Weapon"]+'</td><td>'+info["Time"]+'</td></tr>');
+                            break;
+                        case "MaldenLife":
+                            $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Money"]+'</td><td>'+info["coplevel"]+'</td><td>'+info["mediclevel"]+'</td><td>'+info["donorlevel"]+'</td><td>'+info["exp_level"]+'</td><td>'+info["exp_total"]+'</td><td>'+info["exp_perkPoints"]+'</td></tr>');
                             break;
                     }
                 };

@@ -1,5 +1,5 @@
 function firstLoad(playerID) {
-    const Load = ['Names', 'Bans','Kicks','Kills'];
+    const Load = ['Names', 'Bans','Kicks','Kills','MaldenLife'];
     Load.forEach(function(item) {
         $.ajax({
             async: true,
@@ -26,6 +26,9 @@ function firstLoad(playerID) {
                         case "Kills":
                             $('#'+item+' > tbody:last-child').append('<tr><td></td><td>No Kills Found</td><td></td><td></td></tr>');
                             break;
+                        case "MaldenLife":
+                            $('#'+item+' > tbody:last-child').append('<tr><td></td><td>Player has never joined server</td><td></td><td></td></tr>');
+                            break;
                     }
                 } else {
                     const Data = data[item];
@@ -43,6 +46,9 @@ function firstLoad(playerID) {
                                 break;
                             case "Kills":
                                 $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Name"]+'('+info["KilledGroup"]+')</td><td>'+info["Weapon"]+'</td><td>'+info["Time"]+'</td></tr>');
+                                break;
+                            case "MaldenLife":
+                                $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Money"]+'</td><td>'+info["exp_level"]+'</td><td>'+info["exp_total"]+'</td><td>'+info["exp_perkPoints"]+'</td></tr>');
                                 break;
                         }
                     };

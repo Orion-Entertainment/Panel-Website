@@ -84,13 +84,6 @@ a,a:hover {
     z-index: 1;
 }
 
-::placeholder {
-    color: white;
-    opacity: 1;
-}
-:-ms-input-placeholder {
-    color: white;
-}
-::-ms-input-placeholder {
+.form-control::-webkit-input-placeholder,.form-control:-moz-placeholder,.form-control::-moz-placeholder,.form-control:-ms-input-placeholder,.form-control::-ms-input-placeholder { 
     color: white;
 }

@@ -96,7 +96,7 @@ a,a:hover {
     flex-direction: row;
     flex-grow: 1;
     min-width: 25%;
-    align-items: center;
+    /*align-items: center;*/
     justify-content: center;
 }
 .PlayerBoxes .Item {

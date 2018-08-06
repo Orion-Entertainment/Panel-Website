@@ -110,7 +110,7 @@ a,a:hover {
     border-radius: 4px 4px 4px 4px;
     border-style: outset;
 }
-.PlayerBoxes .Item table {
+.PlayerBoxes .Item .table {
     max-height: 30em;
     overflow-y: auto;
 }

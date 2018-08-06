@@ -85,6 +85,9 @@
 					const searchField = $(this).val();
 					if (q > 0) {return};
 					if (searchField == "" | searchField.length < 2)  {
+						if (ResultsTable.style.display === "table") {
+							ResultsTable.style.display = "none";
+						}
 						$("#results tbody").empty();
 						return;
 					}

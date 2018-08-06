@@ -189,10 +189,16 @@ function LoadTopCharts(load) {
                             info = Data[i];
                             switch (Category) {
                                 case "Money":
-                                    $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["name"]+'</strong></td><td>'+info["Money"].toLocaleString()+'</td></tr>');
+                                    $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["name"]+'</strong></td><td>$'+info["Money"].toLocaleString()+'</td></tr>');
                                     break;
                                 case "EXP":
                                     $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["name"]+'</strong></td><td>'+info["exp_level"].toLocaleString()+'</td><td>'+info["exp_total"].toLocaleString()+'</td><td>'+info["exp_perkPoints"].toLocaleString()+'</td></tr>');
+                                    break;
+                                case "GangFunds":
+                                    $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["name"]+'</strong></td><td>$'+info["Money"].toLocaleString()+'</td></tr>');
+                                    break;
+                                case "Bounty":
+                                $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["name"]+'</strong></td><td>$'+info["Bounty"].toLocaleString()+'</td></tr>');
                                     break;
                             }
                         };

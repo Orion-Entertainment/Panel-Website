@@ -15,19 +15,19 @@ function firstLoad(playerID) {
                 } else if (data[item] == false) {
                     switch (item) {
                         case "Names":
-                            $('#'+item+' > tbody:last-child').append('<tr><td>No Names Found</td><td></td></tr>');
+                            $('#'+item+' > tbody:last-child').append('<tr><td>No Names Found</td></tr>');
                             break;
                         case "Bans":
-                            $('#'+item+' > tbody:last-child').append('<tr><td></td><td>No Bans Found</td><td></td><td></td></tr>');
+                            $('#'+item+' > tbody:last-child').append('<tr><<td>No Bans Found</td></tr>');
                             break;
                         case "Kicks":
-                            $('#'+item+' > tbody:last-child').append('<tr><td></td><td>No Kicks Found</td><td></td><td></td></tr>');
+                            $('#'+item+' > tbody:last-child').append('<tr><td>No Kicks Found</td></tr>');
                             break;
                         case "Kills":
-                            $('#'+item+' > tbody:last-child').append('<tr><td></td><td>No Kills Found</td><td></td><td></td></tr>');
+                            $('#'+item+' > tbody:last-child').append('<tr><td>No Kills Found</td></tr>');
                             break;
                         case "MaldenLife":
-                            $('#'+item+' > tbody:last-child').append('<tr><td></td><td>Player has never joined server</td><td></td><td></td></tr>');
+                            $('#'+item+' > tbody:last-child').append('<tr><td>Player has never joined server</td></tr>');
                             break;
                     }
                 } else {

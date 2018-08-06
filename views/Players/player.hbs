@@ -151,7 +151,7 @@
                                             info = Data[i];
                                             switch (item) {
                                                 case "Names": 
-                                                    $('#'+item+' > tbody:last-child').append('<tr><td>No Names Found</td><td>-1</td></tr>');
+                                                    $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Name"]+'</td><td>'+info["Time"]+'</td></tr>');
                                                     break;
                                                 case "Bans": 
                                                     $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Created"]+'</td><td>'+info["Expires"]+'</td></tr>');

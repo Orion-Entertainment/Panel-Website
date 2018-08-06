@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 /* ----------------- */
 /* /player/:playerid */
 /* ----------------- */
@@ -211,4 +213,34 @@ function LoadTopCharts(load) {
             });
         });
     }
+};
+
+/* ---------------- */
+/* /player/killfeed */
+/* ---------------- */
+function LoadTopCharts() {
+    $.ajax({
+        async: true,
+        type: 'POST',
+        url: '/Players/TopCharts',
+        data: {
+        },
+        success: function(data) {
+            if (data.Error !== undefined) {
+                return console.log(data.Error)
+            } else if (data["Kills"] == false) {
+                $('#'+Category+' > tbody:last-child').append('<tr><td>No Kills Found</td></tr>');
+            } else {
+                const Data = data["Kills"];
+                for (i = 0; i < Data.length; i++) {
+                    info = Data[i];
+                    $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["KillerName"]+'('+info["KillerGroup"]+')</strong></td><td><strong>'+info["KilledName"]+'('+info["KilledGroup"]+')</strong></td><td>'+info["Weapon"]+'</td><td>'+info["Distance"]+'</td><td>$'+moment(info["Time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
+                };
+            }
+        },
+        error: function(error) {
+            q = 0;
+            return alert(error);
+        }
+    });
 };

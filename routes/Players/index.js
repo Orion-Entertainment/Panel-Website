@@ -70,6 +70,33 @@ router.post('/TopCharts', RequireLogin('/login?ReturnURL=/Players/TopCharts'), a
     }
 });
 
+router.get('/KillFeed', RequireLogin('/login?ReturnURL=/Players/KillFeed'), async(req, res, next) => {
+    try {
+        return res.render('./Players/killfeed', { title: req.WebTitle+'Players - Kill Feed' });
+    } catch (error) {
+        return res.render('errorCustom', { error: error });
+    }
+});
+router.post('/KillFeed', RequireLogin('/login?ReturnURL=/Players/KillFeed'), async(req, res, next) => {
+    try {
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/players/killfeed',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.json({Error: body.Error})
+                    else {return res.send(body);}
+                } else return res.json({Error: "API: Response Error"})
+            }
+        );
+    } catch (error) {
+        return res.json({Error: error})
+    }
+});
+
 router.get('/:PlayerID', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
     try {
         //Look into returning to playerid page if not logged

@@ -48,7 +48,7 @@ function SearchPlayer(searchVal, Extensive, end) {
             if (end == undefined) {
                 setTimeout(function(){ 
                     if (q > 0) return; else SearchPlayer(searchVal, true, true);
-                }, 500);
+                }, 1000);
             }
         },
         error: function(error) {

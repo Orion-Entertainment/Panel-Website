@@ -1,7 +1,7 @@
 /* --------------- */
 /* /players/search */
 /* --------------- */
-function SearchPlayer(searchVal, Extensive,q) {
+function SearchPlayer(searchVal, Extensive, q) {
     const searchField = searchVal;
     if (q > 0) {return};
     if (searchField == "" | searchField.length < 2)  {

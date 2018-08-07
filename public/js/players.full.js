@@ -3,7 +3,7 @@
 /* --------------- */
 
 let q = 0;
-function SearchPlayer(searchVal, Extensive, end) {
+function SearchPlayer(searchVal) {
     const searchField = searchVal;
     const ResultsTable = document.getElementById("results");
     if (q > 0) {return};
@@ -21,8 +21,7 @@ function SearchPlayer(searchVal, Extensive, end) {
         type: 'POST',
         url: '/Players/Search',
         data: {
-            SearchVal: searchField,
-            Extensive: Extensive
+            SearchVal: searchField
         },
         success: function(data) {
             if (data.Error !== undefined) {return console.log(data.Error)};
@@ -45,11 +44,6 @@ function SearchPlayer(searchVal, Extensive, end) {
                 };
             }
             q = 0;
-            if (end == undefined) {
-                setTimeout(function(){ 
-                    if (q > 0) return; else SearchPlayer(searchVal, true, true);
-                }, 1000);
-            }
         },
         error: function(error) {
             q = 0;

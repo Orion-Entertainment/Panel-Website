@@ -45,9 +45,9 @@ function SearchPlayer(searchVal, Extensive) {
                 };
             }
             q = 0;
-            /*setTimeout(function(){ 
-                if (q > 0) return else SearchPlayer(searchVal, true);
-            }, 1000);*/
+            setTimeout(function(){ 
+                if (q > 0) return; else SearchPlayer(searchVal, true);
+            }, 500);
         },
         error: function(error) {
             q = 0;

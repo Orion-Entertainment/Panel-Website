@@ -20,7 +20,8 @@ router.post('/Search', RequireLogin('/login?ReturnURL=/Players/Search'), async(r
                 "client_id": await req.APIKey.client_id,
                 "token": await req.APIKey.token,
 
-                "SearchVal": req.body.SearchVal
+                "SearchVal": req.body.SearchVal,
+                "Extensive": req.body.Extensive
             } },
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {

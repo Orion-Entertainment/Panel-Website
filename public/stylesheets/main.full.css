@@ -120,6 +120,7 @@ a,a:hover {
     padding: .75rem;
     vertical-align: top;
     border-top: 0.75px solid rgb(225, 240, 235);
+    overflow-x: auto;
 }
 
 .PlayerBoxes .Item .TableScroll {

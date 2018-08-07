@@ -123,9 +123,7 @@ function LoadPlayer(load, playerID) {
                                 $('#'+item+' > tbody:last-child').append('<tr><td>'+info["id"]+'</td><td>'+info["pos"]+'</td><td>'+moment(info["insert_time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
                                 break;
                             case "HouseItems":
-                                if (info["inventory"].length > 60) Inv = "To Big to View Here"; else Inv = info["inventory"];
-                                if (info["Gear"].length > 60) Gear = "To Big to View Here"; else Gear = info["Gear"];
-                                $('#'+item+' > tbody:last-child').append('<tr><td>'+info["classname"]+'</td><td>'+info["pos"]+'</td><td>'+Gear+'</td><td>'+Inv+'</td><td>'+moment(info["insert_time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
+                                $('#'+item+' > tbody:last-child').append('<tr><td>'+info["classname"]+'</td><td>'+info["pos"]+'</td><td>'+info["Gear"]+'</td><td>'+ info["inventory"]+'</td><td>'+moment(info["insert_time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
                                 break;
                         }
                     };

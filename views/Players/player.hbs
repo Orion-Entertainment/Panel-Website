@@ -250,7 +250,8 @@
                 <script>
                     $(document).ready(function(){
                         {{#if Info.Private}}
-                            const Load = ['Names', 'Bans','Kicks','Kills','MaldenLife','Vehicles','Houses','HouseItems'];
+                            //,'Houses','HouseItems'
+                            const Load = ['Names', 'Bans','Kicks','Kills','MaldenLife','Vehicles'];
                         {{else}}
                             const Load = ['Names', 'Bans','Kicks','Kills','MaldenLife'];
                         {{/if}}

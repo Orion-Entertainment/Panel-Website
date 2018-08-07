@@ -84,55 +84,7 @@
 				const ResultsTable = document.getElementById("results");
 				let q = 0;
 				$('#search').keyup(function(){
-					const searchField = $(this).val();
-					if (q > 0) {return};
-					if (searchField == "" | searchField.length < 2)  {
-						if (ResultsTable.style.display === "table") {
-							ResultsTable.style.display = "none";
-						}
-						$("#results tbody").empty();
-						return;
-					}
-					
-					q = 1;
-					$.ajax({
-						async: true,
-						type: 'POST',
-						url: '/Players/Search',
-						data: {
-							SearchVal: searchField
-						},
-						success: function(data) {
-							if (data.Error !== undefined) {return console.log(data.Error)};
-							if (data.Results == false) {
-								if (ResultsTable.style.display === "none") {
-									ResultsTable.style.display = "table";
-								}
-
-								$("#results tbody").empty();
-								$('#results > tbody:last-child').append('<tr><td>-1</td><td>No Results Found</td><td>-1</td></tr>');
-							} else {
-								if (ResultsTable.style.display === "none") {
-									ResultsTable.style.display = "table";
-								}
-
-								$("#results tbody").empty();
-								for (i = 0; i < data.Results.length; i++) {
-									player = data.Results[i];
-									{{#if someperms}}
-
-									{{else}}
-										$('#results > tbody:last-child').append('<tr><th scope="row">'+player["id"]+'</th><td>'+player["Last Name"]+'</td><td>'+player["Steam64ID"]+'</td><td><a type="button" class="btn-sm btn-cyan" href="/Players/'+player["id"]+'">View Player</a></td></tr>');
-									{{/if}}
-								};
-							}
-							q = 0;
-						},
-						error: function(error) {
-							q = 0;
-							return console.log(error);
-						}
-					});
+					SearchPlayer($(this).val(),false,q);
 				});
 			</script>
 		</div>

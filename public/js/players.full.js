@@ -1,6 +1,62 @@
-/* ----------------- */
-/* /player/:playerid */
-/* ----------------- */
+/* --------------- */
+/* /players/search */
+/* --------------- */
+function SearchPlayer(searchVal, Extensive,q) {
+    const searchField = searchVal;
+    if (q > 0) {return};
+    if (searchField == "" | searchField.length < 2)  {
+        if (ResultsTable.style.display === "table") {
+            ResultsTable.style.display = "none";
+        }
+        $("#results tbody").empty();
+        return;
+    }
+
+    q = 1;
+    $.ajax({
+        async: true,
+        type: 'POST',
+        url: '/Players/Search',
+        data: {
+            SearchVal: searchField,
+            Extensive: Extensive
+        },
+        success: function(data) {
+            if (data.Error !== undefined) {return console.log(data.Error)};
+            if (data.Results == false) {
+                if (ResultsTable.style.display === "none") {
+                    ResultsTable.style.display = "table";
+                }
+
+                $("#results tbody").empty();
+                $('#results > tbody:last-child').append('<tr><td>-1</td><td>No Results Found</td><td>-1</td></tr>');
+            } else {
+                if (ResultsTable.style.display === "none") {
+                    ResultsTable.style.display = "table";
+                }
+
+                $("#results tbody").empty();
+                for (i = 0; i < data.Results.length; i++) {
+                    player = data.Results[i];
+                    $('#results > tbody:last-child').append('<tr><th scope="row">'+player["id"]+'</th><td>'+player["Last Name"]+'</td><td>'+player["Steam64ID"]+'</td><td><a type="button" class="btn-sm btn-cyan" href="/Players/'+player["id"]+'">View Player</a></td></tr>');
+                };
+            }
+            q = 0;
+            /*setTimeout(function(){ 
+                if (q > 0) return else SearchPlayer(searchVal, true);
+            }, 1000);*/
+        },
+        error: function(error) {
+            q = 0;
+            return console.log(error);
+        }
+    });
+}
+
+
+/* ------------------ */
+/* /players/:playerid */
+/* ------------------ */
 function LoadPlayer(load, playerID) {
     const Load = load;
     Load.forEach(function(item) {
@@ -171,9 +227,9 @@ function getPlayerData(playerID, item, option) {
     });
 };
 
-/* ----------------- */
-/* /player/topcharts */
-/* ----------------- */
+/* ------------------ */
+/* /players/topcharts */
+/* ------------------ */
 function LoadTopCharts(load) {
     const Load = load;
     for (i = 0; i < Load.length; i++) {
@@ -222,9 +278,9 @@ function LoadTopCharts(load) {
     }
 };
 
-/* ---------------- */
-/* /player/killfeed */
-/* ---------------- */
+/* ----------------- */
+/* /players/killfeed */
+/* ----------------- */
 function LoadKillFeed() {
     $.ajax({
         async: true,

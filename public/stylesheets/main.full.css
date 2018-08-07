@@ -129,7 +129,7 @@ a,a:hover {
     overflow-x: hidden;
 }
 
-.PlayersBoxes .Item .table .OverFlowX :hover {
+.PlayersBoxes .Item .table .OverFlowX:hover {
     max-width : initial; 
 }
 

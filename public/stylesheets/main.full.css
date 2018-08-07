@@ -94,13 +94,12 @@ a,a:hover {
 .PlayerBoxes {
     display: flex;
     flex-direction: row;
-    flex-grow: 1;
     min-width: 25%;
     width: 100%;
-    /*align-items: center;*/
     justify-content: center;
 }
 .PlayerBoxes .Item {
+    flex-grow: 1;
     background: linear-gradient(
         rgba(0, 0, 0, 0.25), 
         rgba(0, 0, 0, 0.2)

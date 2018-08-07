@@ -103,6 +103,10 @@ router.get('/:PlayerID', RequireLogin('/login?ReturnURL=/Players/Search'), async
         if (req.params.PlayerID == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
         else if (req.params.PlayerID == "" | isNaN(req.params.PlayerID)) {const err = new Error('Not Found');err.status = 404;next(err); return;}
 
+        if (req.session.Account.SteamID !== undefined) {
+            if (req.session.Account.SteamID == req.params.PlayerID) Private = true; else Private = false;
+        } else Private = false;
+
         request.post(
             'https://panelapi.orion-entertainment.net/v1/players/info',
             { json: { 
@@ -115,7 +119,7 @@ router.get('/:PlayerID', RequireLogin('/login?ReturnURL=/Players/Search'), async
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
                     else {
-                        return res.render('./Players/player', { title: req.WebTitle+'Players', Info: body.Info });
+                        return res.render('./Players/player', { title: req.WebTitle+'Players', Info: body.Info, Private: Private });
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }
@@ -131,6 +135,10 @@ router.post('/:PlayerID/Info', RequireLogin('/login?ReturnURL=/Players/Search'),
         else if (req.body.Option == undefined) return res.json({Error: "Option Undefined"})
         else if (req.body.Option == "") return res.json({Error: "Option Invalid"})
 
+        if (req.session.Account.SteamID !== undefined) {
+            if (req.session.Account.SteamID == req.params.PlayerID) Private = true; else Private = false;
+        } else Private = false;
+
         request.post(
             'https://panelapi.orion-entertainment.net/v1/players/info',
             { json: { 
@@ -138,6 +146,7 @@ router.post('/:PlayerID/Info', RequireLogin('/login?ReturnURL=/Players/Search'),
                 "token": await req.APIKey.token,
 
                 "PlayerID": req.params.PlayerID,
+                "Private": Private,
                 "Option": req.body.Option,
                 "Option2": req.body.Option2,
                 "Option3": req.body.Option3

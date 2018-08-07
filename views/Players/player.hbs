@@ -83,8 +83,6 @@
                     </tbody>
                 </table>
 
-                <hr width="75%">
-
                 <div class="PlayerBoxes">
                     <div class="Item">
                         <h1 class="AltText centerText">Past Names</h1>
@@ -181,9 +179,43 @@
                     </tbody>
                 </table>
 
+                {{#if Private}}
+                <h1 class="SubText centerText">((Private Information))</h1>
+                <div class="PlayerBoxes">
+                    <div class="Item">
+                        <h1 class="AltText centerText">Vehicles</h1>
+                        <hr width="75%">
+
+                        <table class="table TableScroll" id="Vehicles">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><scrong>Side</scrong></th>
+                                    <th scope="col"><scrong>Classname</scrong></th>
+                                    <th scope="col"><scrong>Type</scrong></th>
+                                    <th scope="col"><scrong>Plate</scrong></th>
+                                    <th scope="col"><scrong>Inventory</scrong></th>
+                                    <th scope="col"><scrong>vInventory</scrong></th>
+                                    <th scope="col"><scrong>Insured</scrong></th>
+                                    <th scope="col"><scrong>Bought At</scrong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {{/if}}
+
                 <script>
                     $(document).ready(function(){
-                        LoadPlayer({{Info.id}})
+                        {{#if Private}}
+                            const Load = ['Names', 'Bans','Kicks','Kills','MaldenLife','Vehicles'];
+                        {{else}}
+                            const Load = ['Names', 'Bans','Kicks','Kills','MaldenLife'];
+                        {{/if}}
+                        LoadPlayer(Load,{{Info.id}})
+
                     });
                 </script>
             {{else}}

@@ -1,8 +1,8 @@
 /* ----------------- */
 /* /player/:playerid */
 /* ----------------- */
-function LoadPlayer(playerID) {
-    const Load = ['Names', 'Bans','Kicks','Kills','MaldenLife'];
+function LoadPlayer(load, playerID) {
+    const Load = load;
     Load.forEach(function(item) {
         $.ajax({
             async: true,
@@ -32,6 +32,9 @@ function LoadPlayer(playerID) {
                         case "MaldenLife":
                             $('#'+item+' > tbody:last-child').append('<tr><td>Player has never joined server</td></tr>');
                             break;
+                        case "Vehicles":
+                            $('#'+item+' > tbody:last-child').append('<tr><td>No Vehicles Found</td></tr>');
+                            break;
                     }
                 } else {
                     const Data = data[item];
@@ -53,6 +56,9 @@ function LoadPlayer(playerID) {
                             case "MaldenLife":
                                 $('#'+item+' > tbody:last-child').append('<tr><td>$'+info["Money"]+'</td><td>'+info["coplevel"]+'</td><td>'+info["mediclevel"]+'</td><td>'+info["donorlevel"]+'</td><td>'+info["exp_level"]+'</td><td>'+info["exp_total"]+'</td><td>'+info["exp_perkPoints"]+'</td></tr>');
                                 break;
+                            case "Vehicles":
+                                $('#'+item+' > tbody:last-child').append('<tr><td>'+info["side"]+'</td><td>'+info["classname"]+'</td><td>'+info["type"]+'</td><td>'+info["plate"]+'</td><td>'+info["gear"]+'</td><td>'+info["inventory"]+'</td><td>'+info["insured"]+'</td><td>'+info["insert_time"]+'</td></tr>');
+                                break;
                         }
                     };
                 }
@@ -64,7 +70,7 @@ function LoadPlayer(playerID) {
     });
 };
 
-function getPlayerData(playerID,item, option) {
+function getPlayerData(playerID, item, option) {
     $.ajax({
         async: true,
         type: 'POST',

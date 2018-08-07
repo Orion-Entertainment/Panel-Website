@@ -107,7 +107,7 @@ a,a:hover {
     );
     margin: 10px;
     padding: 5px;
-    max-width: 75%;
+    max-width: inherit;
     border-color: rgba(128,128,128, 0.2);
     border-width: 2px;
     -webkit-border-radius: 4px 4px 4px 4px;
@@ -121,16 +121,6 @@ a,a:hover {
     vertical-align: top;
     border-top: 0.75px solid rgb(225, 240, 235);
     overflow-x: auto;
-}
-
-.PlayersBoxes .Item .table .OverFlowX {
-    max-width: 50px; 
-    white-space: nowrap;
-    overflow-x: hidden;
-}
-
-.PlayersBoxes .Item .table .OverFlowX:hover {
-    max-width : initial; 
 }
 
 .PlayerBoxes .Item .TableScroll {

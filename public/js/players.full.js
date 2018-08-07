@@ -1,7 +1,6 @@
 /* --------------- */
 /* /players/search */
 /* --------------- */
-
 let q = 0;
 function SearchPlayer(searchVal) {
     const searchField = searchVal;
@@ -90,6 +89,12 @@ function LoadPlayer(load, playerID) {
                         case "Vehicles":
                             $('#'+item+' > tbody:last-child').append('<tr><td>No Vehicles Found</td></tr>');
                             break;
+                        case "Houses":
+                            $('#'+item+' > tbody:last-child').append('<tr><td>No Houses Found</td></tr>');
+                            break;
+                        case "HouseItems":
+                            $('#'+item+' > tbody:last-child').append('<tr><td>No House Items Found</td></tr>');
+                            break;
                     }
                 } else {
                     const Data = data[item];
@@ -113,6 +118,12 @@ function LoadPlayer(load, playerID) {
                                 break;
                             case "Vehicles":
                                 $('#'+item+' > tbody:last-child').append('<tr><td>'+info["side"]+'</td><td>'+info["classname"]+'</td><td>'+info["type"]+'</td><td>'+info["plate"]+'</td><td>'+info["gear"]+'</td><td>'+info["inventory"]+'</td><td>'+info["insure"]+'</td><td>'+moment(info["insert_time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
+                                break;
+                            case "Houses":
+                                $('#'+item+' > tbody:last-child').append('<tr><td>'+info["id"]+'</td><td>'+info["pos"]+'</td><td>'+moment(info["insert_time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
+                                break;
+                            case "HouseItems":
+                                $('#'+item+' > tbody:last-child').append('<tr><td>'+info["classname"]+'</td><td>'+info["pos"]+'</td><td>'+info["gear"]+'</td><td>'+info["inventory"]+'</td><td>'+moment(info["insert_time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
                                 break;
                         }
                     };

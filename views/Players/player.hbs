@@ -198,7 +198,45 @@
                                     <th scope="col"><scrong>Inventory</scrong></th>
                                     <th scope="col"><scrong>vInventory</scrong></th>
                                     <th scope="col"><scrong>Insured</scrong></th>
-                                    <th scope="col"><scrong>Bought At</scrong></th>
+                                    <th scope="col"><scrong>Time Bought</scrong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="Item">
+                        <h1 class="AltText centerText">Houses</h1>
+                        <hr width="75%">
+
+                        <table class="table TableScroll" id="Houses">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><scrong>ID</scrong></th>
+                                    <th scope="col"><scrong>Position</scrong></th>
+                                    <th scope="col"><scrong>Time Bought</scrong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="Item">
+                        <h1 class="AltText centerText">House Items</h1>
+                        <hr width="75%">
+
+                        <table class="table TableScroll" id="HouseItems">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><scrong>Classname</scrong></th>
+                                    <th scope="col"><scrong>Inventory</scrong></th>
+                                    <th scope="col"><scrong>vInventory</scrong></th>
+                                    <th scope="col"><scrong>Position</scrong></th>
+                                    <th scope="col"><scrong>Time Placed</scrong></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -212,7 +250,7 @@
                 <script>
                     $(document).ready(function(){
                         {{#if Info.Private}}
-                            const Load = ['Names', 'Bans','Kicks','Kills','MaldenLife','Vehicles'];
+                            const Load = ['Names', 'Bans','Kicks','Kills','MaldenLife','Vehicles','Houses','HouseItems'];
                         {{else}}
                             const Load = ['Names', 'Bans','Kicks','Kills','MaldenLife'];
                         {{/if}}

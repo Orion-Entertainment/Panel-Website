@@ -1,8 +1,11 @@
 /* --------------- */
 /* /players/search */
 /* --------------- */
-function SearchPlayer(searchVal, Extensive, q) {
+
+let q = 0;
+function SearchPlayer(searchVal, Extensive) {
     const searchField = searchVal;
+    const ResultsTable = document.getElementById("results");
     if (q > 0) {return};
     if (searchField == "" | searchField.length < 2)  {
         if (ResultsTable.style.display === "table") {

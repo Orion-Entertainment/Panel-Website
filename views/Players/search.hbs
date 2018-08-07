@@ -83,10 +83,8 @@
 			</table>
 
 			<script>
-				const ResultsTable = document.getElementById("results");
-				let q = 0;
 				$('#search').keyup(function(){
-					SearchPlayer($(this).val(), false, q);
+					SearchPlayer($(this).val(), false);
 				});
 			</script>
 		</div>

@@ -48,6 +48,7 @@ router.get('/verify/steam', steam.verify(), async function(req, res) {
 				else {
 					if (body.Check == true) {
 						req.session.Account = {ID: body.ID, SteamID: req.session.Check.SteamID};
+						if (body.isStaff == true) req.session.Account.isStaff = true;
 						delete req.session.Check;
 						if (req.session.ReturnURL !== undefined) {
 							ReturnURL = req.session.ReturnURL;

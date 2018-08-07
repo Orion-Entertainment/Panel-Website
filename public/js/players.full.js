@@ -57,7 +57,7 @@ function LoadPlayer(load, playerID) {
                                 $('#'+item+' > tbody:last-child').append('<tr><td>$'+info["Money"]+'</td><td>'+info["coplevel"]+'</td><td>'+info["mediclevel"]+'</td><td>'+info["donorlevel"]+'</td><td>'+info["exp_level"]+'</td><td>'+info["exp_total"]+'</td><td>'+info["exp_perkPoints"]+'</td></tr>');
                                 break;
                             case "Vehicles":
-                                $('#'+item+' > tbody:last-child').append('<tr><td>'+info["side"]+'</td><td>'+info["classname"]+'</td><td>'+info["type"]+'</td><td>'+info["plate"]+'</td><td>'+info["gear"]+'</td><td>'+info["inventory"]+'</td><td>'+info["insure"]+'</td><td>'+info["insert_time"]+'</td></tr>');
+                                $('#'+item+' > tbody:last-child').append('<tr><td>'+info["side"]+'</td><td>'+info["classname"]+'</td><td>'+info["type"]+'</td><td>'+info["plate"]+'</td><td>'+info["gear"]+'</td><td>'+info["inventory"]+'</td><td>'+info["insure"]+'</td><td>'+moment(info["insert_time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
                                 break;
                         }
                     };
@@ -117,6 +117,9 @@ function getPlayerData(playerID, item, option) {
                     case "MaldenLife":
                         $('#'+item+' > tbody:last-child').append('<tr><td>Player has never joined server</td></tr>');
                         break;
+                    case "Vehicles":
+                        $('#'+item+' > tbody:last-child').append('<tr><td>No Vehicles Found</td></tr>');
+                        break;
                 }
             } else {
                 $('#'+item+' tbody').empty();
@@ -154,6 +157,9 @@ function getPlayerData(playerID, item, option) {
                             break;
                         case "MaldenLife":
                             $('#'+item+' > tbody:last-child').append('<tr><td>$'+info["Money"]+'</td><td>'+info["coplevel"]+'</td><td>'+info["mediclevel"]+'</td><td>'+info["donorlevel"]+'</td><td>'+info["exp_level"]+'</td><td>'+info["exp_total"]+'</td><td>'+info["exp_perkPoints"]+'</td></tr>');
+                            break;
+                        case "Vehicles":
+                            $('#'+item+' > tbody:last-child').append('<tr><td>'+info["side"]+'</td><td>'+info["classname"]+'</td><td>'+info["type"]+'</td><td>'+info["plate"]+'</td><td>'+info["gear"]+'</td><td>'+info["inventory"]+'</td><td>'+info["insure"]+'</td><td>'+moment(info["insert_time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
                             break;
                     }
                 };

@@ -105,6 +105,10 @@ router.get('/:PlayerID', RequireLogin('/login?ReturnURL=/Players/Search'), async
 
         if (req.session.Account.SteamID !== undefined) SteamID = req.session.Account.SteamID; else SteamID = false;
 
+        /* UPDATE LATER */
+        if (req.session.Account.isStaff !== undefined) SteamID = true;
+        /* UPDATE LATER */
+
         request.post(
             'https://panelapi.orion-entertainment.net/v1/players/info',
             { json: { 
@@ -135,6 +139,10 @@ router.post('/:PlayerID/Info', RequireLogin('/login?ReturnURL=/Players/Search'),
         else if (req.body.Option == "") return res.json({Error: "Option Invalid"})
 
         if (req.session.Account.SteamID !== undefined) SteamID = req.session.Account.SteamID; else SteamID = false;
+
+        /* UPDATE LATER */
+        if (req.session.Account.isStaff !== undefined) SteamID = true;
+        /* UPDATE LATER */
 
         request.post(
             'https://panelapi.orion-entertainment.net/v1/players/info',

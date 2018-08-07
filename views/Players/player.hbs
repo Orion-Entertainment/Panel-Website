@@ -179,7 +179,7 @@
                     </tbody>
                 </table>
 
-                {{#if Private}}
+                {{#if Info.Private}}
                 <h1 class="SubText centerText">((Private Information))</h1>
                 <div class="PlayerBoxes">
                     <div class="Item">
@@ -209,7 +209,7 @@
 
                 <script>
                     $(document).ready(function(){
-                        {{#if Private}}
+                        {{#if Info.Private}}
                             const Load = ['Names', 'Bans','Kicks','Kills','MaldenLife','Vehicles'];
                         {{else}}
                             const Load = ['Names', 'Bans','Kicks','Kills','MaldenLife'];

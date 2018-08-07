@@ -3,7 +3,7 @@
 /* --------------- */
 
 let q = 0;
-function SearchPlayer(searchVal, Extensive) {
+function SearchPlayer(searchVal, Extensive, end) {
     const searchField = searchVal;
     const ResultsTable = document.getElementById("results");
     if (q > 0) {return};
@@ -45,9 +45,11 @@ function SearchPlayer(searchVal, Extensive) {
                 };
             }
             q = 0;
-            setTimeout(function(){ 
-                if (q > 0) return; else SearchPlayer(searchVal, true);
-            }, 500);
+            if (end == undefined) {
+                setTimeout(function(){ 
+                    if (q > 0) return; else SearchPlayer(searchVal, true, true);
+                }, 500);
+            }
         },
         error: function(error) {
             q = 0;

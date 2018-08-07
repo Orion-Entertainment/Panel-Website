@@ -123,6 +123,16 @@ a,a:hover {
     overflow-x: auto;
 }
 
+.PlayersBoxes .Item .table .OverFlowX {
+    max-width: 50px; 
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
+.PlayersBoxes .Item .table .OverFlowX :hover {
+    max-width : initial; 
+}
+
 .PlayerBoxes .Item .TableScroll {
     display: block;
     max-height: 30em;

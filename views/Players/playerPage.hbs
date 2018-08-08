@@ -61,36 +61,51 @@
 		<!-- Header -->
 
 		<div class="Content">
-            <table class="table">
-                {{#ifEquals Page "Bans"}}
-                <thead>
-                    <tr>
-                        <th scope="col"><scrong>Server</scrong></th>
-                        <th scope="col"><scrong>Reason</scrong></th>
-                        <th scope="col"><scrong>Created</scrong></th>
-                        <th scope="col"><scrong>Expires</scrong></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#if Data}}
-                        {{#each body.Bans}}
-                        <tr>
-                            <th scope="col"><scrong>{{Info.id}}</scrong></th>
-                            <td>{{Info.LastName}}</td>
-                            <td>{{Info.Steam64ID}}</td>
-                            <td>{{Info.GUID}}</td>
-                            <td>{{Info.FirstSeen}}</td>
-                            <td>{{Info.LastSeen}}</td>
-                        </tr>
-                        {{/each}}
-                    {{else}}
-                        <tr>
-                            <th scope="col"><scrong>No Bans Found</scrong></th>
-                        </tr>
-                    {{/if}}
-                </tbody>
-                {{/ifEquals}}
-            </table>
+            {{#if Data}}
+                <table class="table">
+                    {{#ifEquals Page "Names"}}
+                        <thead>
+                            <tr>
+                                <th scope="col"><scrong>Name</scrong></th>
+                                <th scope="col"><scrong>Time</scrong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each Data}}
+                            <tr>
+                                <th scope="col"><scrong>{{this.Name}}</scrong></th>
+                                <td>{{this.LastName}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    {{/ifEquals}}
+                    
+                    {{#ifEquals Page "Bans"}}
+                        <thead>
+                            <tr>
+                                <th scope="col"><scrong>Server</scrong></th>
+                                <th scope="col"><scrong>Reason</scrong></th>
+                                <th scope="col"><scrong>Created</scrong></th>
+                                <th scope="col"><scrong>Expires</scrong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each body.Bans}}
+                            <tr>
+                                <th scope="col"><scrong>{{this.id}}</scrong></th>
+                                <td>{{this.LastName}}</td>
+                                <td>{{this.Steam64ID}}</td>
+                                <td>{{this.GUID}}</td>
+                                <td>{{this.FirstSeen}}</td>
+                                <td>{{this.LastSeen}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    {{/ifEquals}}
+                </table>
+            {{else}}
+                <h1 class="AltText centerText">No {{Page}} Found</h1>
+            {{/if}}
 		</div>
 	</body>
 </html>

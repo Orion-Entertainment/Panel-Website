@@ -178,19 +178,8 @@ router.get('/:PlayerID/:Page', RequireLogin('/login?ReturnURL=/Players/Search'),
     try {
         if (req.params.PlayerID == undefined | req.params.Page == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
         else if (req.params.PlayerID == "" | req.params.Page == "") {const err = new Error('Not Found');err.status = 404;next(err); return;}
-        
-        switch (req.params.Page) {
-            case "Bans":
-                Option2 = "Bans";
-                Option3 = "";
-                break;
-
-            default: 
-                const err = new Error('Not Found');err.status = 404;next(err); return;
-        }
 
         if (req.session.Account.SteamID !== undefined) SteamID = req.session.Account.SteamID; else SteamID = false;
-
         /* UPDATE LATER */
         if (req.session.Account.isStaff !== undefined) SteamID = true;
         if (req.session.Account.isStaff !== undefined) Staff = true; else Staff = false; //sendperms
@@ -207,13 +196,16 @@ router.get('/:PlayerID/:Page', RequireLogin('/login?ReturnURL=/Players/Search'),
                 "Private": SteamID,
                 "Staff": Staff,
                 "Option": "Get",
-                "Option2": Option2,
+                "Option2": req.params.Page,
                 "Option3": Option3
             } },
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-                    if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
-                    else {
+                    if (body.Error !== undefined) {
+                        if (body.Error == "Invalid Option2") {
+                            const err = new Error('Not Found');err.status = 404;next(err); return;
+                        } else return res.render('errorCustom', { error: body.Error });
+                    } else {
                         const Data = body[req.params.Page];
                         return res.render('./Players/playerPage', { title: req.WebTitle+'Players '+req.params.Page, Data: Data, Page: req.params.Page });
                     }

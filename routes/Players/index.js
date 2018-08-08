@@ -197,7 +197,7 @@ router.get('/:PlayerID/:Page', RequireLogin('/login?ReturnURL=/Players/Search'),
                 "Staff": Staff,
                 "Option": "Get",
                 "Option2": req.params.Page,
-                "Option3": Option3
+                "Option3": ""
             } },
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {

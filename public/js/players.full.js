@@ -173,10 +173,10 @@ function getPlayerData(playerID, item, option) {
                         $('#'+item+' > tbody:last-child').append('<tr><td>No Kills Found</td></tr>');
                         switch (option) {
                             case "All":
-                                $('#KillsText').html('Current Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getPlayerData('+playerID+',\'Kills\',\'\');">Show Deaths</button>');
+                                $('#KillsText').html('Recent Kills <button type="button" class="btn-sm btn-blue-grey" onClick="getPlayerData('+playerID+',\'Kills\',\'\');">Show Deaths</button>');
                                 break;
                             case "":
-                                $('#KillsText').html('Current Bans <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData('+playerID+',\'Kills\',\'All\');">Show Deaths</button>');
+                                $('#KillsText').html('Recent Kills <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData('+playerID+',\'Kills\',\'All\');">Show Deaths</button>');
                                 break;
                         }
                         break;
@@ -214,10 +214,10 @@ function getPlayerData(playerID, item, option) {
                             $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Name"]+'('+info["KilledGroup"]+')</td><td>'+info["Weapon"]+'</td><td>'+info["Time"]+'</td></tr>');
                             switch (option) {
                                 case "All":
-                                    $('#KillsText').html('Current Bans <button type="button" class="btn-sm btn-blue-grey" onClick="getPlayerData('+playerID+',\'Kills\',\'\');">Show Deaths</button>');
+                                    $('#KillsText').html('Recent Kills <button type="button" class="btn-sm btn-blue-grey" onClick="getPlayerData('+playerID+',\'Kills\',\'\');">Show Deaths</button>');
                                     break;
                                 case "":
-                                    $('#KillsText').html('Current Bans <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData('+playerID+',\'Kills\',\'All\');">Show Deaths</button>');
+                                    $('#KillsText').html('Recent Kills <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData('+playerID+',\'Kills\',\'All\');">Show Deaths</button>');
                                     break;
                             }
                             break;

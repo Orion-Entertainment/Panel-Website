@@ -107,6 +107,8 @@ router.get('/:PlayerID', RequireLogin('/login?ReturnURL=/Players/Search'), async
 
         /* UPDATE LATER */
         if (req.session.Account.isStaff !== undefined) SteamID = true;
+        if (req.session.Account.isStaff !== undefined) Staff = true; else Staff = false; //sendperms
+        //if (req.session.Account.isStaff !== undefined) sPermissions = req.session.Account.Staff.Permissions; else sPermissions = false;
         /* UPDATE LATER */
 
         request.post(
@@ -116,7 +118,8 @@ router.get('/:PlayerID', RequireLogin('/login?ReturnURL=/Players/Search'), async
                 "token": await req.APIKey.token,
 
                 "PlayerID": req.params.PlayerID,
-                "Private": SteamID
+                "Private": SteamID,
+                "Staff": Staff
             } },
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {

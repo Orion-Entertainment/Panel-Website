@@ -186,6 +186,9 @@ function getPlayerData(playerID, item, option) {
                     case "Vehicles":
                         $('#'+item+' > tbody:last-child').append('<tr><td>No Vehicles Found</td></tr>');
                         break;
+                    case "IPs":
+                        $('#'+item+' > tbody:last-child').append('<tr><td>No Vehicles Found</td></tr>');
+                        break;
                 }
             } else {
                 $('#'+item+' tbody').empty();

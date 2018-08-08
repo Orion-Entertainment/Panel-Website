@@ -128,3 +128,10 @@ a,a:hover {
     overflow-y: auto;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
+
+.AltTableScroll {
+    display: block;
+    max-height: 80%;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}

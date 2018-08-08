@@ -62,7 +62,7 @@
 
 		<div class="Content">
             {{#if Data}}
-                <table class="table">
+                <table class="table AltTableScroll">
                     {{#ifEquals Page "Names"}}
                         <thead>
                             <tr>
@@ -101,6 +101,12 @@
                         </tbody>
                     {{/ifEquals}}
                 </table>
+
+                <script>
+                    $(document).ready(function(){
+                        LoadPlayer({{Info.id}},{{Page}})
+                    });
+                </script>
             {{else}}
                 <h1 class="AltText centerText">No {{Page}} Found</h1>
             {{/if}}

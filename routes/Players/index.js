@@ -220,7 +220,7 @@ router.get('/:PlayerID/:Page', RequireLogin('/login?ReturnURL=/Players/Search'),
             }
         );
     } catch (error) {
-        return res.json({Error: error})
+        return res.render('errorCustom', { error: error });
     }
 });
 

@@ -103,6 +103,25 @@
                         </table>
                     </div>
 
+                    {{#ifCond Info.Staff '||' Info.Staff.Players.viewIPs}}
+                    <div class="Item">
+                        <h1 class="AltText centerText">Past IPs</h1>
+                        <hr width="75%">
+
+                        <table class="table TableScroll" id="IPs">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><scrong>IP</scrong></th>
+                                    <th scope="col"><scrong>Time Used</scrong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    {{/ifCond}}
+
                     <div class="Item">
                         <h1 class="AltText centerText" id="BansText">Current Bans <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData({{Info.id}},'Bans','All');">Show Expired</button></h1>
                         <hr width="75%">

@@ -14,6 +14,29 @@ const hbs = require('hbs');
 hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
     return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });
+hbs.registerHelper('ifCond', function (v1, operator, v2, options) {
+    switch (operator) {
+        case '==', '===', 'is':
+            if (v1 == v2) return options.fn(this); else return options.inverse(this);
+        case '!=', '!==':
+            if (v1 != v2) return options.fn(this); else return options.inverse(this);
+        case '<':
+            if (v1 < v2) return options.fn(this); else return options.inverse(this);
+        case '<=':
+            if (v1 <= v2) return options.fn(this); else return options.inverse(this);
+        case '>':
+            if (v1 > v2) return options.fn(this); else return options.inverse(this);
+        case '>=':
+            if (v1 >= v2) return options.fn(this); else return options.inverse(this);
+        case '&&', 'and':
+            if (v1 && v2) return options.fn(this); else return options.inverse(this);
+        case '||', 'or':
+            if (v1 || v2) return options.fn(this); else return options.inverse(this);
+        default:
+            return options.inverse(this);
+    }
+});
+
 hbs.registerHelper('formatNumber', function(value) {
     return value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 });

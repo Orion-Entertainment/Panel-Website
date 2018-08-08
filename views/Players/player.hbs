@@ -140,25 +140,6 @@
                             </tbody>
                         </table>
                     </div>
-
-                    <div class="Item">
-                        <h1 class="AltText centerText" id="KillsText">Recent Kills <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData({{Info.id}},'Kills','All');">Show Deaths</button></h1>
-                        <hr width="75%">
-
-                        <table class="table TableScroll" id="Kills">
-                            <thead>
-                                <tr>
-                                    <th scope="col"><scrong>Server</scrong></th>
-                                    <th scope="col"><scrong>Killed Name(Group)</scrong></th>
-                                    <th scope="col"><scrong>Weapon</scrong></th>
-                                    <th scope="col"><scrong>Time</scrong></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
 
                 <hr width="75%">
@@ -182,7 +163,24 @@
                 </table>
 
                 <div class="PlayerBoxes">
-                    
+                    <div class="Item">
+                        <h1 class="AltText centerText" id="KillsText">Recent Kills <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData({{Info.id}},'Kills','All');">Show Deaths</button></h1>
+                        <hr width="75%">
+
+                        <table class="table TableScroll" id="Kills">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><scrong>Server</scrong></th>
+                                    <th scope="col"><scrong>Killed Name(Group)</scrong></th>
+                                    <th scope="col"><scrong>Weapon</scrong></th>
+                                    <th scope="col"><scrong>Time</scrong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 {{#if Info.Private}}
@@ -272,9 +270,9 @@
                     $(document).ready(function(){
                         {{#if Info.Private}}
                             //,'Vehicles','Houses','HouseItems'
-                            const Load = ['Names', 'Bans','Kicks','Kills','MaldenLife'];
+                            const Load = ['Names', 'Bans','Kicks','MaldenLife','Kills'];
                         {{else}}
-                            const Load = ['Names', 'Bans','Kicks','Kills','MaldenLife'];
+                            const Load = ['Names', 'Bans','Kicks','MaldenLife','Kills'];
                         {{/if}}
                         LoadPlayer(Load,{{Info.id}})
 

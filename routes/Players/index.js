@@ -145,6 +145,8 @@ router.post('/:PlayerID/Info', RequireLogin('/login?ReturnURL=/Players/Search'),
 
         /* UPDATE LATER */
         if (req.session.Account.isStaff !== undefined) SteamID = true;
+        if (req.session.Account.isStaff !== undefined) Staff = true; else Staff = false; //sendperms
+        //if (req.session.Account.isStaff !== undefined) sPermissions = req.session.Account.Staff.Permissions; else sPermissions = false;
         /* UPDATE LATER */
 
         request.post(
@@ -155,6 +157,7 @@ router.post('/:PlayerID/Info', RequireLogin('/login?ReturnURL=/Players/Search'),
 
                 "PlayerID": req.params.PlayerID,
                 "Private": SteamID,
+                "Staff": Staff,
                 "Option": req.body.Option,
                 "Option2": req.body.Option2,
                 "Option3": req.body.Option3

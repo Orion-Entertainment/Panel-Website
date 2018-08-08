@@ -192,7 +192,7 @@ function getPlayerData(playerID, item, option) {
                 }
             } else {
                 $('#'+item+' tbody').empty();
-                const Data = data[item];
+                let Data = data[item];
                 for (i = 0; i < Data.length; i++) {
                     info = Data[i];
                     switch (item) {
@@ -231,6 +231,7 @@ function getPlayerData(playerID, item, option) {
                             $('#'+item+' > tbody:last-child').append('<tr><td>'+info["side"]+'</td><td>'+info["classname"]+'</td><td>'+info["type"]+'</td><td>'+info["plate"]+'</td><td>'+info["gear"]+'</td><td>'+info["inventory"]+'</td><td>'+info["insure"]+'</td><td>'+moment(info["insert_time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
                             break;
                         case "IPs":
+                            Data.reverse();
                             $('#'+item+' > tbody:last-child').append('<tr><td>'+info["IP"]+'</td><td>'+info["Time"]+'</td></tr>');
                             break;
                     }

@@ -62,13 +62,12 @@
 
 		<div class="Content">
             {{#if Data}}
-                <h1 class="AltText centerText"><a href="/Players/{{PID}}" type="button" class="btn btn-primary">Player</a>
+                <div class="md-form centerDiv">
+                    <a href="/Players/{{PID}}" type="button" class="btn btn-primary">Player</a>
 
-                    <div class="md-form">
-                        <input value="25" type="text" id="MaxReturns" class="form-control">
-                        <label for="MaxReturns">Max Returns</label>
-                    </div>
-                </h1>
+                    <input value="25" type="text" id="MaxReturns" class="form-control">
+                    <label for="MaxReturns">Max Returns</label>
+                </div>
 
                 <table class="table AltTableScroll">
                     {{#ifEquals Page "Names"}}

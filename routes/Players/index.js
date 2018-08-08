@@ -179,13 +179,13 @@ router.get('/:PlayerID/:Page', RequireLogin('/login?ReturnURL=/Players/Search'),
         if (req.params.PlayerID == undefined | req.params.Page == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
         else if (req.params.PlayerID == "" | req.params.Page == "") {const err = new Error('Not Found');err.status = 404;next(err); return;}
         
-        switch (req.body.Page) {
+        switch (req.params.Page) {
             case "Bans":
                 Option2 = "Bans";
                 break;
 
             default: 
-                return res.render('errorCustom', { error: "Invalid Page: "+req.body.Page });
+                const err = new Error('Not Found');err.status = 404;next(err); return;
         }
 
         if (req.session.Account.SteamID !== undefined) SteamID = req.session.Account.SteamID; else SteamID = false;
@@ -213,8 +213,8 @@ router.get('/:PlayerID/:Page', RequireLogin('/login?ReturnURL=/Players/Search'),
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
                     else {
-                        const Data = body[req.body.Page];
-                        return res.render('./Players/playerPage', { title: req.WebTitle+'Players '+req.body.Page, Data: Data, Page: req.body.Page });
+                        const Data = body[req.params.Page];
+                        return res.render('./Players/playerPage', { title: req.WebTitle+'Players '+req.params.Page, Data: Data, Page: req.params.Page });
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }

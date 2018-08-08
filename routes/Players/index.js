@@ -179,15 +179,13 @@ router.get('/:PlayerID/:Page', RequireLogin('/login?ReturnURL=/Players/Search'),
         if (req.params.PlayerID == undefined | req.params.Page == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
         else if (req.params.PlayerID == "" | req.params.Page == "") {const err = new Error('Not Found');err.status = 404;next(err); return;}
         
-        console.log(req.params.PlayerID,req.params.Page)
-
         switch (req.body.Page) {
             case "Bans":
                 Option2 = "Bans";
                 break;
 
             default: 
-                const err = new Error('Not Found');err.status = 404;next(err); return;
+                return res.render('errorCustom', { error: "Invalid Page: "+req.body.Page });
         }
 
         if (req.session.Account.SteamID !== undefined) SteamID = req.session.Account.SteamID; else SteamID = false;

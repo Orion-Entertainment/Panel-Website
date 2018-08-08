@@ -92,12 +92,10 @@
                         <tbody>
                             {{#each body.Bans}}
                             <tr>
-                                <th scope="col"><scrong>{{this.id}}</scrong></th>
-                                <td>{{this.LastName}}</td>
-                                <td>{{this.Steam64ID}}</td>
-                                <td>{{this.GUID}}</td>
-                                <td>{{this.FirstSeen}}</td>
-                                <td>{{this.LastSeen}}</td>
+                                <td>{{this.Server}}</td>
+                                <td>{{this.Reason}}</td>
+                                <td>{{this.Created}}</td>
+                                <td>{{this.Expires}}</td>
                             </tr>
                             {{/each}}
                         </tbody>

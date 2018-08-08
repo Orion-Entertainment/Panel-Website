@@ -87,7 +87,7 @@
 
                 <div class="PlayerBoxes">
                     <div class="Item">
-                        <h1 class="AltText centerText">Names</h1>
+                        <h1 class="AltText centerText"><a href="/Players/{{Info.id}}/Names">Names</a></h1>
                         <hr width="75%">
 
                         <table class="table TableScroll" id="Names">
@@ -105,7 +105,7 @@
 
                     {{#if Info.Staff}}
                         <div class="Item">
-                            <h1 class="AltText centerText">IPs <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData({{Info.id}},'IPs');">Show IPs</button></h1>
+                            <h1 class="AltText centerText"><a href="/Players/{{Info.id}}/IPs">IPs</a> <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData({{Info.id}},'IPs');">Show IPs</button></h1>
                             <hr width="75%">
 
                             <table class="table TableScroll" id="IPs">
@@ -123,7 +123,7 @@
                     {{else}}
                         {{#if Info.Staff.Players.viewIPs}}
                             <div class="Item">
-                                <h1 class="AltText centerText">IPs <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData({{Info.id}},'IPs');">Show IPs</button></h1>
+                                <h1 class="AltText centerText"><a href="/Players/{{Info.id}}/IPs">IPs</a> <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData({{Info.id}},'IPs');">Show IPs</button></h1>
                                 <hr width="75%">
 
                                 <table class="table TableScroll" id="IPs">
@@ -142,7 +142,7 @@
                     {{/if}}
 
                     <div class="Item">
-                        <h1 class="AltText centerText" id="BansText">Current Bans <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData({{Info.id}},'Bans','All');">Show Expired</button></h1>
+                        <h1 class="AltText centerText" id="BansText"><a href="/Players/{{Info.id}}/Bans">Current Bans</a> <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData({{Info.id}},'Bans','All');">Show Expired</button></h1>
                         <hr width="75%">
 
                         <table class="table TableScroll" id="Bans">
@@ -161,7 +161,7 @@
                     </div>
 
                     <div class="Item">
-                        <h1 class="AltText centerText">Kicks</h1>
+                        <h1 class="AltText centerText"><a href="/Players/{{Info.id}}/Kicks">Kicks</a></h1>
                         <hr width="75%">
 
                         <table class="table TableScroll" id="Kicks">
@@ -202,7 +202,7 @@
 
                 <div class="PlayerBoxes">
                     <div class="Item">
-                        <h1 class="AltText centerText" id="KillsText">Recent Kills <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData({{Info.id}},'Kills','All');">Show Deaths</button></h1>
+                        <h1 class="AltText centerText" id="KillsText"><a href="/Players/{{Info.id}}/Kills">Recent Kills</a> <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData({{Info.id}},'Kills','All');">Show Deaths</button></h1>
                         <hr width="75%">
 
                         <table class="table TableScroll" id="Kills">

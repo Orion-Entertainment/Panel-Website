@@ -174,4 +174,53 @@ router.post('/:PlayerID/Info', RequireLogin('/login?ReturnURL=/Players/Search'),
     }
 });
 
+router.get('/:PlayerID/:Page', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
+    try {
+        if (req.params.PlayerID == undefined | req.params.Page == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
+        else if (req.params.PlayerID == "" | req.params.Page == "") {const err = new Error('Not Found');err.status = 404;next(err); return;}
+        
+        switch (req.body.Page) {
+            case "Bans":
+                Option2 = "Bans";
+
+            default:
+                const err = new Error('Not Found');err.status = 404;next(err); return;
+        }
+
+        if (req.session.Account.SteamID !== undefined) SteamID = req.session.Account.SteamID; else SteamID = false;
+
+        /* UPDATE LATER */
+        if (req.session.Account.isStaff !== undefined) SteamID = true;
+        if (req.session.Account.isStaff !== undefined) Staff = true; else Staff = false; //sendperms
+        //if (req.session.Account.isStaff !== undefined) sPermissions = req.session.Account.Staff.Permissions; else sPermissions = false;
+        /* UPDATE LATER */
+
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/players/info',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "PlayerID": req.params.PlayerID,
+                "Private": SteamID,
+                "Staff": Staff,
+                "Option": "Get",
+                "Option2": Option2,
+                "Option3": Option3
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
+                    else {
+                        const Data = body[req.body.Page];
+                        return res.render('./Players/playerPage', { title: req.WebTitle+'Players '+req.body.Page, Data: Data, Page: req.body.Page });
+                    }
+                } else return res.render('errorCustom', { error: "API: Response Error" });
+            }
+        );
+    } catch (error) {
+        return res.json({Error: error})
+    }
+});
+
 module.exports = router;

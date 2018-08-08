@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <head>
+	<title>{{title}}</title>
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.8/css/mdb.min.css" rel="stylesheet">
+		<!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Orion-Entertainment CSS -->
+		<link rel="stylesheet" href="/stylesheets/main.full.css">
+		<!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.8/js/mdb.min.js"></script>
+        <!-- Moment.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+        <!-- Orion-Entertainment Players JS -->
+        <script type="text/javascript" src="/js/players.full.js"></script>
+	</head>
+
+	<body>
+		<!-- Header -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light FontWeight">
+			<a class="navbar-brand" href="/">Orion-Entertainment</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Home</a>
+					</li>
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="/Players" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Players
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/Players/TopCharts">Top Charts</a>
+							<a class="dropdown-item" href="/Players/KillFeed">Kill Feed</a>
+							<a class="dropdown-item" href="/Players/Search">Search Players</a>
+							<div class="dropdown-divider"></div>
+							<!--<a class="dropdown-item" href="/Players/Report">Report a Player</a>-->
+						</div>
+					</li>
+				</ul>
+
+				<form class="form-inline my-2 my-lg-0">
+					<a class="nav-link" href="/auth/logout">Logout</span></a>
+				</form>
+			</div>
+		</nav>
+		<!-- Header -->
+
+		<div class="Content">
+            <table class="table">
+                {{#ifEquals Page "Bans"}}
+                <thead>
+                    <tr>
+                        <th scope="col"><scrong>Server</scrong></th>
+                        <th scope="col"><scrong>Reason</scrong></th>
+                        <th scope="col"><scrong>Created</scrong></th>
+                        <th scope="col"><scrong>Expires</scrong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#if Data}}
+                        {{#each body.Bans}}
+                        <tr>
+                            <th scope="col"><scrong>{{Info.id}}</scrong></th>
+                            <td>{{Info.LastName}}</td>
+                            <td>{{Info.Steam64ID}}</td>
+                            <td>{{Info.GUID}}</td>
+                            <td>{{Info.FirstSeen}}</td>
+                            <td>{{Info.LastSeen}}</td>
+                        </tr>
+                        {{/each}}
+                    {{else}}
+                        <tr>
+                            <th scope="col"><scrong>No Bans Found</scrong></th>
+                        </tr>
+                    {{/if}}
+                </tbody>
+                {{/ifEquals}}
+            </table>
+		</div>
+	</body>
+</html>

@@ -227,6 +227,9 @@ function getPlayerData(playerID, item, option) {
                         case "Vehicles":
                             $('#'+item+' > tbody:last-child').append('<tr><td>'+info["side"]+'</td><td>'+info["classname"]+'</td><td>'+info["type"]+'</td><td>'+info["plate"]+'</td><td>'+info["gear"]+'</td><td>'+info["inventory"]+'</td><td>'+info["insure"]+'</td><td>'+moment(info["insert_time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
                             break;
+                        case "IPs":
+                            $('#'+item+' > tbody:last-child').append('<tr><td>'+info["IP"]+'</td><td>'+info["Time"]+'</td></tr>');
+                            break;
                     }
                 };
             }

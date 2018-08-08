@@ -176,6 +176,7 @@ router.post('/:PlayerID/Info', RequireLogin('/login?ReturnURL=/Players/Search'),
 
 router.get('/:PlayerID/:Page', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
     try {
+        console.log('skrt')
         if (req.params.PlayerID == undefined | req.params.Page == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
         else if (req.params.PlayerID == "" | req.params.Page == "") {const err = new Error('Not Found');err.status = 404;next(err); return;}
         

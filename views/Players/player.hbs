@@ -87,7 +87,7 @@
 
                 <div class="PlayerBoxes">
                     <div class="Item">
-                        <h1 class="AltText centerText">Past Names</h1>
+                        <h1 class="AltText centerText">Names</h1>
                         <hr width="75%">
 
                         <table class="table TableScroll" id="Names">
@@ -105,7 +105,7 @@
 
                     {{#if Info.Staff}}
                         <div class="Item">
-                            <h1 class="AltText centerText"><button type="button" class="btn-sm btn-elegant" onClick="getPlayerData({{Info.id}},'IPs');">Show IPs</button></h1>
+                            <h1 class="AltText centerText">IPs <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData({{Info.id}},'IPs');">Show IPs</button></h1>
                             <hr width="75%">
 
                             <table class="table TableScroll" id="IPs">
@@ -123,7 +123,7 @@
                     {{else}}
                         {{#if Info.Staff.Players.viewIPs}}
                             <div class="Item">
-                                <h1 class="AltText centerText"><button type="button" class="btn-sm btn-elegant" onClick="getPlayerData({{Info.id}},'IPs');">Show IPs</button></h1>
+                                <h1 class="AltText centerText">IPs <button type="button" class="btn-sm btn-elegant" onClick="getPlayerData({{Info.id}},'IPs');">Show IPs</button></h1>
                                 <hr width="75%">
 
                                 <table class="table TableScroll" id="IPs">

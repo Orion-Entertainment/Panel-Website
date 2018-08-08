@@ -187,7 +187,7 @@ function getPlayerData(playerID, item, option) {
                         $('#'+item+' > tbody:last-child').append('<tr><td>No Vehicles Found</td></tr>');
                         break;
                     case "IPs":
-                        $('#'+item+' > tbody:last-child').append('<tr><td>No Vehicles Found</td></tr>');
+                        $('#'+item+' > tbody:last-child').append('<tr><td>Player has never joined server</td></tr>');
                         break;
                 }
             } else {

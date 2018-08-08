@@ -134,3 +134,8 @@ a,a:hover {
     overflow-y: auto;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
+
+.InputFix {
+    display: inline-block;
+    max-width: 5%;
+}

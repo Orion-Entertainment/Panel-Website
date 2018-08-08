@@ -182,6 +182,7 @@ router.get('/:PlayerID/:Page', RequireLogin('/login?ReturnURL=/Players/Search'),
         switch (req.params.Page) {
             case "Bans":
                 Option2 = "Bans";
+                Option3 = "";
                 break;
 
             default: 

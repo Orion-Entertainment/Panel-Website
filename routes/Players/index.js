@@ -207,7 +207,7 @@ router.get('/:PlayerID/:Page', RequireLogin('/login?ReturnURL=/Players/Search'),
                         } else return res.render('errorCustom', { error: body.Error });
                     } else {
                         const Data = body[req.params.Page];
-                        return res.render('./Players/playerPage', { title: req.WebTitle+'Players '+req.params.Page, Data: Data, Page: req.params.Page });
+                        return res.render('./Players/playerPage', { title: req.WebTitle+'Players '+req.params.Page, Data: Data, Page: req.params.Page, PID: req.params.PlayerID });
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }

@@ -86,13 +86,13 @@
                                 <h4 class="my-0 font-weight-normal">{{this.Name}}</h4>
                             </div>
                             <div class="card-body">
-                                <h1 class="card-title pricing-card-title">${{this.Price}} <small class="text-muted">/ {{this.Option}}</small></h1>
+                                <h1 class="card-title pricing-card-title">${{this.Price}} <small class="text-muted">/{{this.Option}}</small></h1>
                                 <ul class="list-unstyled mt-3 mb-4">
                                     {{#each this.Description}}
                                         <li>{{this}}</li>
                                     {{/each}}
                                 </ul>
-                                <button type="button" class="btn btn-lg btn-block btn-outline-primary">View Item</button>
+                                <a type="button" class="btn btn-lg btn-block btn-outline-primary" href="/Shop/{{../Category}}/{{this.id}}">View Item</a>
                             </div>
                         </div>
                         {{/each}}

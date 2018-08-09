@@ -153,3 +153,6 @@ a,a:hover {
 .ShopCard {
     max-width: 20%;
 }
+.ShopCard img {
+    max-width: 10%;
+}

@@ -50,8 +50,8 @@
 						</div>
 					</li>
 
-					<li class="nav-item">
-						<a class="nav-link active" href="/Shop">Shop</a>
+					<li class="nav-item active">
+						<a class="nav-link" href="/Shop">Shop</a>
 					</li>
 				</ul>
 
@@ -63,7 +63,15 @@
 		<!-- Header -->
 
 		<div class="Content">
-			<h1 class="MainText centerText">Test {{Data}}</h1>
+			<h1 class="MainText centerText">Orion-Entertainment Shop</h1>
+
+            <div class="row">
+                {{#each Data}}
+                <div class="col">
+                    {{this.Name}}
+                </div>
+                {{/each}}
+            </div>
 		</div>
 	</body>
 </html>

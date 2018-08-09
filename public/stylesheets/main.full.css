@@ -41,7 +41,7 @@ a,a:hover {
 .centerText {
     text-align: center;
 }
-.centerIMG,.centerDIV {
+.centerIMG,.centerDIV,.ShopItems IMG {
     display: block;
     margin-left: auto;
     margin-right: auto;

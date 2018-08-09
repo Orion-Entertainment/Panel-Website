@@ -67,13 +67,27 @@
                 <div class="row ShopItems">
                     {{#each Data.Categories}}
                     <div class="col">
-                        <a href="/Shop/{{this.id}}"><img src="{{this.IMG}}" title="{{this.Name}}"></a>
+                        <a href="/Shop/{{this.Name}}"><img src="{{this.IMG}}" title="{{this.Name}}"></a>
                     </div>
                     {{/each}}
                 </div>
             </div>
         {{else}}
 			<h1 class="MainText centerText">No Categories Found</h1>
+        {{/if}}
+
+        {{#if Data.Category}}
+            <div class="Content">
+                <div class="row ShopItems">
+                    {{#each Data.Category}}
+                    <div class="col">
+                        <a href="/Shop/{{../Data.Category.Name}}/{{this.id}}"><img src="{{this.IMG}}" title="{{this.Name}}"></a>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        {{else}}
+			<h1 class="MainText centerText">No Category Items Found</h1>
         {{/if}}
 	</body>
 </html>

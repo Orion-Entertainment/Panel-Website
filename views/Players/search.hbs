@@ -83,12 +83,12 @@
 			</table>
 
 			<script>
+				{{#if Query}}
+					SearchPlayer("{{Query}}", false);
+				{{/if}}
 				$('#search').keyup(function(){
 					SearchPlayer($(this).val(), false);
 				});
-				{{#if Query}}
-					SearchPlayer({"{Query}}", false);
-				{{/if}}
 			</script>
 		</div>
 	</body>

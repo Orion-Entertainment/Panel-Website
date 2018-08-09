@@ -62,9 +62,9 @@
 		</nav>
 		<!-- Header -->
 
-        {{#ifEquals Option "Index"}}
-            {{#if Data.Categories}}
-                <div class="Content">
+        <div class="Content"></div>
+            {{#ifEquals Option "Index"}}
+                {{#if Data.Categories}}
                     <div class="row ShopItems">
                         {{#each Data.Categories}}
                         <div class="col">
@@ -72,45 +72,35 @@
                         </div>
                         {{/each}}
                     </div>
-                </div>
-            {{else}}
-                <h1 class="MainText centerText">No Categories Found</h1>
-            {{/if}}
-        {{/ifEquals}}
+                {{else}}
+                    <h1 class="MainText centerText">No Categories Found</h1>
+                {{/if}}
+            {{/ifEquals}}
 
-        {{#ifEquals Option "Category"}}
-            {{#if Data.Category}}
-                <div class="Content">
-                    <div class="row ShopItems">
-                        
-                        <div class="col">
-                            <a href="/Shop/{{../Data.Category.Name}}/{{this.id}}"><img src="{{this.IMG}}" title="{{this.Name}}: {{this.ShortDescription}}"></a>
+            {{#ifEquals Option "Category"}}
+                {{#if Data.Category}}
+                    <div class="card-deck mb-3 text-center">
+                        {{#each Data.Category}}
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">{{this.Name}}</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">${{this.Price}} <small class="text-muted">/ {{this.Option}}</small></h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    {{#each this.Description}}
+                                        <li>{{this}}</li>
+                                    {{/each}}
+                                </ul>
+                                <button type="button" class="btn btn-lg btn-block btn-outline-primary">View Item</button>
+                            </div>
                         </div>
-                        
+                        {{/each}}
                     </div>
-                </div>
-
-                <div class="card-deck mb-3 text-center">
-                    {{#each Data.Category}}
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">{{this.Name}}</h4>
-                        </div>
-                        <div class="card-body">
-                            <h1 class="card-title pricing-card-title">${{this.Price}} <small class="text-muted">/ {{this.Option}}</small></h1>
-                            <ul class="list-unstyled mt-3 mb-4">
-                                {{#each this.Description}}
-                                    <li>{{this}}</li>
-                                {{/each}}
-                            </ul>
-                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">View Item</button>
-                        </div>
-                    </div>
-                    {{/each}}
-                </div>
-            {{else}}
-                <h1 class="MainText centerText">No Category Items Found</h1>
-            {{/if}}
-        {{/ifEquals}}
+                {{else}}
+                    <h1 class="MainText centerText">No Category Items Found</h1>
+                {{/if}}
+            {{/ifEquals}}
+        </div>
 	</body>
 </html>

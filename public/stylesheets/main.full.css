@@ -131,6 +131,7 @@ a,a:hover {
     display: block;
     max-height: 30em;
     overflow-y: auto;
+    overflow-x: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 

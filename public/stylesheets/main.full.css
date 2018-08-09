@@ -145,3 +145,8 @@ a,a:hover {
     display: inline-block;
     max-width: 5%;
 }
+
+.ShopItems IMG {
+    width: 300px;
+    height: 150px;
+}

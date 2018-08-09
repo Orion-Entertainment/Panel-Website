@@ -118,7 +118,9 @@ app.use(steam.middleware({
     apiKey: config.SteamAPI}
 ));
 /* Players */
-const Players = require('../routes/Players/index'); app.use('/Players', Players);
+const Players = require('../routes/Players'); app.use('/Players', Players);
+/* Shop */
+const Shop = require('../routes/Shop'); app.use('/Shop', Shop);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

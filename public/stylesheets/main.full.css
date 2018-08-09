@@ -150,3 +150,6 @@ a,a:hover {
     width: 300px;
     height: 150px;
 }
+.card .mb-4 {
+    max-width: 25%;
+}

@@ -23,11 +23,6 @@ a,a:hover {
     border-radius: 0 0 7px 7px;
 }
 
-.noBackground {
-    background:none;
-    border:none;
-}
-
 .Content {
     background: linear-gradient(
         rgba(0, 0, 0, 0.25), 
@@ -41,6 +36,11 @@ a,a:hover {
     -moz-border-radius: 4px 4px 4px 4px;
     border-radius: 4px 4px 4px 4px;
     border-style: outset;
+}
+
+.noBackground {
+    background: none;
+    border: none;
 }
 
 .centerText {

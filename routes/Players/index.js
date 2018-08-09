@@ -5,6 +5,7 @@ const RequireLogin = require('../auth').RequireLogin;
 
 router.get('/Search', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
     try {
+        if (req.query.q !== undefined) Query = req.query.q; else Query = false;
         return res.render('./Players/search', { title: req.WebTitle+'Players - Search' });
     } catch (error) {
         return res.render('errorCustom', { error: error });

@@ -214,7 +214,7 @@ function getPlayerData(playerID, item, option) {
                             $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Name"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Time"]+'</td></tr>');
                             break;
                         case "Kills":
-                            $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Name"]+'('+info["KilledGroup"]+')</td><td>'+info["Weapon"]+'</td><td>'+info["Time"]+'</td></tr>');
+                            $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td><a href="/Players/Search?q='+info["Killed"]+'">'+info["KilledName"]+'('+info["KilledGroup"]+')</a></td><td>'+info["Weapon"]+'</td><td>'+info["Time"]+'</td></tr>');
                             switch (option) {
                                 case "All":
                                     $('#KillsText').html('Recent Kills <button type="button" class="btn-sm btn-blue-grey" onClick="getPlayerData('+playerID+',\'Kills\',\'\');">Show Deaths</button>');
@@ -271,16 +271,16 @@ function LoadTopCharts(load) {
                             info = Data[i];
                             switch (Category) {
                                 case "Money":
-                                    $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["name"]+'</strong></td><td>$'+info["Money"].toLocaleString()+'</td></tr>');
+                                    $('#'+Category+' > tbody:last-child').append('<tr><td><strong><a href="/Players/Search?q='+info["pid"]+'">'+info["name"]+'</a></strong></td><td>$'+info["Money"].toLocaleString()+'</td></tr>');
                                     break;
                                 case "EXP":
-                                    $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["name"]+'</strong></td><td>'+info["exp_level"].toLocaleString()+'</td><td>'+info["exp_total"].toLocaleString()+'</td><td>'+info["exp_perkPoints"].toLocaleString()+'</td></tr>');
+                                    $('#'+Category+' > tbody:last-child').append('<tr><td><strong><a href="/Players/Search?q='+info["pid"]+'">'+info["name"]+'</a></strong></td><td>'+info["exp_level"].toLocaleString()+'</td><td>'+info["exp_total"].toLocaleString()+'</td><td>'+info["exp_perkPoints"].toLocaleString()+'</td></tr>');
                                     break;
                                 case "GangFunds":
                                     $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["name"]+'</strong></td><td>$'+info["bank"].toLocaleString()+'</td></tr>');
                                     break;
                                 case "Bounty":
-                                    $('#'+Category+' > tbody:last-child').append('<tr><td><strong>'+info["wantedName"]+'</strong></td><td>$'+info["wantedBounty"].toLocaleString()+'</td></tr>');
+                                    $('#'+Category+' > tbody:last-child').append('<tr><td><strong><a href="/Players/Search?q='+info["wantedID"]+'">'+info["wantedName"]+'</a></strong></td><td>$'+info["wantedBounty"].toLocaleString()+'</td></tr>');
                                     break;
                             }
                         };
@@ -314,7 +314,7 @@ function LoadKillFeed() {
                 const Data = data["Kills"];
                 for (i = 0; i < Data.length; i++) {
                     info = Data[i];
-                    $('#Kills > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td><strong>'+info["KillerName"]+'('+info["KillerGroup"]+')</strong></td><td><strong>'+info["KilledName"]+'('+info["KilledGroup"]+')</strong></td><td>'+info["Weapon"]+'</td><td>'+info["Distance"]+'</td><td>'+moment(info["Time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
+                    $('#Kills > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td><strong><a href="/Players/Search?q='+info["Killer"]+'">'+info["KillerName"]+'('+info["KillerGroup"]+')</a></strong></td><td><strong><a href="/Players/Search?q='+info["Killed"]+'">'+info["KilledName"]+'('+info["KilledGroup"]+')</a></strong></td><td>'+info["Weapon"]+'</td><td>'+info["Distance"]+'</td><td>'+moment(info["Time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
                 };
             }
         },

@@ -62,14 +62,18 @@
 		</nav>
 		<!-- Header -->
 
-		<div class="Content">
-            <div class="row ShopItems">
-                {{#each Data}}
-                <div class="col">
-                    <a href="/Shop/{{this.id}}"><img src="{{this.IMG}}" title="{{this.Name}}"></a>
+        {{#if Data.Categories}}
+            <div class="Content">
+                <div class="row ShopItems">
+                    {{#each Data.Categories}}
+                    <div class="col">
+                        <a href="/Shop/{{this.id}}"><img src="{{this.IMG}}" title="{{this.Name}}"></a>
+                    </div>
+                    {{/each}}
                 </div>
-                {{/each}}
             </div>
-		</div>
+        {{else}}
+			<h1 class="MainText centerText">No Categories Found</h1>
+        {{/if}}
 	</body>
 </html>

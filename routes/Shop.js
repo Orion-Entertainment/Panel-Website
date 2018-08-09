@@ -3,7 +3,7 @@ const router = express.Router();
 const request = require('request');
 const RequireLogin = require('./auth').RequireLogin;
 
-router.get('/', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
+router.get('/', async(req, res, next) => {
     try {
         request.post(
             'https://panelapi.orion-entertainment.net/v1/shop',

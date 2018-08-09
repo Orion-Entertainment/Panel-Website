@@ -122,6 +122,11 @@ a,a:hover {
     overflow-x: auto;
 }
 
+.PlayerBoxes .Item .table tr {
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
 .TableScroll {
     display: block;
     max-height: 30em;

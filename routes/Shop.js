@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const request = require('request');
-const RequireLogin = require('../auth').RequireLogin;
+const RequireLogin = require('./auth').RequireLogin;
 
 router.get('/', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
     try {

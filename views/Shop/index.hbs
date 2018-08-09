@@ -92,11 +92,17 @@
                                         <li>{{this}}</li>
                                     {{/each}}
                                 </ul>
-                                <a type="button" class="btn btn-lg btn-block btn-outline-primary" href="/Shop/{{../Category}}/{{this.id}}">View Item</a>
+                                <button type="button" class="btn btn-lg btn-block btn-outline-primary" onClick="redirect('/Shop/{{../Category}}/{{this.id}}')">View Item</button>
                             </div>
                         </div>
                         {{/each}}
                     </div>
+
+                    <script>
+                        function redirect(href) {
+                            return window.location.href = href;
+                        }
+                    </script>
                 {{else}}
                     <h1 class="MainText centerText">No Category Items Found</h1>
                 {{/if}}

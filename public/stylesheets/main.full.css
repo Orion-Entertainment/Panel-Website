@@ -154,12 +154,6 @@ a,a:hover {
 .ShopItems IMG {
     width: 300px;
     height: 150px;
-}
-.ShopCard {
-    max-width: 20%;
-}
-.ShopCard img {
-    max-width: 10%;
     background: linear-gradient(
         rgba(0, 0, 0, 0.25), 
         rgba(0, 0, 0, 0.25)
@@ -167,4 +161,10 @@ a,a:hover {
     -webkit-border-radius: 4px 4px 4px 4px;
     -moz-border-radius: 4px 4px 4px 4px;
     border-radius: 4px 4px 4px 4px;
+}
+.ShopCard {
+    max-width: 20%;
+}
+.ShopCard img {
+    max-width: 10%;
 }

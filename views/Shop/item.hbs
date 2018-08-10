@@ -87,13 +87,11 @@
                         <h4 class="my-0 font-weight-normal">Images</h4>
                     </div>
                     <div class="card-body">
-                        <div class="row ShopItems">
-                            {{#each Data.Images}}
-                                <div class="col">
-                                    <img src="{{this.IMG}}" title="{{this.Name}}">
-                                </div>
-                            {{/each}}
-                        </div>
+                        {{#each Data.Images}}
+                            <div class="col">
+                                <img src="{{this.IMG}}" title="{{this.Name}}">
+                            </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>

@@ -66,16 +66,16 @@
             <div class="card-deck mb-3 text-center">
                 <div class="card mb-4 box-shadow mx-auto ShopCard">
                     <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">{{this.Name}}</h4>
+                        <h4 class="my-0 font-weight-normal">{{Data.Name}}</h4>
                     </div>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">${{this.Price}} <small class="text-muted">/{{this.Option}}</small></h1>
+                        <h1 class="card-title pricing-card-title">${{Data.Price}} <small class="text-muted">/{{Data.Option}}</small></h1>
                         <ul class="list-unstyled mt-3 mb-4">
-                            {{#each this.Description}}
+                            {{#each Data.Description}}
                                 <li>{{this}}</li>
                             {{/each}}
                         </ul>
-                        <button type="button" class="btn btn-lg btn-block btn-outline-success" onClick="redirect('/Shop/{{../Category}}/{{this.id}}/Buy')">Buy Item</button>
+                        <button type="button" class="btn btn-lg btn-block btn-outline-success" onClick="redirect('/Shop/{{../Category}}/{{Data.id}}/Buy')">Buy Item</button>
                     </div>
                 </div>
             </div>

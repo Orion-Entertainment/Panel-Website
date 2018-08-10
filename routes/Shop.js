@@ -73,7 +73,7 @@ router.get('/:Category/:Item', async(req, res, next) => {
                         if (body.Error == "Category Not Found") {const err = new Error('Not Found');err.status = 404;next(err); return;}
                         else {return res.render('errorCustom', { error: body.Error });}
                     } else {
-                        if (Data.Item == false) {const err = new Error('Not Found');err.status = 404;next(err); return;}
+                        if (body.Item == false) {const err = new Error('Not Found');err.status = 404;next(err); return;}
                         else {return res.render('./Shop/item', { title: req.WebTitle+'Shop - '+req.params.Category, Category: req.params.Category, Item: req.params.Item, Data: body.Item });}
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });

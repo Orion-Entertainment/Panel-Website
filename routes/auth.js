@@ -3,7 +3,7 @@ const express = require('express'),
 	steam = require('steam-login'),
 	request = require('request');
 
-RequireLogin = function(redirect, reqData) {
+RequireLogin = function() {
 	return function(req, res, next) {
 		if (req.session.Account == undefined) {
 			return res.redirect("/login?ReturnURL="+req.originalUrl);
@@ -13,7 +13,7 @@ RequireLogin = function(redirect, reqData) {
 }
 
 
-router.get('/logout', RequireLogin('/'), function(req, res) {
+router.get('/logout', RequireLogin(), function(req, res) {
 	delete req.session.Account;
     return res.redirect('/');
 });

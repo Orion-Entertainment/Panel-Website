@@ -3,7 +3,7 @@ const router = express.Router();
 const request = require('request');
 const RequireLogin = require('./auth').RequireLogin;
 
-router.get('/Search', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
+router.get('/Search', RequireLogin(), async(req, res, next) => {
     try {
         if (req.query.q !== undefined) Query = req.query.q; else Query = false;
         return res.render('./Players/search', { title: req.WebTitle+'Players - Search', Query: Query });
@@ -11,7 +11,7 @@ router.get('/Search', RequireLogin('/login?ReturnURL=/Players/Search'), async(re
         return res.render('errorCustom', { error: error });
     }
 });
-router.post('/Search', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
+router.post('/Search', RequireLogin(), async(req, res, next) => {
     try {
         if (req.body.SearchVal == undefined) return res.json({Error: "SearchVal Undefined"})
 
@@ -37,14 +37,14 @@ router.post('/Search', RequireLogin('/login?ReturnURL=/Players/Search'), async(r
     }
 });
 
-router.get('/TopCharts', RequireLogin('/login?ReturnURL=/Players/TopCharts'), async(req, res, next) => {
+router.get('/TopCharts', RequireLogin(), async(req, res, next) => {
     try {
         return res.render('./Players/topcharts', { title: req.WebTitle+'Players - Top Charts' });
     } catch (error) {
         return res.render('errorCustom', { error: error });
     }
 });
-router.post('/TopCharts', RequireLogin('/login?ReturnURL=/Players/TopCharts'), async(req, res, next) => {
+router.post('/TopCharts', RequireLogin(), async(req, res, next) => {
     try {
         if (req.body.Category == undefined) return res.json({Error: "Category Undefined"})
         else if (req.body.Category == "") return res.json({Error: "Category Invalid"})
@@ -71,14 +71,14 @@ router.post('/TopCharts', RequireLogin('/login?ReturnURL=/Players/TopCharts'), a
     }
 });
 
-router.get('/KillFeed', RequireLogin('/login?ReturnURL=/Players/KillFeed'), async(req, res, next) => {
+router.get('/KillFeed', RequireLogin(), async(req, res, next) => {
     try {
         return res.render('./Players/killfeed', { title: req.WebTitle+'Players - Kill Feed' });
     } catch (error) {
         return res.render('errorCustom', { error: error });
     }
 });
-router.post('/KillFeed', RequireLogin('/login?ReturnURL=/Players/KillFeed'), async(req, res, next) => {
+router.post('/KillFeed', RequireLogin(), async(req, res, next) => {
     try {
         request.post(
             'https://panelapi.orion-entertainment.net/v1/players/killfeed',
@@ -98,7 +98,7 @@ router.post('/KillFeed', RequireLogin('/login?ReturnURL=/Players/KillFeed'), asy
     }
 });
 
-router.get('/:PlayerID', RequireLogin("'/login?ReturnURL=/Players/'+req.params.PlayerID"), async(req, res, next) => {
+router.get('/:PlayerID', RequireLogin(), async(req, res, next) => {
     try {
         //Look into returning to playerid page if not logged
         if (req.params.PlayerID == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
@@ -135,7 +135,7 @@ router.get('/:PlayerID', RequireLogin("'/login?ReturnURL=/Players/'+req.params.P
         return res.render('errorCustom', { error: error });
     }
 });
-router.post('/:PlayerID/Info', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
+router.post('/:PlayerID/Info', RequireLogin(), async(req, res, next) => {
     try {
         if (req.params.PlayerID == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
         else if (req.params.PlayerID == "" | isNaN(req.params.PlayerID)) {const err = new Error('Not Found');err.status = 404;next(err); return;}
@@ -175,7 +175,7 @@ router.post('/:PlayerID/Info', RequireLogin('/login?ReturnURL=/Players/Search'),
     }
 });
 
-router.get('/:PlayerID/:Page', RequireLogin('/login?ReturnURL=/Players/Search'), async(req, res, next) => {
+router.get('/:PlayerID/:Page', RequireLogin(), async(req, res, next) => {
     try {
         if (req.params.PlayerID == undefined | req.params.Page == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
         else if (req.params.PlayerID == "" | req.params.Page == "") {const err = new Error('Not Found');err.status = 404;next(err); return;}

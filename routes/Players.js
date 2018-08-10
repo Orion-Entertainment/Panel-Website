@@ -98,7 +98,7 @@ router.post('/KillFeed', RequireLogin('/login?ReturnURL=/Players/KillFeed'), asy
     }
 });
 
-router.get('/:PlayerID', RequireLogin('/login?ReturnURL=/Players/'+req.params.PlayerID), async(req, res, next) => {
+router.get('/:PlayerID', RequireLogin("'/login?ReturnURL=/Players/'+req.params.PlayerID"), async(req, res, next) => {
     try {
         //Look into returning to playerid page if not logged
         if (req.params.PlayerID == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}

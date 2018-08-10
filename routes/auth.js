@@ -3,11 +3,13 @@ const express = require('express'),
 	steam = require('steam-login'),
 	request = require('request');
 
-RequireLogin = function(redirect) {
+RequireLogin = function(redirect, reqData) {
 	return function(req, res, next) {
-		if (req.session.Account == undefined)
-			console.log(redirect,redirect.raw)
-			return res.redirect(redirect.raw);
+		console.log(req.originalUrl)
+		if (req.session.Account == undefined) {
+			//if (reqData !== undefined) return res.redirect(redirect+);
+			return res.redirect(redirect);
+		}
 		next();
 	};
 }

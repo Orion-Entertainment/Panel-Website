@@ -165,3 +165,7 @@ a,a:hover {
 .ShopCard {
     max-width: 20%;
 }
+
+.ItemImages {
+    max-width: 75%;
+}

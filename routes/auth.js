@@ -6,6 +6,7 @@ const express = require('express'),
 RequireLogin = function(redirect) {
 	return function(req, res, next) {
 		if (req.session.Account == undefined)
+			console.log(redirect,redirect.raw)
 			return res.redirect(redirect.raw);
 		next();
 	};

@@ -129,6 +129,7 @@ router.post('/buy', RequireLogin(), async(req, res, next) => {
                 "Item": req.body.Item
             } },
             async function (error, response, body) {
+                console.log(body)
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) return res.json({Error: body.Error})
                     else {

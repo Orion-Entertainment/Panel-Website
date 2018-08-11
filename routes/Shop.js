@@ -116,4 +116,59 @@ router.get('/:Category/:Item/Buy', RequireLogin(), async(req, res, next) => {
     }
 });
 
+
+router.post('/buy', async(req, res, next) => {
+    try {
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/shop/BuyItem',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "buyid": req.body.id
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.json({Error: body.Error})
+                    else {return res.send(body);}
+                } else return res.json({Error: "API: Response Error"})
+            }
+        );
+    } catch (error) {
+        return res.json({Error: error})
+    }
+});
+
+router.get('/bought', async(req, res, next) => {
+    try {
+        var buytoken = req.query.token;
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/shop/bought',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "buytoken": buytoken
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.json({Error: body.Error})
+                    else {return res.send(body);}
+                } else return res.json({Error: "API: Response Error"})
+            }
+        );
+    } catch (error) {
+        return res.json({Error: error})
+    }
+});
+
+router.get('/cancel', async(req, res, next) => {
+    try {
+        console.log(req.query)
+        return res.send('mk');
+    } catch (error) {
+        return res.json({Error: error})
+    }
+});
+
 module.exports = router;

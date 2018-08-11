@@ -87,8 +87,8 @@
                         type: 'POST',
                         url: '/Shop/Buy',
                         data: {
-                            Category: {{Category}},
-                            Item: {{Item}}
+                            Category: "{{Category}}",
+                            Item: "{{Item}}"
                         },
                         success: function(data) {
                             if (data.Error !== undefined) {console.log(data.Error); return alert("API Error");};

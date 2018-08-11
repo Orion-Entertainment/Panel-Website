@@ -120,13 +120,6 @@ router.get('/createagreement', async(req, res, next) => {
             },
             "payer": {
                 "payment_method": "paypal"
-            },
-            "shipping_address": {
-                "line1": "W 34th St",
-                "city": "New York",
-                "state": "NY",
-                "postal_code": "10001",
-                "country_code": "US"
             }
         };
 

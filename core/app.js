@@ -69,8 +69,8 @@ paypal.configure({
 });
 
 var billingPlanAttribs = {
-    "name": "Food of the World Club Membership: Standard",
-    "description": "Monthly plan for getting the t-shirt of the month.",
+    "name": "VIP 1",
+    "description": "Orion-Entertainment.net Arma3 VIP 1",
     "type": "fixed",
     "payment_definitions": [{
         "name": "Standard Plan",
@@ -88,8 +88,8 @@ var billingPlanAttribs = {
             "currency": "USD",
             "value": "1"
         },
-        "cancel_url": "https://panel.orion-entertainment.net/Shop/cancel", ///////////////////////////////////////////////
-        "return_url": "https://panel.orion-entertainment.net/Shop/processagreement", ///////////////////////////////////////////////
+        "cancel_url": "https://panel.orion-entertainment.net/cancel", ///////////////////////////////////////////////
+        "return_url": "https://panel.orion-entertainment.net/processagreement", ///////////////////////////////////////////////
         "max_fail_attempts": "0",
         "auto_bill_amount": "YES",
         "initial_fail_amount_action": "CONTINUE"

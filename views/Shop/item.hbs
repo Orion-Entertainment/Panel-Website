@@ -82,20 +82,21 @@
 
             {{#if Data.Images}}
             <div class="card-deck mb-3 text-center">
-                <div class="card mb-4 box-shadow mx-auto ItemImages">
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">Images</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="row ShopItems">
-                            {{#each Data.Images}}
-                                <div class="col">
-                                    <img src="{{this.IMG}}" title="{{this.Name}}">
-                                </div>
-                            {{/each}}
+                {{#each Data.Images}}
+                    <div class="card mb-4 box-shadow mx-auto ShopCard">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">{{this.Name}}</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row ShopItems">
+                                    <div class="col">
+                                        <img src="{{this.IMG}}" title="{{this.Name}}">
+                                    </div>
+                                
+                            </div>
                         </div>
                     </div>
-                </div>
+                {{/each}}
             </div>
             {{/if}}
 

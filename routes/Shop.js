@@ -24,6 +24,67 @@ router.get('/', async(req, res, next) => {
     }
 });
 
+
+router.post('/buy', RequireLogin(), async(req, res, next) => {
+    try {
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/shop/BuyItem',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "Category": req.body.Category,
+                "Item": req.body.Item
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.json({Error: body.Error})
+                    else {
+                        req.session.Account.Buying = body.Data;
+                        return res.send(body.URL);
+                    }
+                } else return res.json({Error: "API: Response Error"})
+            }
+        );
+    } catch (error) {
+        return res.json({Error: error})
+    }
+});
+
+router.get('/Success', RequireLogin(), async(req, res, next) => {
+    try {
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/shop/bought',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "buytoken": req.body.token,
+                "payerid": req.body.payerid,
+
+                "Buying": req.session.Account.Buying
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.json({Error: body.Error})
+                    else {return res.send(body);}
+                } else return res.json({Error: "API: Response Error"})
+            }
+        );
+    } catch (error) {
+        return res.json({Error: error})
+    }
+});
+
+router.get('/Cancel', async(req, res, next) => {
+    try {
+        console.log(req.query)
+        return res.send('mkay');
+    } catch (error) {
+        return res.json({Error: error})
+    }
+});
+
 router.get('/:Category', async(req, res, next) => {
     try {
         if (req.params.Category == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
@@ -113,68 +174,6 @@ router.get('/:Category/:Item/Buy', RequireLogin(), async(req, res, next) => {
         );
     } catch (error) {
         return res.render('errorCustom', { error: error });
-    }
-});
-
-
-router.post('/buy', RequireLogin(), async(req, res, next) => {
-    try {
-        request.post(
-            'https://panelapi.orion-entertainment.net/v1/shop/BuyItem',
-            { json: { 
-                "client_id": await req.APIKey.client_id,
-                "token": await req.APIKey.token,
-
-                "Category": req.body.Category,
-                "Item": req.body.Item
-            } },
-            async function (error, response, body) {
-                console.log(body)
-                if (!error && response.statusCode == 200) {
-                    if (body.Error !== undefined) return res.json({Error: body.Error})
-                    else {
-                        req.session.Account.Buying = body.Data;
-                        return res.send(body.URL);
-                    }
-                } else return res.json({Error: "API: Response Error"})
-            }
-        );
-    } catch (error) {
-        return res.json({Error: error})
-    }
-});
-
-router.get('/Success', RequireLogin(), async(req, res, next) => {
-    try {
-        request.post(
-            'https://panelapi.orion-entertainment.net/v1/shop/bought',
-            { json: { 
-                "client_id": await req.APIKey.client_id,
-                "token": await req.APIKey.token,
-
-                "buytoken": req.body.token,
-                "payerid": req.body.payerid,
-
-                "Buying": req.session.Account.Buying
-            } },
-            async function (error, response, body) {
-                if (!error && response.statusCode == 200) {
-                    if (body.Error !== undefined) return res.json({Error: body.Error})
-                    else {return res.send(body);}
-                } else return res.json({Error: "API: Response Error"})
-            }
-        );
-    } catch (error) {
-        return res.json({Error: error})
-    }
-});
-
-router.get('/Cancel', async(req, res, next) => {
-    try {
-        console.log(req.query)
-        return res.send('mkay');
-    } catch (error) {
-        return res.json({Error: error})
     }
 });
 

@@ -117,7 +117,7 @@ router.get('/:Category/:Item/Buy', RequireLogin(), async(req, res, next) => {
 });
 
 
-router.post('/buy', async(req, res, next) => {
+router.post('/buy', RequireLogin(), async(req, res, next) => {
     try {
         request.post(
             'https://panelapi.orion-entertainment.net/v1/shop/BuyItem',
@@ -125,12 +125,16 @@ router.post('/buy', async(req, res, next) => {
                 "client_id": await req.APIKey.client_id,
                 "token": await req.APIKey.token,
 
-                "buyid": req.body.id
+                "Category": req.body.Category,
+                "Item": req.body.Item
             } },
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) return res.json({Error: body.Error})
-                    else {return res.send(body);}
+                    else {
+                        req.session.Account.Buying = body.Data;
+                        return res.send(body.URL);
+                    }
                 } else return res.json({Error: "API: Response Error"})
             }
         );
@@ -139,7 +143,7 @@ router.post('/buy', async(req, res, next) => {
     }
 });
 
-router.get('/bought', async(req, res, next) => {
+router.get('/Success', RequireLogin(), async(req, res, next) => {
     try {
         var buytoken = req.query.token;
         request.post(
@@ -148,7 +152,10 @@ router.get('/bought', async(req, res, next) => {
                 "client_id": await req.APIKey.client_id,
                 "token": await req.APIKey.token,
 
-                "buytoken": buytoken
+                "buytoken": req.body.buytoken,
+                "payerid": req.body.payerid,
+
+                "Buying": req.session.Account.Buying
             } },
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
@@ -162,10 +169,10 @@ router.get('/bought', async(req, res, next) => {
     }
 });
 
-router.get('/cancel', async(req, res, next) => {
+router.get('/Cancel', async(req, res, next) => {
     try {
         console.log(req.query)
-        return res.send('mk');
+        return res.send('mkay');
     } catch (error) {
         return res.json({Error: error})
     }

@@ -62,17 +62,24 @@ router.get('/Success', RequireLogin(), async(req, res, next) => {
                 "buytoken": req.query.token,
                 "payerid": req.query.PayerID,
 
-                "Buying": req.session.Account.Buying
+                "Buying": req.session.Account.Buying,
+
+                "WID": req.session.Account.ID
             } },
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-                    if (body.Error !== undefined) return res.json({Error: body.Error})
-                    else {return res.send(body);}
-                } else return res.json({Error: "API: Response Error"})
+                    if (body.Error !== undefined) {return res.render('errorCustom', { error: body.Error });}
+                    else {
+                        const ReturnData = req.session.Account.Buying;
+                        delete req.session.Account.Buying;
+                        if (body == "Success") return res.render('./Shop/success', { title: req.WebTitle+'Shop - Success', Data: ReturnData });
+                        return res.send(body);
+                    }
+                } else return res.render('errorCustom', { error: "API: Response Error" });
             }
         );
     } catch (error) {
-        return res.json({Error: error})
+        return res.render('errorCustom', { error: error });
     }
 });
 

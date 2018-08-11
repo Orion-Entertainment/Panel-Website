@@ -183,8 +183,9 @@ paypal.billingPlan.create(billingPlanAttribs, function (error, billingPlan){
     }
 });
 
-router.get('/createagreement', RequireLogin(), async(req, res, next) => {
-    try {billingPlan = req.query.plan;
+router.get('/createagreement', async(req, res, next) => {
+    try {
+        var billingPlan = req.query.plan;
 
         var isoDate = new Date();
         isoDate.setSeconds(isoDate.getSeconds() + 4);

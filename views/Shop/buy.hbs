@@ -88,7 +88,7 @@
                         url: '/Shop/Buy',
                         data: {
                             Category: "{{Category}}",
-                            Item: "{{Item}}"
+                            Item: "{{Data.Name}}"
                         },
                         success: function(data) {
                             if (data.Error !== undefined) {console.log(data.Error); return alert("API Error");}

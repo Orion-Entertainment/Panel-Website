@@ -92,10 +92,8 @@
                         },
                         success: function(data) {
                             if (data.Error !== undefined) {console.log(data.Error); return alert("API Error");};
-                            if (data.Result == false) {
-                                return alert("Buy Error");
-                            } else {
-                                return window.location.href = data.Result;
+                            else {
+                                return window.location.href = data;
                             }
                         },
                         error: function(error) {

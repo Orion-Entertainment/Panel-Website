@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <head>
+	<title>{{title}}</title>
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.8/css/mdb.min.css" rel="stylesheet">
+		<!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Orion-Entertainment CSS -->
+		<link rel="stylesheet" href="/stylesheets/main.full.css">
+		<!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.8/js/mdb.min.js"></script>
+        <!-- Orion-Entertainment Players JS -->
+        <script type="text/javascript" src="/js/players.full.js"></script>
+	</head>
+
+	<body>
+		<!-- Header -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light FontWeight">
+			<a class="navbar-brand" href="/">Orion-Entertainment</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Home</a>
+					</li>
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="/Players" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Players
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/Players/TopCharts">Top Charts</a>
+							<a class="dropdown-item" href="/Players/KillFeed">Kill Feed</a>
+							<a class="dropdown-item" href="/Players/Search">Search Players</a>
+							<div class="dropdown-divider"></div>
+							<!--<a class="dropdown-item" href="/Players/Report">Report a Player</a>-->
+						</div>
+					</li>
+
+					<li class="nav-item active">
+						<a class="nav-link" href="/Shop">Shop</a>
+					</li>
+				</ul>
+
+				<form class="form-inline my-2 my-lg-0">
+					<a class="nav-link" href="/auth/logout">Logout</span></a>
+				</form>
+			</div>
+		</nav>
+		<!-- Header -->
+
+        <div class="Content noBackground">
+            <div class="card-deck mb-3 text-center">
+                <div class="card mb-4 box-shadow mx-auto ShopCard">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">{{Data.Name}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">${{Data.Price}} <small class="text-muted">/{{Data.Option}}</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            {{#ifEquals Data.Option "mo"}}
+                                <li>This item will be a monthly subscription.</li>
+                                <li>If you fail to pay for or cancel this item it will be removed 1 day after expiration.</li>
+                                <li>Buy purchasing this you are agreeing to our, <a href="https://orion-entertainment.net/terms-of-service">TOS</a> AND <a href="https://orion-entertainment.net/privacy-policy">PP</a></li>
+                            {{/ifEquals}}
+                        </ul>
+                        <button type="button" class="btn btn-lg btn-block btn-outline-danger" onClick="redirect('/Shop/{{../Category}}/{{Data.id}}/Buy')">Buy Item</button>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function redirect(href) {
+                    return window.location.href = href;
+                }
+            </script>
+        </div>
+	</body>
+</html>

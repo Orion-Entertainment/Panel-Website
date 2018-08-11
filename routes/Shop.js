@@ -34,7 +34,8 @@ router.post('/buy', RequireLogin(), async(req, res, next) => {
                 "token": await req.APIKey.token,
 
                 "Category": req.body.Category,
-                "Item": req.body.Item
+                "Item": req.body.Item,
+                "ItemID": req.body.ItemID
             } },
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
@@ -70,10 +71,8 @@ router.get('/Success', RequireLogin(), async(req, res, next) => {
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) {return res.render('errorCustom', { error: body.Error });}
                     else {
-                        const ReturnData = req.session.Account.Buying;
                         delete req.session.Account.Buying;
-                        if (body == "Success") return res.render('./Shop/success', { title: req.WebTitle+'Shop - Success', Data: ReturnData });
-                        return res.send(body);
+                        return res.render('./Shop/success', { title: req.WebTitle+'Shop - Success', Data: body });
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }

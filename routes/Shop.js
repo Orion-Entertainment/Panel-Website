@@ -54,6 +54,7 @@ router.post('/buy', RequireLogin(), async(req, res, next) => {
 
 router.get('/Success', RequireLogin(), async(req, res, next) => {
     try {
+        if (req.session.Account.Buying == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
         request.post(
             'https://panelapi.orion-entertainment.net/v1/shop/bought',
             { json: { 

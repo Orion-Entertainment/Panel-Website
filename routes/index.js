@@ -99,4 +99,81 @@ router.post('/register', async(req, res, next) => {
     }
 });
 
+
+
+var paypal = require('paypal-rest-sdk');
+
+router.get('/createagreement', async(req, res, next) => {
+    try {
+        var billingPlan = req.query.plan;
+
+        var isoDate = new Date();
+        isoDate.setSeconds(isoDate.getSeconds() + 4);
+        isoDate.toISOString().slice(0, 19) + 'Z';
+
+        var billingAgreementAttributes = {
+            "name": "Standard Membership",
+            "description": "Food of the World Club Standard Membership",
+            "start_date": isoDate,
+            "plan": {
+                "id": billingPlan
+            },
+            "payer": {
+                "payment_method": "paypal"
+            },
+            "shipping_address": {
+                "line1": "W 34th St",
+                "city": "New York",
+                "state": "NY",
+                "postal_code": "10001",
+                "country_code": "US"
+            }
+        };
+
+        // Use activated billing plan to create agreement
+        paypal.billingAgreement.create(billingAgreementAttributes, function (
+            error, billingAgreement){
+            if (error) {
+                console.error(error);
+                throw error;
+            } else {
+                //capture HATEOAS links
+                var links = {};
+                billingAgreement.links.forEach(function(linkObj){
+                    links[linkObj.rel] = {
+                        'href': linkObj.href,
+                        'method': linkObj.method
+                    };
+                })
+
+                //if redirect url present, redirect user
+                if (links.hasOwnProperty('approval_url')){
+                    res.redirect(links['approval_url'].href);
+                } else {
+                    console.error('no redirect URI present');
+                }
+            }
+        });
+    } catch (error) {
+        return res.render('errorCustom', { error: error });
+    }
+});
+
+router.get('/processagreement', function(req, res){
+    var token = req.query.token;
+
+    paypal.billingAgreement.execute(token, {}, function (error, 
+        billingAgreement) {
+        if (error) {
+            console.error(error);
+            throw error;
+        } else {
+            console.log(JSON.stringify(billingAgreement));
+            res.send('Billing Agreement Created Successfully');
+        }
+    });
+});
+
+
+
 module.exports = router;

@@ -56,6 +56,72 @@ hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
 app.enable('trust proxy');
 app.use(favicon(path.join(__dirname,'../public', '/images/Favicon.ico')));
 
+/* Paypal */
+var paypal = require('paypal-rest-sdk');
+
+var clientId = 'AV-4DyvKAAaXllJA3zxB1yOtxGc9Sx-wXPHTDAq2U97ebpyH0n92uWTHwSPu3zNxpSqWxq25QfJF1eyZ';
+var secret = 'EAP-_kApLTQcXCjiKKIpmsELdrc4ZFt0xfruOPG_C0s82jPd71nCSaqAC6_lWFgJ2oD9F0kRYRwYbtRd';
+
+paypal.configure({
+  'mode': 'sandbox', //sandbox or live
+  'client_id': clientId,
+  'client_secret': secret
+});
+
+var billingPlanAttribs = {
+    "name": "Food of the World Club Membership: Standard",
+    "description": "Monthly plan for getting the t-shirt of the month.",
+    "type": "fixed",
+    "payment_definitions": [{
+        "name": "Standard Plan",
+        "type": "REGULAR",
+        "frequency_interval": "1",
+        "frequency": "MONTH",
+        "cycles": "11",
+        "amount": {
+            "currency": "USD",
+            "value": "19.99"
+        }
+    }],
+    "merchant_preferences": {
+        "setup_fee": {
+            "currency": "USD",
+            "value": "1"
+        },
+        "cancel_url": "https://panel.orion-entertainment.net/Shop/cancel", ///////////////////////////////////////////////
+        "return_url": "https://panel.orion-entertainment.net/Shop/processagreement", ///////////////////////////////////////////////
+        "max_fail_attempts": "0",
+        "auto_bill_amount": "YES",
+        "initial_fail_amount_action": "CONTINUE"
+    }
+};
+
+var billingPlanUpdateAttributes = [{
+    "op": "replace",
+    "path": "/",
+    "value": {
+        "state": "ACTIVE"
+    }
+}];
+
+paypal.billingPlan.create(billingPlanAttribs, function (error, billingPlan){
+    if (error){
+        console.log(error);
+        throw error;
+    } else {
+        // Activate the plan by changing status to Active
+        paypal.billingPlan.update(billingPlan.id, billingPlanUpdateAttributes, 
+            function(error, response){
+            if (error) {
+                console.log(error);
+                throw error;
+            } else {
+                console.log(billingPlan.id);
+            }
+        });
+    }
+});
+
 /* Cloudflare to get IPs */
 const cloudflare = require('cloudflare-express');
 app.use(cloudflare.restore());

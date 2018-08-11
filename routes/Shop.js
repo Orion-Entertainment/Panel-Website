@@ -106,7 +106,7 @@ router.get('/:Category/:Item/Buy', RequireLogin(), async(req, res, next) => {
                         else {return res.render('errorCustom', { error: body.Error });}
                     } else {
                         if (body.Item == false) {const err = new Error('Not Found');err.status = 404;next(err); return;}
-                        else {return res.render('./Shop/item', { title: req.WebTitle+'Shop - '+req.params.Category, Category: req.params.Category, Item: req.params.Item, Data: body.Item });}
+                        else {return res.render('./Shop/buy', { title: req.WebTitle+'Shop - '+req.params.Category, Category: req.params.Category, Item: req.params.Item, Data: body.Item });}
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }

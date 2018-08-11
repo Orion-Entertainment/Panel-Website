@@ -81,6 +81,8 @@
             </div>
 
             {{#if Data.Images}}
+            <hr width="75%">
+            <h1 class="MainText centerText">Images</h1>
             <div class="card-deck mb-3 text-center">
                 {{#each Data.Images}}
                     <div class="card mb-4 box-shadow mx-auto ShopCard">
@@ -89,10 +91,9 @@
                         </div>
                         <div class="card-body">
                             <div class="row ShopItems">
-                                    <div class="col">
-                                        <img src="{{this.IMG}}" title="{{this.Name}}">
-                                    </div>
-                                
+                                <div class="col">
+                                    <img src="{{this.IMG}}" title="{{this.Name}}">
+                                </div>
                             </div>
                         </div>
                     </div>

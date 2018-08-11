@@ -60,7 +60,7 @@ router.get('/Success', RequireLogin(), async(req, res, next) => {
                 "token": await req.APIKey.token,
 
                 "buytoken": req.query.token,
-                "payerid": req.query.payerid,
+                "payerid": req.query.PayerID,
 
                 "Buying": req.session.Account.Buying
             } },

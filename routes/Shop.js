@@ -35,7 +35,9 @@ router.post('/buy', RequireLogin(), async(req, res, next) => {
 
                 "Category": req.body.Category,
                 "Item": req.body.Item,
-                "ItemID": req.body.ItemID
+                "ItemID": req.body.ItemID,
+
+                "WID": req.session.Account.ID
             } },
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {

@@ -131,7 +131,8 @@
                                 success: function(data) {
                                     if (data.Error !== undefined) {console.log(data.Error); return alert(data.Error);}
                                     else {
-                                        return window.location.href = data;
+                                        if (data == "Success") return location.reload();
+                                        else alert(data);
                                     }
                                 },
                                 error: function(error) {

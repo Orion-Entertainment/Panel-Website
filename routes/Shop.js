@@ -48,6 +48,31 @@ router.get('/Purchases', RequireLogin(), async(req, res, next) => {
     }
 });
 
+router.post('/CancelSubscription', RequireLogin(), async(req, res, next) => {
+    try {
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/shop/cancel',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "ID": req.body.id,
+                "WID": req.session.Account.ID
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.json({Error: body.Error})
+                    else {
+                        return res.send(body);
+                    }
+                } else return res.json({Error: "API: Response Error"})
+            }
+        );
+    } catch (error) {
+        return res.json({Error: error})
+    }
+});
+
 router.post('/buy', RequireLogin(), async(req, res, next) => {
     try {
         request.post(

@@ -85,14 +85,13 @@
                             <tr>
                                 <td>{{this.Purchased}}</td>
                                 <td>{{this.Category}}: {{this.Item}}</td>
-                                <td>{{this.Status}} {{#ifEquals this.Status "Active"}}<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cancelsubscription">Cancel</button>{{/ifEquals}}</td>
+                                <td>{{this.Status}} {{#ifEquals this.Status "Active"}}<button type="button" class="btn-sm btn-danger" data-toggle="modal" data-target="#cancelsubscription">Cancel</button>{{/ifEquals}}</td>
                                 <td>{{this.Payment}}</td>
                             </tr>
                         {{/each}}
                     </tbody>
                 </table>
 
-                <!-- CancelSubscription -->
                 <div class="modal fade" id="cancelsubscription" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -103,8 +102,8 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Your subscription has been canceled and wont renew at the next payment date.<br>
-                                The item you subscribed for will be removed the day the next payment was set for.
+                                Your subscription has been cancelled and wont renew at the next payment date.<br>
+                                The item you subscribed for will be removed when the next payment was set for.
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-blue-grey" data-dismiss="modal">Close</button>
@@ -115,25 +114,29 @@
                 </div>
 
                 <script>
-                    function buy(id) {
-                        $.ajax({
-                            async: true,
-                            type: 'POST',
-                            url: '/Shop/Buy',
-                            data: {
-                                Category: ""
-                            },
-                            success: function(data) {
-                                if (data.Error !== undefined) {console.log(data.Error); return alert(data.Error);}
-                                else {
-                                    return window.location.href = data;
+                    let CancelSubscription;
+                    function CancelSubscription(id,option) {
+                        if (id !== null) return CancelSubscription = id;
+                        else {
+                            $.ajax({
+                                async: true,
+                                type: 'POST',
+                                url: '/Shop/CancelSubscription',
+                                data: {
+                                    id: CancelSubscription
+                                },
+                                success: function(data) {
+                                    if (data.Error !== undefined) {console.log(data.Error); return alert(data.Error);}
+                                    else {
+                                        return window.location.href = data;
+                                    }
+                                },
+                                error: function(error) {
+                                    console.log(error)
+                                    return alert("Error");
                                 }
-                            },
-                            error: function(error) {
-                                console.log(error)
-                                return alert("Error");
-                            }
-                        });
+                            });
+                        }
                     }
                 </script>
             {{else}}

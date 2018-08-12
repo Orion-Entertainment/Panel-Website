@@ -38,7 +38,6 @@ router.get('/Purchases', RequireLogin(), async(req, res, next) => {
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) {return res.render('errorCustom', { error: body.Error });}
                     else {
-                        console.log(body.Info)
                         return res.render('./Shop/purchases', { title: req.WebTitle+'Shop - Purchases', Data: body.Info });
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });

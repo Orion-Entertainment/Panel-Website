@@ -88,7 +88,7 @@
                                 <td>{{this.Category}}: {{this.Item}}</td>
                                 <td>{{this.Status}}</td>
                                 <td>{{this.Payment}}</td>
-                                {{#ifEquals this.Status "Active"}}<td><button type="button" class="btn-sm btn-danger" data-toggle="modal" data-target="#cancelsubscription" onClick="cancelSubscription({{this.id}})">Cancel</button></td>{{/ifEquals}}
+                                {{#ifEquals this.Status "Active"}}<td><button type="button" class="btn-sm btn-danger" data-toggle="modal" data-target="#cancelsubscription" onClick="CancelSubscription({{this.id}})">Cancel</button></td>{{/ifEquals}}
                             </tr>
                         {{/each}}
                     </tbody>
@@ -109,7 +109,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-blue-grey" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-danger">Cancel</button>
+                                <button type="button" class="btn btn-danger" onclick="CancelSubscription(null)">Cancel</button>
                             </div>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
 
                 <script>
                     let CancelSubscriptionID;
-                    function CancelSubscription(id,option) {
+                    function CancelSubscription(id) {
                         if (id !== null) return CancelSubscriptionID = id;
                         else {
                             return alert(CancelSubscriptionID);

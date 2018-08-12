@@ -85,8 +85,9 @@
                             <tr>
                                 <td>{{this.Purchased}}</td>
                                 <td>{{this.Category}}: {{this.Item}}</td>
-                                <td>{{this.Status}} {{#ifEquals this.Status "Active"}}<button type="button" class="btn-sm btn-danger" data-toggle="modal" data-target="#cancelsubscription">Cancel</button>{{/ifEquals}}</td>
+                                <td>{{this.Status}}</td>
                                 <td>{{this.Payment}}</td>
+                                {{#ifEquals this.Status "Active"}}<td><button type="button" class="btn-sm btn-danger" data-toggle="modal" data-target="#cancelsubscription" onClick="">Cancel</button></td>{{/ifEquals}}
                             </tr>
                         {{/each}}
                     </tbody>
@@ -114,16 +115,17 @@
                 </div>
 
                 <script>
-                    let CancelSubscription;
+                    let CancelSubscriptionID;
                     function CancelSubscription(id,option) {
-                        if (id !== null) return CancelSubscription = id;
+                        if (id !== null) return CancelSubscriptionID = id;
                         else {
+                            return alert(CancelSubscriptionID);
                             $.ajax({
                                 async: true,
                                 type: 'POST',
                                 url: '/Shop/CancelSubscription',
                                 data: {
-                                    id: CancelSubscription
+                                    id: CancelSubscriptionID
                                 },
                                 success: function(data) {
                                     if (data.Error !== undefined) {console.log(data.Error); return alert(data.Error);}

@@ -120,7 +120,6 @@
                     function CancelSubscription(id) {
                         if (id !== null) return CancelSubscriptionID = id;
                         else {
-                            return alert(CancelSubscriptionID);
                             $.ajax({
                                 async: true,
                                 type: 'POST',

@@ -14,7 +14,7 @@ router.get('/', async(req, res, next) => {
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) {return res.render('errorCustom', { error: body.Error });} else {
-                        return res.render('./Shop/index', { title: req.WebTitle+'Shop', Option: "Index", Data: body });
+                        return res.render('./Shop/index', { title: req.WebTitle+'Shop', Option: "Index", Data: body, Login: req.Login });
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }
@@ -83,10 +83,10 @@ router.get('/Success', RequireLogin(), async(req, res, next) => {
     }
 });
 
-router.get('/Cancel', async(req, res, next) => {
+router.get('/Cancel', RequireLogin(), async(req, res, next) => {
     try {
         console.log(req.query)
-        return res.send('mkay');
+        return res.redirect('/Shop');
     } catch (error) {
         return res.json({Error: error})
     }
@@ -110,7 +110,7 @@ router.get('/:Category', async(req, res, next) => {
                         if (body.Error == "Category Not Found") {const err = new Error('Not Found');err.status = 404;next(err); return;}
                         else {return res.render('errorCustom', { error: body.Error });}
                     } else {
-                        return res.render('./Shop/index', { title: req.WebTitle+'Shop - '+req.params.Category, Option: "Category", Category: req.params.Category, Data: body });
+                        return res.render('./Shop/index', { title: req.WebTitle+'Shop - '+req.params.Category, Option: "Category", Category: req.params.Category, Data: body, Login: req.Login });
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }
@@ -120,7 +120,7 @@ router.get('/:Category', async(req, res, next) => {
     }
 });
 
-router.get('/:Category/:Item', async(req, res, next) => {
+router.get('/:Category/:Item', RequireLogin(), async(req, res, next) => {
     try {
         if (req.params.Category == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
         else if (req.params.Category == "") {const err = new Error('Not Found');err.status = 404;next(err); return;}

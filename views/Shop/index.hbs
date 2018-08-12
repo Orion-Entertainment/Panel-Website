@@ -51,12 +51,29 @@
 					</li>
 
 					<li class="nav-item active">
-						<a class="nav-link" href="/Shop">Shop</a>
+						<a class="nav-link" href="">Shop</a>
+					</li>
+
+                    <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="/Shop" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Shop
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/Shop">View Shop</a>
+                            {{#if Login}}
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="/Shop/Purchases">View Purchases</a>
+                            {{/if}}
+						</div>
 					</li>
 				</ul>
 
 				<form class="form-inline my-2 my-lg-0">
-					<a class="nav-link" href="/auth/logout">Logout</span></a>
+					{{#if Login}}
+						<a class="nav-link" href="/auth/logout">Logout</span></a>
+					{{else}}
+						<a class="nav-link" href="/login">Login</span></a>
+					{{/if}}
 				</form>
 			</div>
 		</nav>

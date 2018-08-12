@@ -24,6 +24,29 @@ router.get('/', async(req, res, next) => {
     }
 });
 
+router.get('/Purchases', RequireLogin(), async(req, res, next) => {
+    try {
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/shop/purchases',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "WID": req.session.Account.ID
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) {return res.render('errorCustom', { error: body.Error });}
+                    else {
+                        return res.render('./Shop/purchases', { title: req.WebTitle+'Shop - Purchases', Data: body.Info });
+                    }
+                } else return res.render('errorCustom', { error: "API: Response Error" });
+            }
+        );
+    } catch (error) {
+        return res.render('errorCustom', { error: error });
+    }
+});
 
 router.post('/buy', RequireLogin(), async(req, res, next) => {
     try {
@@ -51,31 +74,6 @@ router.post('/buy', RequireLogin(), async(req, res, next) => {
         );
     } catch (error) {
         return res.json({Error: error})
-    }
-});
-
-router.get('/Purchases', RequireLogin(), async(req, res, next) => {
-    try {
-        if (req.session.Account.Buying == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
-        request.post(
-            'https://panelapi.orion-entertainment.net/v1/shop/purchases',
-            { json: { 
-                "client_id": await req.APIKey.client_id,
-                "token": await req.APIKey.token,
-
-                "WID": req.session.Account.ID
-            } },
-            async function (error, response, body) {
-                if (!error && response.statusCode == 200) {
-                    if (body.Error !== undefined) {return res.render('errorCustom', { error: body.Error });}
-                    else {
-                        return res.render('./Shop/purchases', { title: req.WebTitle+'Shop - Purchases', Data: body.Info });
-                    }
-                } else return res.render('errorCustom', { error: "API: Response Error" });
-            }
-        );
-    } catch (error) {
-        return res.render('errorCustom', { error: error });
     }
 });
 

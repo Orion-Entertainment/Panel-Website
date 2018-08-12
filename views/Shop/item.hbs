@@ -125,7 +125,7 @@
                             ItemID: "{{Item}}"
                         },
                         success: function(data) {
-                            if (data.Error !== undefined) {console.log(data.Error); return alert("API Error");}
+                            if (data.Error !== undefined) {console.log(data.Error); return alert(data.Error);}
                             else {
                                 return window.location.href = data;
                             }

@@ -102,7 +102,10 @@ router.post('/register', async(req, res, next) => {
 router.get('/Changelog', async(req, res, next) => {
     try {
         /* UPDATE LATER */
-        if (req.session.Account.isStaff !== undefined) Admin = true; else Admin = false;
+        if (req.session.Account !== undefined) {
+            if (req.session.Account.isStaff !== undefined) Admin = true; else Admin = false;
+        } else Admin = false;
+        
         /* UPDATE LATER */
 
         request.post(

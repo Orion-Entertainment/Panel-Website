@@ -44,6 +44,9 @@ const moment = require('moment');
 hbs.registerHelper('formatDate', function(date) {
     return moment(date).format('YYYY/MM/DD HH:mm:ss');
 });
+hbs.registerHelper('formatDateSmall', function(date) {
+    return moment(date).format('YYYY/MM/DD HH:mm');
+});
 hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
     lvalue = parseFloat(lvalue);
     rvalue = parseFloat(rvalue);

@@ -176,6 +176,9 @@ a,a:hover {
 .Changelog {
     max-width: 80%;
 }
+.Changelogs {
+    padding: 10px;
+}
 .leftcolumn { 
     float: left;
     width: 75%;

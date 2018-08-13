@@ -109,38 +109,13 @@
                 </div>
             </div>
 
-            <div class="row Changelog">
-                <div class="leftcolumn">
-                    <div class="ChangelogCard">
-                        <h2>TITLE HEADING</h2>
-                        <h5>Title description, Dec 7, 2017</h5>
-                        <div class="fakeimg" style="height:200px;">Image</div>
-                        <p>Some text..</p>
-                    </div>
-                    <div class="ChangelogCard">
-                        <h2>TITLE HEADING</h2>
-                        <h5>Title description, Sep 2, 2017</h5>
-                        <div class="fakeimg" style="height:200px;">Image</div>
-                        <p>Some text..</p>
-                    </div>
+            <div class="row Changelogs">
+                {{#each Data}}
+                <div class="ChangelogCard">
+                    <h2>{{this.Name}}</h2>
+                    <h5>{{this.Category}}, {{formatDateSmall this.Time}}</h5>
                 </div>
-                <div class="rightcolumn">
-                    <div class="ChangelogCard">
-                        <h2>About Me</h2>
-                        <div class="fakeimg" style="height:100px;">Image</div>
-                        <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-                    </div>
-                    <div class="ChangelogCard">
-                        <h3>Popular Post</h3>
-                        <div class="fakeimg">Image</div><br>
-                        <div class="fakeimg">Image</div><br>
-                        <div class="fakeimg">Image</div>
-                    </div>
-                    <div class="ChangelogCard">
-                        <h3>Follow Me</h3>
-                        <p>Some text..</p>
-                    </div>
-                </div>
+                {{/each}}
             </div>
 
             <script>

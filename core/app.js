@@ -111,7 +111,7 @@ app.use((req, res, next) => {
     req.isLogin = () => {
         if (req.session.Account !== undefined) return true; else return false;
     }
-    req.isStaff() = () => {
+    req.isStaff = () => {
         if (req.session.Account !== undefined) {
             if (req.session.Account.isStaff !== undefined) return true; else return false;
         } else return false;

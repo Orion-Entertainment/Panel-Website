@@ -41,11 +41,11 @@ hbs.registerHelper('formatNumber', function(value) {
     return value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 });
 const moment = require('moment');
-hbs.registerHelper('formatDate', function(date) {
-    return moment(date).format('YYYY/MM/DD HH:mm:ss');
+hbs.registerHelper('formatDate', async function(date) {
+    return await moment(date).format('YYYY/MM/DD HH:mm:ss');
 });
-hbs.registerHelper('formatDateSmall', function(date) {
-    return moment(date).format('YYYY/MM/DD HH:mm');
+hbs.registerHelper('formatDateSmall', async function(date) {
+    return await moment(date).format('YYYY/MM/DD HH:mm');
 });
 hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
     lvalue = parseFloat(lvalue);

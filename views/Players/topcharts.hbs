@@ -49,6 +49,30 @@
 							<!--<a class="dropdown-item" href="/Players/Report">Report a Player</a>-->
 						</div>
 					</li>
+
+                    <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="/Shop" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Shop
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/Shop">View Shop</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="/Shop/Purchases">View Purchases</a>
+						</div>
+					</li>
+
+                    <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="/Shop" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Changelogs
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/Changelog">Changelogs</a>
+                            {{#if Admin}}
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="/Changelog/Admin">Admin</a>
+                            {{/if}}
+						</div>
+					</li>
 				</ul>
 
 				<form class="form-inline my-2 my-lg-0">

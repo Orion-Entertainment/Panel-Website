@@ -37,6 +37,7 @@
 						<a class="nav-link" href="/">Home</a>
 					</li>
 
+                    {{#if Login}}
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="/Players" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Players
@@ -48,17 +49,31 @@
 							<div class="dropdown-divider"></div>
 							<!--<a class="dropdown-item" href="/Players/Report">Report a Player</a>-->
 						</div>
-					</li>
+                    </li>
+                    {{/if}}
 
-                    <li class="nav-item dropdown active">
+                    <li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="/Shop" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Shop
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item active" href="/Shop">View Shop</a>
-                            {{#if Login}}
+							<a class="dropdown-item" href="/Shop">View Shop</a>
+							{{#if Login}}
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="/Shop/Purchases">View Purchases</a>
+							{{/if}}
+						</div>
+					</li>
+
+                    <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="/Shop" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Changelogs
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/Changelog">Changelogs</a>
+                            {{#if Admin}}
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="/Changelog/Admin">Admin</a>
                             {{/if}}
 						</div>
 					</li>

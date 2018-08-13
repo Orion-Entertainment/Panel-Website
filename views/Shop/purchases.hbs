@@ -50,14 +50,27 @@
 						</div>
 					</li>
 
-					<li class="nav-item dropdown active">
+                    <li class="nav-item dropdown active">
 						<a class="nav-link dropdown-toggle" href="/Shop" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Shop
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="/Shop">View Shop</a>
+							<a class="dropdown-item active" href="/Shop">View Shop</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item active" href="/Shop/Purchases">View Purchases</a>
+							<a class="dropdown-item" href="/Shop/Purchases">View Purchases</a>
+						</div>
+					</li>
+
+                    <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="/Shop" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Changelogs
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/Changelog">Changelogs</a>
+                            {{#if Admin}}
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="/Changelog/Admin">Admin</a>
+                            {{/if}}
 						</div>
 					</li>
 				</ul>

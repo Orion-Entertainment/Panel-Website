@@ -117,7 +117,7 @@ router.get('/Changelog/Admin', RequireLogin(), async(req, res, next) => {
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
-                    else return res.render('./Changelog/Admin', { title: req.WebTitle+'Changelog Admin', Data:body });
+                    else return res.render('./Changelog/Admin', { title: req.WebTitle+'Changelog Admin', Data: JSON.parse(body) });
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }
         );

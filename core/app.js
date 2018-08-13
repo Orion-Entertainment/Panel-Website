@@ -40,6 +40,10 @@ hbs.registerHelper('ifCond', function (v1, operator, v2, options) {
 hbs.registerHelper('formatNumber', function(value) {
     return value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 });
+const moment = require('moment');
+hbs.registerHelper('formatDate', function(date) {
+    return moment(date).format('YYYY/MM/DD HH:mm:ss');
+});
 hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
     lvalue = parseFloat(lvalue);
     rvalue = parseFloat(rvalue);

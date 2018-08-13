@@ -99,10 +99,10 @@
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title">Name: <input class="form-control" type="text" id="Name" value="{{Data.Name}}">
                             Category: {{Data.Category}}<br>
-                            Post Time <input class="form-control" type="datetime-local" id="Time" value="{{Data.Time}}">
+                            Post Time {{Data.Time}}
                         </h1>
                         <div id="EditChangelog"></div>
-                        <button type="button" class="btn btn-lg btn-block btn-outline-success" onClick="editChangelog()">Save</button>
+                        <button type="button" class="btn btn-lg btn-block btn-outline-success" onClick="editChangelog()">Save</button> <button type="button" class="btn btn-lg btn-block btn-outline-danger" onClick="deleteChangelog()">Delete</button>
                     </div>
                 </div>
             </div>

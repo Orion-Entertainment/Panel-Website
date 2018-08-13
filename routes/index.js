@@ -109,9 +109,7 @@ router.get('/Changelog', async(req, res, next) => {
             'https://panelapi.orion-entertainment.net/v1/changelog',
             { json: { 
                 "client_id": await req.APIKey.client_id,
-                "token": await req.APIKey.token,
-
-                "Option": "Index"
+                "token": await req.APIKey.token
             } },
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
@@ -131,12 +129,10 @@ router.get('/Changelog/Admin', RequireLogin(), async(req, res, next) => {
         /* UPDATE LATER */
 
         request.post(
-            'https://panelapi.orion-entertainment.net/v1/changelog',
+            'https://panelapi.orion-entertainment.net/v1/changelog/admin',
             { json: { 
                 "client_id": await req.APIKey.client_id,
-                "token": await req.APIKey.token,
-
-                "Option": "Admin"
+                "token": await req.APIKey.token
             } },
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
@@ -156,12 +152,11 @@ router.post('/Changelog/Admin', RequireLogin(), async(req, res, next) => {
         /* UPDATE LATER */
 
         request.post(
-            'https://panelapi.orion-entertainment.net/v1/changelog',
+            'https://panelapi.orion-entertainment.net/v1/changelog/create',
             { json: { 
                 "client_id": await req.APIKey.client_id,
                 "token": await req.APIKey.token,
 
-                "Option": "Create",
                 "Name": req.body.Name,
                 "Category": req.body.Category,
                 "Time": req.body.Time,
@@ -176,6 +171,32 @@ router.post('/Changelog/Admin', RequireLogin(), async(req, res, next) => {
         );
     } catch (error) {
         return res.json({Error: error})
+    }
+});
+
+router.get('/Changelog/:id', async(req, res, next) => {
+    try {
+        /* UPDATE LATER */
+        if (req.session.Account.isStaff !== undefined) Admin = true; else Admin = false;
+        /* UPDATE LATER */
+
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/changelog/view',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "ID": req.params.id
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
+                    else return res.render('./Changelog/Index', { title: req.WebTitle+'Changelog Admin', Login: req.Login, Admin:Admin, Data: JSON.stringify(body) });
+                } else return res.render('errorCustom', { error: "API: Response Error" });
+            }
+        );
+    } catch (error) {
+        return res.render('errorCustom', { error: error });
     }
 });
 

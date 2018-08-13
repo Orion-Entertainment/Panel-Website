@@ -126,7 +126,7 @@ function LoadPlayer(load, playerID) {
                                 $('#'+item+' > tbody:last-child').append('<tr><td>'+info["classname"]+'</td><td>'+info["pos"]+'</td><td>'+info["Gear"]+'</td><td>'+ info["inventory"]+'</td><td>'+moment(info["insert_time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
                                 break;
                             case "MoneyLogs":
-                                $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Option"]+'</td><td>'+info["toPID"]+'</td><td>'+info["Item"]+'</td><td>'+info["Amount"].toLocaleString()+'</td><td>'+info["Price"].toLocaleString()+'</td><td>'+moment(info["Time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
+                                $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Option"]+'</td><td>'+info["toPID"]+'</td><td>'+info["Item"]+'</td><td>'+info["Amount"]+'</td><td>'+info["Price"].toLocaleString()+'</td><td>'+moment(info["Time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');
                                 break;
                         }
                     };

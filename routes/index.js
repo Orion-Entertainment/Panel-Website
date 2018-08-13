@@ -106,9 +106,23 @@ router.get('/Changelog/Admin', RequireLogin(), async(req, res, next) => {
         if (req.session.Account.isStaff == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
         /* UPDATE LATER */
 
-        return res.render('./Changelog/Admin', { title: req.WebTitle+'Changelog Admin' });
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/changelog/admin',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "Option": "Admin"
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
+                    else return res.render('./Changelog/Admin', { title: req.WebTitle+'Changelog Admin', Data:body });
+                } else return res.render('errorCustom', { error: "API: Response Error" });
+            }
+        );
     } catch (error) {
-        return res.json({Error: error})
+        return res.render('errorCustom', { error: error });
     }
 });
 router.post('/Changelog/Admin', RequireLogin(), async(req, res, next) => {

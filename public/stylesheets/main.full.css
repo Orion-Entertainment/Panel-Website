@@ -168,9 +168,35 @@ a,a:hover {
 .ShopCardBuy {
     max-width: 40%;
 }
-.CreateChangelog {
-    max-width: 80%;
-}
 .ItemImages {
     max-width: 75%;
+}
+
+/* Changelogs */
+.Changelog {
+    max-width: 80%;
+}
+.leftcolumn { 
+    float: left;
+    width: 75%;
+}
+.rightcolumn {
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+}
+.fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+}
+.ChangelogCard {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }

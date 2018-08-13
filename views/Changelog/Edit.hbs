@@ -137,10 +137,10 @@
                     autogrow: true,
                     autogrowOnEnter: true
                 });
-                $('#editor').trumbowyg('html', '{{{Data.Data}}}');
+                $('#EditChangelog').trumbowyg('html', '{{{Data.Data}}}');
 
                 function editChangelog() {
-                    const Data = $('#editChangelog').trumbowyg('html');
+                    const Data = $('#EditChangelog').trumbowyg('html');
                     const Name = $("#Name").val();
                     const Time = $("#Time").val();
 

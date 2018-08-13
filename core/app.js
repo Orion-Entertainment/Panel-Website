@@ -10,15 +10,9 @@ const app = express();
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, '../public')));
-//const hbs = require('hbs');
-
-const promisedHandlebars = require('promised-handlebars')
-const Q = require('q')
-const hbs = promisedHandlebars(require('hbs'), { Promise: Q.Promise })
-
+const hbs = require('hbs');
 hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
     return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
-    
 });/*
 hbs.registerHelper('ifCond', function (v1, operator, v2, options) {
     switch (operator) {
@@ -48,16 +42,10 @@ hbs.registerHelper('formatNumber', function(value) {
 });
 const moment = require('moment');
 hbs.registerHelper('formatDate', function(date) {
-    return Q.delay(100).then(async function () {
-        const Data = await moment(date).format('YYYY/MM/DD HH:mm:ss');
-        return Data;
-    })
+    return moment(date).format('YYYY/MM/DD HH:mm:ss');
 });
 hbs.registerHelper('formatDateSmall', function(date) {
-    return Q.delay(100).then(async  function () {
-        const Data = await moment(date).format('YYYY/MM/DD HH:mm');
-        return Data;
-    })
+    return moment(date).format('YYYY/MM/DD HH:mm');
 });
 hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
     lvalue = parseFloat(lvalue);

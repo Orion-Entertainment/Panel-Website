@@ -87,8 +87,21 @@
                 $.trumbowyg.svgPath = '/images/trumbowyg.svg';
                 $('#CreateChangelog').trumbowyg({
                     btns: [
-                        ['highlight']
+                        ['viewHTML'],
+                        ['undo', 'redo'],
+                        ['formatting'],
+                        ['strong', 'em', 'del', 'underline'],
+                        ['highlight'],
+                        ['link'],
+                        ['image'],
+                        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                        ['unorderedList', 'orderedList'],
+                        ['foreColor', 'backColor'],
+                        ['preformatted'],
+                        ['horizontalRule'],
+                        ['fullscreen']
                     ]
+                    
                 });
             </script>
         </div>

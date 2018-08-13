@@ -100,7 +100,7 @@ router.post('/register', async(req, res, next) => {
 });
 
 
-router.post('/Changelog/Admin', RequireLogin(), async(req, res, next) => {
+router.get('/Changelog/Admin', RequireLogin(), async(req, res, next) => {
     try {
         /* UPDATE LATER */
         if (req.session.Account.isStaff == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}

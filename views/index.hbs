@@ -93,6 +93,30 @@
 			{{else}}
 				<p class="SubText centerText">Register/Login at <a href="https://panel.orion-entertainment.net/login">https://orion-entertainment.net/login</a></p>
 			{{/if}}
+
+			
+            <div class="row Changelogs">
+                <div class="rightcolumn centerDIV" id="ChangeLogs"></div>
+            </div>
+
+			<script>
+				$(document).ready(function(){
+					$.ajax({
+                        async: true,
+                        type: 'POST',
+                        url: '/RecentChangelogs',
+                        data: {},
+                        success: function(data) {
+                            if (data.Error !== undefined) {console.log(data.Error); return alert(data.Error);}
+                            else ChangeLogs(data);
+                        },
+                        error: function(error) {
+                            console.log(error)
+                            return alert("Error");
+                        }
+                    });
+				});
+			</script>
 		</div>
 	</body>
 </html>

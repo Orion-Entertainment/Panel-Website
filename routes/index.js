@@ -10,6 +10,27 @@ router.get('/', async(req, res, next) => {
         return res.render('errorCustom', { error: error });
     }
 });
+router.post('/RecentChangelogs', async(req, res, next) => {
+    try {
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/changelog',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "limit": 3
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.json({Error: body.Error})
+                    else {return res.send(body);}
+                } else return res.json({Error: "API: Response Error"})
+            }
+        );
+    } catch (error) {
+        return res.json({Error: error})
+    }
+});
 
 router.get('/privacy-policy', async(req, res, next) => {
     try {

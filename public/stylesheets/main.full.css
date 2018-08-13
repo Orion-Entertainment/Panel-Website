@@ -189,7 +189,7 @@ a,a:hover {
     width: 75%;
 }
 .rightcolumn {
-    float: left;
+    float: right;
     width: 25%;
     padding-left: 20px;
 }

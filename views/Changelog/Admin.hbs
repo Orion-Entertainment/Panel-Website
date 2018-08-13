@@ -119,26 +119,28 @@
             </div>
 
             <script>
-                $.trumbowyg.svgPath = '/images/trumbowyg.svg';
-                $('#CreateChangelog').trumbowyg({
-                    btns: [
-                        ['viewHTML'],
-                        ['undo', 'redo'],
-                        ['formatting'],
-                        ['strong', 'em', 'del', 'underline'],
-                        ['highlight'],
-                        ['link'],
-                        ['image'],
-                        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-                        ['unorderedList', 'orderedList'],
-                        ['foreColor', 'backColor'],
-                        ['preformatted'],
-                        ['horizontalRule'],
-                        ['fullscreen']
-                    ],
-                    autogrow: true,
-                    autogrowOnEnter: true
-                });
+				$(document).ready(function(){
+					$.trumbowyg.svgPath = '/images/trumbowyg.svg';
+                    $('#CreateChangelog').trumbowyg({
+                        btns: [
+                            ['viewHTML'],
+                            ['undo', 'redo'],
+                            ['formatting'],
+                            ['strong', 'em', 'del', 'underline'],
+                            ['highlight'],
+                            ['link'],
+                            ['image'],
+                            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                            ['unorderedList', 'orderedList'],
+                            ['foreColor', 'backColor'],
+                            ['preformatted'],
+                            ['horizontalRule'],
+                            ['fullscreen']
+                        ],
+                        autogrow: true,
+                        autogrowOnEnter: true
+                    });
+				});
 
                 function createChangelog() {
                     const Data = $('#CreateChangelog').trumbowyg('html');

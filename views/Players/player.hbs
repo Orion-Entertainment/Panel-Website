@@ -246,36 +246,20 @@
                 <p class="SubText centerText">-Private Information-</p>
 
                 <div class="PlayerBoxes">
-                    <!--
                     <div class="Item">
-                        <h1 class="AltText centerText">Buttons not working (YET)</h1>
-                        <a class="btn btn-primary" href="/Players/{{Info.id}}/Vehicles">Vehicles</a>
-                        <a class="btn btn-primary" href="/Players/{{Info.id}}/Houses">Houses</a>
-                        <a class="btn btn-primary" href="/Players/{{Info.id}}/HouseItems">House Items</a>
-                    </div>
-                    -->
-
-
-
-                    <!--
-                    <h1 class="AltText centerText">Vehicles</h1>
-                    <hr width="75%">
-
-                    <div class="Item">
-                        <h1 class="AltText centerText">Houses</h1>
+                        <h1 class="AltText centerText"><a href="/Players/{{Info.id}}/Vehicles">Recent Money Actions</a></h1>
                         <hr width="75%">
 
-                        <table class="table TableScroll" id="Vehicles">
+                        <table class="table TableScroll" id="MoneyLogs">
                             <thead>
                                 <tr>
-                                    <th scope="col"><scrong>Side</scrong></th>
-                                    <th scope="col"><scrong>Classname</scrong></th>
-                                    <th scope="col"><scrong>Type</scrong></th>
-                                    <th scope="col"><scrong>Plate</scrong></th>
-                                    <th scope="col"><scrong>Inventory</scrong></th>
-                                    <th scope="col"><scrong>vInventory</scrong></th>
-                                    <th scope="col"><scrong>Insured</scrong></th>
-                                    <th scope="col"><scrong>Time Bought</scrong></th>
+                                    <th scope="col"><scrong>Server</scrong></th>
+                                    <th scope="col"><scrong>Option</scrong></th>
+                                    <th scope="col"><scrong>toPID</scrong></th>
+                                    <th scope="col"><scrong>Item</scrong></th>
+                                    <th scope="col"><scrong>Amount</scrong></th>
+                                    <th scope="col"><scrong>Price</scrong></th>
+                                    <th scope="col"><scrong>Ti</scrong></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -283,53 +267,15 @@
                             </tbody>
                         </table>
                     </div>
-
-                    <div class="Item">
-                        <h1 class="AltText centerText">Houses</h1>
-                        <hr width="75%">
-
-                        <table class="table TableScroll" id="Houses">
-                            <thead>
-                                <tr>
-                                    <th scope="col"><scrong>ID</scrong></th>
-                                    <th scope="col"><scrong>Position</scrong></th>
-                                    <th scope="col"><scrong>Time Bought</scrong></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                        </table>
-                    </div>
+                </div>
                     
-                    <div class="Item">
-                        <h1 class="AltText centerText">House Items</h1>
-                        <hr width="75%">
-
-                        <table class="table TableScroll" id="HouseItems">
-                            <thead>
-                                <tr>
-                                    <th scope="col"><scrong>Classname</scrong></th>
-                                    <th scope="col"><scrong>Inventory</scrong></th>
-                                    <th scope="col"><scrong>vInventory</scrong></th>
-                                    <th scope="col"><scrong>Position</scrong></th>
-                                    <th scope="col"><scrong>Time Placed</scrong></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                </div>-->
                 {{/if}}
 
                 <script>
                     $(document).ready(function(){
                         {{#if Info.Private}}
                             //,'Houses','HouseItems'
-                            const Load = ['Names', 'Bans','Kicks','MaldenLife','Kills','Vehicles'];
+                            const Load = ['Names', 'Bans','Kicks','MaldenLife','Kills','Vehicles','MoneyLogs'];
                         {{else}}
                             const Load = ['Names', 'Bans','Kicks','MaldenLife','Kills','Vehicles'];
                         {{/if}}

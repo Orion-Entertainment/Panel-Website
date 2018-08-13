@@ -186,13 +186,34 @@
                             {{/each}}
                         </tbody>
                     {{/ifEquals}}
+                    
+                    {{#ifEquals Page "MoneyLogs"}}
+                        <thead>
+                            <tr>
+                                <th scope="col"><scrong>Server</scrong></th>
+                                <th scope="col"><scrong>Option</scrong></th>
+                                <th scope="col"><scrong>toPID</scrong></th>
+                                <th scope="col"><scrong>Item</scrong></th>
+                                <th scope="col"><scrong>Amount</scrong></th>
+                                <th scope="col"><scrong>Price</scrong></th>
+                                <th scope="col"><scrong>Ti</scrong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each Data.Data}}
+                            <tr>
+                                <td>{{this.Server}}</td>
+                                <td>{{this.Option}}</td>
+                                <td>{{this.toPID}}</td>
+                                <td>{{this.Item}}</td>
+                                <td>{{this.Amount}}</td>
+                                <td>{{formatNumber this.Price}}</td>
+                                <td>{{formatDate this.Time}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    {{/ifEquals}}
                 </table>
-
-                <script>
-                    /*$(document).ready(function(){
-                        LoadPlayer({{Info.id}},{{Page}})
-                    });*/
-                </script>
             {{else}}
                 <h1 class="AltText centerText">No {{Page}} Found</h1>
             {{/if}}

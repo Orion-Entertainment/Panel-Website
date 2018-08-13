@@ -27,8 +27,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.10.0/trumbowyg.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.10.0/plugins/highlight/trumbowyg.highlight.min.js"></script>
-        <!-- Orion-Entertainment Players JS -->
-        <script type="text/javascript" src="/js/players.full.js"></script>
+        <!-- Orion-Entertainment Changelogs JS -->
+        <script type="text/javascript" src="/js/changelogs.full.js"></script>
 	</head>
 
 	<body>
@@ -114,12 +114,7 @@
 
             <div class="row Changelogs">
                 <div class="centercolumn centerDIV">
-                    {{#each Data}}
-                    <div class="ChangelogCard">
-                        <h2>{{this.Name}}</h2>
-                        <h5>{{this.Category}}, {{formatDateSmall this.Time}}</h5>
-                    </div>
-                    {{/each}}
+                    
                 </div>
             </div>
 
@@ -171,6 +166,8 @@
                         }
                     });
                 }
+
+                ChangeLogs({{Data}})
             </script>
         </div>
 	</body>

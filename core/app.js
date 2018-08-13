@@ -108,10 +108,10 @@ app.use((req, res, next) => {
     req.WebTitle = "Orion-Entertainment Panel - ";
     if (req.query.ReturnURL !== undefined) 
         req.session.ReturnURL = req.query.ReturnURL;
-    if (req.session.Account !== undefined)
+    if (req.session.Account !== undefined) {
         req.Login = true;
-    if (req.session.Account.isStaff !== undefined)
-        req.isStaff = true;
+        if (req.session.Account.isStaff !== undefined) req.isStaff = true;
+    }
     
     next();
 });

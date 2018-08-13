@@ -56,20 +56,10 @@
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="/Shop">View Shop</a>
+                            {{#if Login}}
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="/Shop/Purchases">View Purchases</a>
-						</div>
-					</li>
-
-                    <li class="nav-item dropdown active">
-						<a class="nav-link dropdown-toggle" href="/Shop" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Changelogs
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="/Changelogs/Website">Website</a>
-							<a class="dropdown-item" href="/Changelogs/Server">Server</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item active" href="/Changelogs/Server">Admin</a>
+                            {{/if}}
 						</div>
 					</li>
 				</ul>

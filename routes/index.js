@@ -5,7 +5,7 @@ const RequireLogin = require('./auth').RequireLogin;
 
 router.get('/', async(req, res, next) => {
     try {
-        return res.render('index', { title: req.WebTitle+'Home', Login: await req.isLogin()() });
+        return res.render('index', { title: req.WebTitle+'Home', Login: await req.isLogin() });
     } catch (error) {
         return res.render('errorCustom', { error: error });
     }
@@ -113,7 +113,7 @@ router.get('/Changelog', async(req, res, next) => {
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
-                    else return res.render('./Changelog/Index', { title: req.WebTitle+'Changelog', Login: await req.isLogin()(), Admin:await req.isStaff(), Data: JSON.stringify(body) });
+                    else return res.render('./Changelog/Index', { title: req.WebTitle+'Changelog', Login: await req.isLogin(), Admin:await req.isStaff(), Data: JSON.stringify(body) });
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }
         );
@@ -242,7 +242,7 @@ router.get('/Changelog/:id', async(req, res, next) => {
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
-                    else return res.render('./Changelog/View', { title: req.WebTitle+'Changelog', Login: await req.isLogin()(), Admin:await req.isStaff(), Data:body });
+                    else return res.render('./Changelog/View', { title: req.WebTitle+'Changelog', Login: await req.isLogin(), Admin:await req.isStaff(), Data:body });
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }
         );

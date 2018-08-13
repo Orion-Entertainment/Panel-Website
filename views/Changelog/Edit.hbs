@@ -145,7 +145,12 @@
                         },
                         success: function(data) {
                             if (data.Error !== undefined) {console.log(data.Error); return alert(data.Error);}
-                            else return window.location.href = "/Changelog/{{Data.ID}}";
+                            else {
+                                setTimeout(function(){
+                                    alert(data);
+                                    return window.location.href = "/Changelog/{{Data.ID}}";
+                                }, 1500);
+                            };
                         },
                         error: function(error) {
                             console.log(error)
@@ -163,7 +168,12 @@
                         },
                         success: function(data) {
                             if (data.Error !== undefined) {console.log(data.Error); return alert(data.Error);}
-                            else return window.location.href = "/Changelog/Admin";
+                            else {
+                                setTimeout(function(){
+                                    alert(data);
+                                    return window.location.href = "/Changelog/Admin";
+                                }, 1500);
+                            };
                         },
                         error: function(error) {
                             console.log(error)

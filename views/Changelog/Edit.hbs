@@ -135,9 +135,9 @@
                         ['fullscreen']
                     ],
                     autogrow: true,
-                    autogrowOnEnter: true,
-                    html: '{{{Data.Data}}}'
+                    autogrowOnEnter: true
                 });
+                $('#editor').trumbowyg('html', '{{{Data.Data}}}');
 
                 function editChangelog() {
                     const Data = $('#editChangelog').trumbowyg('html');

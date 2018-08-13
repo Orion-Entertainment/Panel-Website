@@ -42,10 +42,12 @@ hbs.registerHelper('formatNumber', function(value) {
 });
 const moment = require('moment');
 hbs.registerHelper('formatDate', async function(date) {
-    return await moment(date).format('YYYY/MM/DD HH:mm:ss');
+    Data = await moment(date).format('YYYY/MM/DD HH:mm:ss');
+    return Data;
 });
 hbs.registerHelper('formatDateSmall', async function(date) {
-    return await moment(date).format('YYYY/MM/DD HH:mm');
+    Data = await moment(date).format('YYYY/MM/DD HH:mm');
+    return Data;
 });
 hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
     lvalue = parseFloat(lvalue);

@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 const promisedHandlebars = require('promised-handlebars')
 const Q = require('q')
-const hbs = promisedHandlebars(require('handlebars'), { Promise: Q.Promise })
+const hbs = promisedHandlebars(require('hbs'), { Promise: Q.Promise })
 
 hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
     return (arg1 == arg2) ? options.fn(this) : options.inverse(this);

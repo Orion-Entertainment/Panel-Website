@@ -110,12 +110,14 @@
             </div>
 
             <div class="row Changelogs">
-                {{#each Data}}
-                <div class="ChangelogCard">
-                    <h2>{{this.Name}}</h2>
-                    <h5>{{this.Category}}, {{formatDateSmall this.Time}}</h5>
+                <div class="centercolumn">
+                    {{#each Data}}
+                    <div class="ChangelogCard">
+                        <h2>{{this.Name}}</h2>
+                        <h5>{{this.Category}}, {{formatDateSmall this.Time}}</h5>
+                    </div>
+                    {{/each}}
                 </div>
-                {{/each}}
             </div>
 
             <script>

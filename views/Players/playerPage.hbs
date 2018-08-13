@@ -92,12 +92,96 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each body.Bans}}
+                            {{#each Data}}
                             <tr>
                                 <td>{{this.Server}}</td>
                                 <td>{{this.Reason}}</td>
                                 <td>{{this.Created}}</td>
                                 <td>{{this.Expires}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    {{/ifEquals}}
+                    
+                    {{#ifEquals Page "IPs"}}
+                        <thead>
+                            <tr>
+                                <th scope="col"><scrong>IP</scrong></th>
+                                <th scope="col"><scrong>Time Used</scrong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each Data}}
+                            <tr>
+                                <td>{{this.IP}}</td>
+                                <td>{{this.Time}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    {{/ifEquals}}
+                    
+                    {{#ifEquals Page "Kicks"}}
+                        <thead>
+                            <tr>
+                                <th scope="col"><scrong>Server</scrong></th>
+                                <th scope="col"><scrong>Name</scrong></th>
+                                <th scope="col"><scrong>Reason</scrong></th>
+                                <th scope="col"><scrong>Time</scrong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each Data}}
+                            <tr>
+                                <td>{{this.Server}}</td>
+                                <td>{{this.Name}}</td>
+                                <td>{{this.Reason}}</td>
+                                <td>{{this.Time}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    {{/ifEquals}}
+                    
+                    {{#ifEquals Page "Kills"}}
+                        <thead>
+                            <tr>
+                                <th scope="col"><scrong>Server</scrong></th>
+                                <th scope="col"><scrong>Killed Name(Group)</scrong></th>
+                                <th scope="col"><scrong>Weapon</scrong></th>
+                                <th scope="col"><scrong>Time</scrong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each Data}}
+                            <tr>
+                                <td>{{this.Server}}</td>
+                                <td>{{this.Killed}}({{this.KilledGroup}})</td>
+                                <td>{{this.Weapon}}</td>
+                                <td>{{this.Time}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    {{/ifEquals}}
+                    
+                    {{#ifEquals Page "Vehicles"}}
+                        <thead>
+                            <tr>
+                                <th scope="col"><scrong>Side</scrong></th>
+                                <th scope="col"><scrong>Classname</scrong></th>
+                                <th scope="col"><scrong>Type</scrong></th>
+                                <th scope="col"><scrong>Plate</scrong></th>
+                                <th scope="col"><scrong>Insured</scrong></th>
+                                <th scope="col"><scrong>Time Bought</scrong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each Data}}
+                            <tr>
+                                <td>{{this.side}}</td>
+                                <td>{{this.classname}}</td>
+                                <td>{{this.type}}</td>
+                                <td>{{this.plate}}</td>
+                                <td>{{this.insure}}</td>
+                                <td>{{this.insert_time}}</td>
                             </tr>
                             {{/each}}
                         </tbody>

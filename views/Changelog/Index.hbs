@@ -93,7 +93,7 @@
                 <div class="centercolumn centerDIV" id="ChangeLogs">
                     <div class="ChangelogCard">
                         <h2>{{Data.Name}}</h2>
-                        <h5>{{Data.Category}}, {{Data.Time}}</h5>
+                        <h5>{{Data.Category}}, {{Data.Time}}{{#if Admin}} <a type="button" class="btn-sm btn-elegant" href="/Changelog/Admin/{{Data.ID}}">Edit</a>{{/if}}</h5>
                         <hr>
                         {{{Data.Data}}}
                     </div>

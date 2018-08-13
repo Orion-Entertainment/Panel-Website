@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <head>
+	<title>{{title}}</title>
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.8/css/mdb.min.css" rel="stylesheet">
+		<!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Trumbowyg CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.10.0/ui/trumbowyg.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.10.0/plugins/highlight/ui/trumbowyg.highlight.min.css" />
+        <!-- Orion-Entertainment CSS -->
+		<link rel="stylesheet" href="/stylesheets/main.full.css">
+		<!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.8/js/mdb.min.js"></script>
+        <!-- Trumbowyg JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.10.0/trumbowyg.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.10.0/plugins/highlight/trumbowyg.highlight.min.js"></script>
+        <!-- Moment.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+        <!-- Orion-Entertainment Changelogs JS -->
+        <script type="text/javascript" src="/js/changelogs.full.js"></script>
+	</head>
+
+	<body>
+		<!-- Header -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light FontWeight">
+			<a class="navbar-brand" href="/">Orion-Entertainment</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Home</a>
+					</li>
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="/Players" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Players
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/Players/TopCharts">Top Charts</a>
+							<a class="dropdown-item" href="/Players/KillFeed">Kill Feed</a>
+							<a class="dropdown-item" href="/Players/Search">Search Players</a>
+							<div class="dropdown-divider"></div>
+							<!--<a class="dropdown-item" href="/Players/Report">Report a Player</a>-->
+						</div>
+					</li>
+
+                    <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="/Shop" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Shop
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/Shop">View Shop</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="/Shop/Purchases">View Purchases</a>
+						</div>
+					</li>
+
+                    <li class="nav-item dropdown active">
+						<a class="nav-link dropdown-toggle" href="/Shop" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Changelogs
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/Changelog">Changelogs</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item active" href="/Changelog/Admin">Admin</a>
+						</div>
+					</li>
+				</ul>
+
+				<form class="form-inline my-2 my-lg-0">
+					<a class="nav-link" href="/auth/logout">Logout</span></a>
+				</form>
+			</div>
+		</nav>
+		<!-- Header -->
+
+        <div class="Content noBackground">
+            <div class="card-deck mb-3 text-center">
+                <div class="card mb-4 box-shadow mx-auto Changelog">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Edit Changelog</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">Name: <input class="form-control" type="text" id="Name" value="{{Data.Name}}">
+                            Category: {{Data.Category}}
+                            Post Time <input class="form-control" type="datetime-local" id="Time" value="{{Data.Time}}">
+                        </h1>
+                        <div id="EditChangelog"></div>
+                        <button type="button" class="btn btn-lg btn-block btn-outline-success" onClick="editChangelog()">Save</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr width="75%">
+            <h1 class="MainText centerText">Changelogs</h1>
+
+            <div class="row Changelogs">
+                <div class="centercolumn centerDIV" id="ChangeLogs">
+                    
+                </div>
+            </div>
+
+            <script>
+                $.trumbowyg.svgPath = '/images/trumbowyg.svg';
+                $('#EditChangelog').trumbowyg({
+                    btns: [
+                        ['viewHTML'],
+                        ['undo', 'redo'],
+                        ['formatting'],
+                        ['strong', 'em', 'del', 'underline'],
+                        ['highlight'],
+                        ['link'],
+                        ['image'],
+                        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                        ['unorderedList', 'orderedList'],
+                        ['foreColor', 'backColor'],
+                        ['preformatted'],
+                        ['horizontalRule'],
+                        ['fullscreen']
+                    ],
+                    autogrow: true,
+                    autogrowOnEnter: true
+                });
+                $('#EditChangelog').trumbowyg('html', "{{{Data.Data}}}");
+
+                function editChangelog() {
+                    const Data = $('#editChangelog').trumbowyg('html');
+                    const Name = $("#Name").val();
+                    const Time = $("#Time").val();
+
+                    $.ajax({
+                        async: true,
+                        type: 'POST',
+                        url: '/Changelog/Admin',
+                        data: {
+                            Category: Category,
+                            Name: Name,
+                            Time: Time,
+                            Data: Data
+                        },
+                        success: function(data) {
+                            if (data.Error !== undefined) {console.log(data.Error); return alert(data.Error);}
+                            else return alert(data);
+                        },
+                        error: function(error) {
+                            console.log(error)
+                            return alert("Error");
+                        }
+                    });
+                }
+
+                ChangeLogs({{{Data}}})
+            </script>
+        </div>
+	</body>
+</html>

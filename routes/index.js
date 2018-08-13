@@ -114,7 +114,7 @@ router.get('/Changelog', async(req, res, next) => {
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
-                    else return res.render('./Changelog/Index', { title: req.WebTitle+'Changelog Admin', Login: req.Login, Admin:Admin, Data: JSON.stringify(body) });
+                    else return res.render('./Changelog/Index', { title: req.WebTitle+'Changelog', Login: req.Login, Admin:Admin, Data: JSON.stringify(body) });
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }
         );
@@ -173,6 +173,31 @@ router.post('/Changelog/Admin', RequireLogin(), async(req, res, next) => {
         return res.json({Error: error})
     }
 });
+router.get('/Changelog/Admin/:id', RequireLogin(), async(req, res, next) => {
+    try {
+        /* UPDATE LATER */
+        if (req.session.Account.isStaff == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
+        /* UPDATE LATER */
+
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/changelog/view',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "ID": req.params.id
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
+                    else return res.render('./Changelog/Edit', { title: req.WebTitle+'Changelog Admin', Data:body });
+                } else return res.render('errorCustom', { error: "API: Response Error" });
+            }
+        );
+    } catch (error) {
+        return res.json({Error: error})
+    }
+});
 
 router.get('/Changelog/:id', async(req, res, next) => {
     try {
@@ -191,7 +216,7 @@ router.get('/Changelog/:id', async(req, res, next) => {
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
-                    else return res.render('./Changelog/Index', { title: req.WebTitle+'Changelog Admin', Login: req.Login, Admin:Admin, Data:body });
+                    else return res.render('./Changelog/Index', { title: req.WebTitle+'Changelog', Login: req.Login, Admin:Admin, Data:body });
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }
         );

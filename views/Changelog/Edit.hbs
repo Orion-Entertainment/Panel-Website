@@ -107,15 +107,6 @@
                 </div>
             </div>
 
-            <hr width="75%">
-            <h1 class="MainText centerText">Changelogs</h1>
-
-            <div class="row Changelogs">
-                <div class="centercolumn centerDIV" id="ChangeLogs">
-                    
-                </div>
-            </div>
-
             <script>
                 $.trumbowyg.svgPath = '/images/trumbowyg.svg';
                 $('#EditChangelog').trumbowyg({
@@ -142,21 +133,37 @@
                 function editChangelog() {
                     const Data = $('#EditChangelog').trumbowyg('html');
                     const Name = $("#Name").val();
-                    const Time = $("#Time").val();
 
                     $.ajax({
                         async: true,
                         type: 'POST',
-                        url: '/Changelog/Admin',
+                        url: '/Changelog/Admin/{{Data.ID}}',
                         data: {
-                            Category: Category,
+                            Option: "Save",
                             Name: Name,
-                            Time: Time,
                             Data: Data
                         },
                         success: function(data) {
                             if (data.Error !== undefined) {console.log(data.Error); return alert(data.Error);}
-                            else return alert(data);
+                            else return window.location.href = "/Changelog/{{Data.ID}}";
+                        },
+                        error: function(error) {
+                            console.log(error)
+                            return alert("Error");
+                        }
+                    });
+                }
+                function deleteChangelog() {
+                    $.ajax({
+                        async: true,
+                        type: 'POST',
+                        url: '/Changelog/Admin/{{Data.ID}}',
+                        data: {
+                            Option: "Delete"
+                        },
+                        success: function(data) {
+                            if (data.Error !== undefined) {console.log(data.Error); return alert(data.Error);}
+                            else return window.location.href = "/Changelog/Admin";
                         },
                         error: function(error) {
                             console.log(error)

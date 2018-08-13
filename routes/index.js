@@ -198,6 +198,33 @@ router.get('/Changelog/Admin/:id', RequireLogin(), async(req, res, next) => {
         return res.json({Error: error})
     }
 });
+router.post('/Changelog/Admin/:id', RequireLogin(), async(req, res, next) => {
+    try {
+        /* UPDATE LATER */
+        if (req.session.Account.isStaff == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
+        /* UPDATE LATER */
+
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/changelog/edit',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "ID": req.params.id,
+                "Name": req.body.Name,
+                "Data": req.body.Data
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.json({Error: body.Error})
+                    else {return res.send(body);}
+                } else return res.json({Error: "API: Response Error"})
+            }
+        );
+    } catch (error) {
+        return res.json({Error: error})
+    }
+});
 
 router.get('/Changelog/:id', async(req, res, next) => {
     try {

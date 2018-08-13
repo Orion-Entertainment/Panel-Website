@@ -98,11 +98,13 @@
                         <h4 class="my-0 font-weight-normal">Create Changelog</h4>
                     </div>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">Category: <select class="form-control" id="Category">
-                                <option>Website</option>
-                                <option>Server</option>
+                        <h1 class="card-title pricing-card-title">Name: <input class="form-control" type="text" id="Name">
+                            Category:
+                            <select class="form-control" id="Category">
+                                    <option selected>Website</option>
+                                    <option>Server</option>
                             </select>
-                            <small class="text-muted">Post Time <input class="form-control" type="datetime-local" id="postTime"></small>
+                            <small class="text-muted">Post Time <input class="form-control" type="datetime-local" id="Time"></small>
                         </h1>
                         <div id="CreateChangelog"></div>
                         <button type="button" class="btn btn-lg btn-block btn-outline-success" onClick="createChangelog()">Create</button>
@@ -133,8 +135,30 @@
                 });
 
                 function createChangelog() {
-                    var test = $('#CreateChangelog').trumbowyg('html');
-                    console.log(test);
+                    const Data = $('#CreateChangelog').trumbowyg('html');
+                    const Category = $("#Category option:selected").text();
+                    const Name = $("#Name").val();
+                    const Time = $("#Time").val();
+
+                    $.ajax({
+                        async: true,
+                        type: 'POST',
+                        url: '/Changelog/Admin',
+                        data: {
+                            Category: Category,
+                            Name: Name,
+                            Time: Time,
+                            Data: Data
+                        },
+                        success: function(data) {
+                            if (data.Error !== undefined) {console.log(data.Error); return alert(data.Error);}
+                            else return alert(data);
+                        },
+                        error: function(error) {
+                            console.log(error)
+                            return alert("Error");
+                        }
+                    });
                 }
             </script>
         </div>

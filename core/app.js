@@ -10,9 +10,15 @@ const app = express();
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, '../public')));
-const hbs = require('hbs');
+//const hbs = require('hbs');
+
+const promisedHandlebars = require('promised-handlebars')
+const Q = require('q')
+const hbs = promisedHandlebars(require('handlebars'), { Promise: Q.Promise })
+
 hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
     return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+    
 });/*
 hbs.registerHelper('ifCond', function (v1, operator, v2, options) {
     switch (operator) {
@@ -42,12 +48,16 @@ hbs.registerHelper('formatNumber', function(value) {
 });
 const moment = require('moment');
 hbs.registerHelper('formatDate', async function(date) {
-    const Data = await moment(date).format('YYYY/MM/DD HH:mm:ss');
-    return Data;
+    return Q.delay(100).then(function () {
+        const Data = await moment(date).format('YYYY/MM/DD HH:mm:ss');
+        return Data;
+    })
 });
 hbs.registerHelper('formatDateSmall', async function(date) {
-    const Data = await moment(date).format('YYYY/MM/DD HH:mm');
-    return Data;
+    return Q.delay(100).then(function () {
+        const Data = await moment(date).format('YYYY/MM/DD HH:mm');
+        return Data;
+    })
 });
 hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
     lvalue = parseFloat(lvalue);

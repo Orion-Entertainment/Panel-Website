@@ -201,6 +201,9 @@ a,a:hover {
     background-color: white;
     padding: 20px;
     margin-top: 20px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
 }
 .row:after {
     content: "";

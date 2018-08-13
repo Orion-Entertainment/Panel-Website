@@ -180,7 +180,7 @@ router.get('/Changelog/Admin/:id', RequireLogin(), async(req, res, next) => {
         /* UPDATE LATER */
 
         request.post(
-            'https://panelapi.orion-entertainment.net/v1/changelog/edit',
+            'https://panelapi.orion-entertainment.net/v1/changelog/view',
             { json: { 
                 "client_id": await req.APIKey.client_id,
                 "token": await req.APIKey.token,

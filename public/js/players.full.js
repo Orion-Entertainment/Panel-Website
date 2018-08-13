@@ -214,7 +214,7 @@ function getPlayerData(playerID, item, option) {
                             $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td>'+info["Name"]+'</td><td>'+info["Reason"]+'</td><td>'+info["Time"]+'</td></tr>');
                             break;
                         case "Kills":
-                            $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td><a href="/Players/Search?q='+info["Killed"]+'">'+info["KilledName"]+'('+info["KilledGroup"]+')</a></td><td>'+info["Weapon"]+'</td><td>'+info["Time"]+'</td></tr>');
+                            $('#'+item+' > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td><a href="/Players/Search?q='+info["Killed"]+'">'+info["Name"]+'('+info["KilledGroup"]+')</a></td><td>'+info["Weapon"]+'</td><td>'+info["Time"]+'</td></tr>');
                             switch (option) {
                                 case "All":
                                     $('#KillsText').html('Recent Kills <button type="button" class="btn-sm btn-blue-grey" onClick="getPlayerData('+playerID+',\'Kills\',\'\');">Show Deaths</button>');

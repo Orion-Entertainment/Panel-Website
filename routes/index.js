@@ -99,7 +99,31 @@ router.post('/register', async(req, res, next) => {
     }
 });
 
+router.get('/Changelog', async(req, res, next) => {
+    try {
+        /* UPDATE LATER */
+        if (req.session.Account.isStaff !== undefined) Admin = true; else Admin = false;
+        /* UPDATE LATER */
 
+        request.post(
+            'https://panelapi.orion-entertainment.net/v1/changelog',
+            { json: { 
+                "client_id": await req.APIKey.client_id,
+                "token": await req.APIKey.token,
+
+                "Option": "Index"
+            } },
+            async function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
+                    else return res.render('./Changelog/Index', { title: req.WebTitle+'Changelog Admin', Login: req.Login, Admin:Admin, Data: JSON.stringify(body) });
+                } else return res.render('errorCustom', { error: "API: Response Error" });
+            }
+        );
+    } catch (error) {
+        return res.render('errorCustom', { error: error });
+    }
+});
 router.get('/Changelog/Admin', RequireLogin(), async(req, res, next) => {
     try {
         /* UPDATE LATER */
@@ -107,7 +131,7 @@ router.get('/Changelog/Admin', RequireLogin(), async(req, res, next) => {
         /* UPDATE LATER */
 
         request.post(
-            'https://panelapi.orion-entertainment.net/v1/changelog/admin',
+            'https://panelapi.orion-entertainment.net/v1/changelog',
             { json: { 
                 "client_id": await req.APIKey.client_id,
                 "token": await req.APIKey.token,
@@ -132,7 +156,7 @@ router.post('/Changelog/Admin', RequireLogin(), async(req, res, next) => {
         /* UPDATE LATER */
 
         request.post(
-            'https://panelapi.orion-entertainment.net/v1/changelog/admin',
+            'https://panelapi.orion-entertainment.net/v1/changelog',
             { json: { 
                 "client_id": await req.APIKey.client_id,
                 "token": await req.APIKey.token,

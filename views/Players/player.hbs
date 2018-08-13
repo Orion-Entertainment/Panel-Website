@@ -219,6 +219,27 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <div class="Item">
+                        <h1 class="AltText centerText">Vehicles</h1>
+                        <hr width="75%">
+
+                        <table class="table TableScroll" id="Vehicles">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><scrong>Side</scrong></th>
+                                    <th scope="col"><scrong>Classname</scrong></th>
+                                    <th scope="col"><scrong>Type</scrong></th>
+                                    <th scope="col"><scrong>Plate</scrong></th>
+                                    <th scope="col"><scrong>Insured</scrong></th>
+                                    <th scope="col"><scrong>Time Bought</scrong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 {{#if Info.Private}}
@@ -307,10 +328,10 @@
                 <script>
                     $(document).ready(function(){
                         {{#if Info.Private}}
-                            //,'Vehicles','Houses','HouseItems'
-                            const Load = ['Names', 'Bans','Kicks','MaldenLife','Kills'];
+                            //,'Houses','HouseItems'
+                            const Load = ['Names', 'Bans','Kicks','MaldenLife','Kills','Vehicles'];
                         {{else}}
-                            const Load = ['Names', 'Bans','Kicks','MaldenLife','Kills'];
+                            const Load = ['Names', 'Bans','Kicks','MaldenLife','Kills','Vehicles'];
                         {{/if}}
                         LoadPlayer(Load,{{Info.id}})
                     });

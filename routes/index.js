@@ -210,6 +210,7 @@ router.post('/Changelog/Admin/:id', RequireLogin(), async(req, res, next) => {
                 "client_id": await req.APIKey.client_id,
                 "token": await req.APIKey.token,
 
+                "Option": req.body.Option,
                 "ID": req.params.id,
                 "Name": req.body.Name,
                 "Data": req.body.Data

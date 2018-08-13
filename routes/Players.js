@@ -6,7 +6,7 @@ const RequireLogin = require('./auth').RequireLogin;
 router.get('/Search', RequireLogin(), async(req, res, next) => {
     try {
         if (req.query.q !== undefined) Query = req.query.q; else Query = false;
-        return res.render('./Players/search', { title: req.WebTitle+'Players - Search', Admin: req.isStaff, Query: Query });
+        return res.render('./Players/search', { title: req.WebTitle+'Players - Search', Admin: await req.isStaff(), Query: Query });
     } catch (error) {
         return res.render('errorCustom', { error: error });
     }
@@ -39,7 +39,7 @@ router.post('/Search', RequireLogin(), async(req, res, next) => {
 
 router.get('/TopCharts', RequireLogin(), async(req, res, next) => {
     try {
-        return res.render('./Players/topcharts', { title: req.WebTitle+'Players - Top Charts', Admin: req.isStaff });
+        return res.render('./Players/topcharts', { title: req.WebTitle+'Players - Top Charts', Admin: await req.isStaff() });
     } catch (error) {
         return res.render('errorCustom', { error: error });
     }
@@ -73,7 +73,7 @@ router.post('/TopCharts', RequireLogin(), async(req, res, next) => {
 
 router.get('/KillFeed', RequireLogin(), async(req, res, next) => {
     try {
-        return res.render('./Players/killfeed', { title: req.WebTitle+'Players - Kill Feed', Admin: req.isStaff });
+        return res.render('./Players/killfeed', { title: req.WebTitle+'Players - Kill Feed', Admin: await req.isStaff() });
     } catch (error) {
         return res.render('errorCustom', { error: error });
     }
@@ -107,9 +107,9 @@ router.get('/:PlayerID', RequireLogin(), async(req, res, next) => {
         if (req.session.Account.SteamID !== undefined) SteamID = req.session.Account.SteamID; else SteamID = false;
 
         /* UPDATE LATER */
-        if (req.isStaff !== undefined) SteamID = true;
-        if (req.isStaff !== undefined) Staff = true; else Staff = false; //sendperms
-        //if (req.isStaff !== undefined) sPermissions = req.session.Account.Staff.Permissions; else sPermissions = false;
+        if (await req.isStaff() !== undefined) SteamID = true;
+        if (await req.isStaff() !== undefined) Staff = true; else Staff = false; //sendperms
+        //if (await req.isStaff() !== undefined) sPermissions = req.session.Account.Staff.Permissions; else sPermissions = false;
         /* UPDATE LATER */
 
         request.post(
@@ -126,7 +126,7 @@ router.get('/:PlayerID', RequireLogin(), async(req, res, next) => {
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
                     else {
-                        return res.render('./Players/player', { title: req.WebTitle+'Players', Admin: req.isStaff, Info: body.Info });
+                        return res.render('./Players/player', { title: req.WebTitle+'Players', Admin: await req.isStaff(), Info: body.Info });
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }
@@ -145,9 +145,9 @@ router.post('/:PlayerID/Info', RequireLogin(), async(req, res, next) => {
         if (req.session.Account.SteamID !== undefined) SteamID = req.session.Account.SteamID; else SteamID = false;
 
         /* UPDATE LATER */
-        if (req.isStaff !== undefined) SteamID = true;
-        if (req.isStaff !== undefined) Staff = true; else Staff = false; //sendperms
-        //if (req.isStaff !== undefined) sPermissions = req.session.Account.Staff.Permissions; else sPermissions = false;
+        if (await req.isStaff() !== undefined) SteamID = true;
+        if (await req.isStaff() !== undefined) Staff = true; else Staff = false; //sendperms
+        //if (await req.isStaff() !== undefined) sPermissions = req.session.Account.Staff.Permissions; else sPermissions = false;
         /* UPDATE LATER */
 
         request.post(
@@ -182,9 +182,9 @@ router.get('/:PlayerID/:Page', RequireLogin(), async(req, res, next) => {
 
         if (req.session.Account.SteamID !== undefined) SteamID = req.session.Account.SteamID; else SteamID = false;
         /* UPDATE LATER */
-        if (req.isStaff !== undefined) SteamID = true;
-        if (req.isStaff !== undefined) Staff = true; else Staff = false; //sendperms
-        //if (req.isStaff !== undefined) sPermissions = req.session.Account.Staff.Permissions; else sPermissions = false;
+        if (await req.isStaff() !== undefined) SteamID = true;
+        if (await req.isStaff() !== undefined) Staff = true; else Staff = false; //sendperms
+        //if (await req.isStaff() !== undefined) sPermissions = req.session.Account.Staff.Permissions; else sPermissions = false;
         /* UPDATE LATER */
 
         request.post(
@@ -210,7 +210,7 @@ router.get('/:PlayerID/:Page', RequireLogin(), async(req, res, next) => {
                         } else return res.render('errorCustom', { error: body.Error });
                     } else {
                         const Data = body[req.params.Page];
-                        return res.render('./Players/playerPage', { title: req.WebTitle+'Players '+req.params.Page, Admin: req.isStaff, Data: Data, Page: req.params.Page, PID: req.params.PlayerID });
+                        return res.render('./Players/playerPage', { title: req.WebTitle+'Players '+req.params.Page, Admin: await req.isStaff(), Data: Data, Page: req.params.Page, PID: req.params.PlayerID });
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }

@@ -14,7 +14,7 @@ router.get('/', async(req, res, next) => {
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) {return res.render('errorCustom', { error: body.Error });} else {
-                        return res.render('./Shop/index', { title: req.WebTitle+'Shop', Option: "Index", Data: body, Login: req.Login, Admin: req.isStaff });
+                        return res.render('./Shop/index', { title: req.WebTitle+'Shop', Option: "Index", Data: body, Login: await req.Login(), Admin: await req.isStaff() });
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }
@@ -38,7 +38,7 @@ router.get('/Purchases', RequireLogin(), async(req, res, next) => {
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) {return res.render('errorCustom', { error: body.Error });}
                     else {
-                        return res.render('./Shop/purchases', { title: req.WebTitle+'Shop - Purchases', Data: body.Info, Admin: req.isStaff });
+                        return res.render('./Shop/purchases', { title: req.WebTitle+'Shop - Purchases', Data: body.Info, Admin: await req.isStaff() });
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }
@@ -123,7 +123,7 @@ router.get('/Success', RequireLogin(), async(req, res, next) => {
                     if (body.Error !== undefined) {return res.render('errorCustom', { error: body.Error });}
                     else {
                         delete req.session.Account.Buying;
-                        return res.render('./Shop/success', { title: req.WebTitle+'Shop - Success', Data: body, Admin: req.isStaff });
+                        return res.render('./Shop/success', { title: req.WebTitle+'Shop - Success', Data: body, Admin: await req.isStaff() });
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }
@@ -159,7 +159,7 @@ router.get('/:Category', async(req, res, next) => {
                         if (body.Error == "Category Not Found") {const err = new Error('Not Found');err.status = 404;next(err); return;}
                         else {return res.render('errorCustom', { error: body.Error });}
                     } else {
-                        return res.render('./Shop/index', { title: req.WebTitle+'Shop - '+req.params.Category, Option: "Category", Category: req.params.Category, Data: body, Login: req.Login, Admin: req.isStaff });
+                        return res.render('./Shop/index', { title: req.WebTitle+'Shop - '+req.params.Category, Option: "Category", Category: req.params.Category, Data: body, Login: await req.Login(), Admin: await req.isStaff() });
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }
@@ -191,7 +191,7 @@ router.get('/:Category/:Item', RequireLogin(), async(req, res, next) => {
                         else {return res.render('errorCustom', { error: body.Error });}
                     } else {
                         if (body.Item == false) {const err = new Error('Not Found');err.status = 404;next(err); return;}
-                        else {return res.render('./Shop/item', { title: req.WebTitle+'Shop - '+req.params.Category, Category: req.params.Category, Item: req.params.Item, Data: body.Item, Admin: req.isStaff });}
+                        else {return res.render('./Shop/item', { title: req.WebTitle+'Shop - '+req.params.Category, Category: req.params.Category, Item: req.params.Item, Data: body.Item, Admin: await req.isStaff() });}
                     }
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }

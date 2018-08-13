@@ -5,7 +5,7 @@ const RequireLogin = require('./auth').RequireLogin;
 
 router.get('/', async(req, res, next) => {
     try {
-        return res.render('index', { title: req.WebTitle+'Home', Login: req.Login });
+        return res.render('index', { title: req.WebTitle+'Home', Login: await req.Login() });
     } catch (error) {
         return res.render('errorCustom', { error: error });
     }
@@ -113,7 +113,7 @@ router.get('/Changelog', async(req, res, next) => {
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
-                    else return res.render('./Changelog/Index', { title: req.WebTitle+'Changelog', Login: req.Login, Admin:req.isStaff, Data: JSON.stringify(body) });
+                    else return res.render('./Changelog/Index', { title: req.WebTitle+'Changelog', Login: await req.Login(), Admin:await req.isStaff(), Data: JSON.stringify(body) });
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }
         );
@@ -124,7 +124,7 @@ router.get('/Changelog', async(req, res, next) => {
 router.get('/Changelog/Admin', RequireLogin(), async(req, res, next) => {
     try {
         /* UPDATE LATER */
-        if (req.isStaff == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
+        if (await req.isStaff() == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
         /* UPDATE LATER */
 
         request.post(
@@ -147,7 +147,7 @@ router.get('/Changelog/Admin', RequireLogin(), async(req, res, next) => {
 router.post('/Changelog/Admin', RequireLogin(), async(req, res, next) => {
     try {
         /* UPDATE LATER */
-        if (req.isStaff == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
+        if (await req.isStaff() == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
         /* UPDATE LATER */
 
         request.post(
@@ -175,7 +175,7 @@ router.post('/Changelog/Admin', RequireLogin(), async(req, res, next) => {
 router.get('/Changelog/Admin/:id', RequireLogin(), async(req, res, next) => {
     try {
         /* UPDATE LATER */
-        if (req.isStaff == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
+        if (await req.isStaff() == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
         /* UPDATE LATER */
 
         request.post(
@@ -200,7 +200,7 @@ router.get('/Changelog/Admin/:id', RequireLogin(), async(req, res, next) => {
 router.post('/Changelog/Admin/:id', RequireLogin(), async(req, res, next) => {
     try {
         /* UPDATE LATER */
-        if (req.isStaff == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
+        if (await req.isStaff() == undefined) {const err = new Error('Not Found');err.status = 404;next(err); return;}
         /* UPDATE LATER */
 
         request.post(
@@ -242,7 +242,7 @@ router.get('/Changelog/:id', async(req, res, next) => {
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     if (body.Error !== undefined) return res.render('errorCustom', { error: body.Error });
-                    else return res.render('./Changelog/View', { title: req.WebTitle+'Changelog', Login: req.Login, Admin:req.isStaff, Data:body });
+                    else return res.render('./Changelog/View', { title: req.WebTitle+'Changelog', Login: await req.Login(), Admin:await req.isStaff(), Data:body });
                 } else return res.render('errorCustom', { error: "API: Response Error" });
             }
         );

@@ -179,6 +179,10 @@ a,a:hover {
 .Changelogs {
     padding: 10px;
 }
+.centercolumn { 
+    float: center;
+    width: 75%;
+}
 .leftcolumn { 
     float: left;
     width: 75%;

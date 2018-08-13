@@ -13,6 +13,17 @@ body {
     background: linear-gradient(to right, #07d5c4 0%,#08e8d5 50%,#07d5c4 100%);
 }
 
+a,a:hover {
+    color: rgba(0,0,0,.9);
+    text-decoration: none;
+}
+
+.navbar {
+    -webkit-border-radius: 0 0 7px 7px;
+    -moz-border-radius: 0 0 7px 7px;
+    border-radius: 0 0 7px 7px;
+}
+
 .Content {
     background: linear-gradient(
         rgba(0, 0, 0, 0.25), 

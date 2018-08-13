@@ -168,7 +168,9 @@ a,a:hover {
 .ShopCardBuy {
     max-width: 40%;
 }
-
+.CreateChangelog {
+    max-width: 80%;
+}
 .ItemImages {
     max-width: 75%;
 }

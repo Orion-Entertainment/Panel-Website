@@ -198,7 +198,9 @@ router.get('/:PlayerID/:Page', RequireLogin(), async(req, res, next) => {
                 "Staff": Staff,
                 "Option": "Get",
                 "Option2": req.params.Page,
-                "Option3": ""
+                "Option3": "",
+
+                "Total": true
             } },
             async function (error, response, body) {
                 if (!error && response.statusCode == 200) {

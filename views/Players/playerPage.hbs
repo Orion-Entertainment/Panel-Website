@@ -61,8 +61,8 @@
 		<!-- Header -->
 
 		<div class="Content">
-            {{#if Data}}
-                <h1 class="AltText centerText"><a href="/Players/{{PID}}" type="button" class="btn btn-primary">Player</a><!-- Max Return:<input value="John Doe" type="number" class="form-control InputFix">--></h1>
+            {{#if Data.Data}}
+                <h1 class="AltText centerText"><a href="/Players/{{PID}}" type="button" class="btn btn-primary">Back to Player</a> Total = {{formatNumber Data.Total}}</h1>
 
                 <table class="table AltTableScroll">
                     {{#ifEquals Page "Names"}}
@@ -73,7 +73,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each Data}}
+                            {{#each Data.Data}}
                             <tr>
                                 <th scope="col"><scrong>{{this.Name}}</scrong></th>
                                 <td>{{this.Time}}</td>
@@ -92,7 +92,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each Data}}
+                            {{#each Data.Data}}
                             <tr>
                                 <td>{{this.Server}}</td>
                                 <td>{{this.Reason}}</td>
@@ -111,7 +111,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each Data}}
+                            {{#each Data.Data}}
                             <tr>
                                 <td>{{this.IP}}</td>
                                 <td>{{this.Time}}</td>
@@ -130,7 +130,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each Data}}
+                            {{#each Data.Data}}
                             <tr>
                                 <td>{{this.Server}}</td>
                                 <td>{{this.Name}}</td>
@@ -151,7 +151,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each Data}}
+                            {{#each Data.Data}}
                             <tr>
                                 <td>{{this.Server}}</td>
                                 <td>{{this.Killed}}({{this.KilledGroup}})</td>
@@ -174,7 +174,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each Data}}
+                            {{#each Data.Data}}
                             <tr>
                                 <td>{{this.side}}</td>
                                 <td>{{this.classname}}</td>

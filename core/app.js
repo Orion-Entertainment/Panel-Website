@@ -47,14 +47,14 @@ hbs.registerHelper('formatNumber', function(value) {
     return value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 });
 const moment = require('moment');
-hbs.registerHelper('formatDate', async function(date) {
-    return Q.delay(100).then(function () {
+hbs.registerHelper('formatDate', function(date) {
+    return Q.delay(100).then(async function () {
         const Data = await moment(date).format('YYYY/MM/DD HH:mm:ss');
         return Data;
     })
 });
-hbs.registerHelper('formatDateSmall', async function(date) {
-    return Q.delay(100).then(function () {
+hbs.registerHelper('formatDateSmall', function(date) {
+    return Q.delay(100).then(async  function () {
         const Data = await moment(date).format('YYYY/MM/DD HH:mm');
         return Data;
     })

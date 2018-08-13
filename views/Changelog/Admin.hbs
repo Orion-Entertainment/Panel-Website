@@ -83,7 +83,11 @@
             <div id="CreateChangelog"></div>
             <script>
                 $.trumbowyg.svgPath = '/images/trumbowyg.svg';
-                $('#CreateChangelog').trumbowyg();
+                $('#CreateChangelog').trumbowyg({
+                    btns: [
+                        ['highlight']
+                    ]
+                });
             </script>
         </div>
 	</body>

@@ -100,9 +100,13 @@
                         ['preformatted'],
                         ['horizontalRule'],
                         ['fullscreen']
-                    ]
-                    
+                    ],
+                    autogrow: true
                 });
+
+                setTimeout(function(){
+                    console.log($('#CreateChangelog').trumbowyg('html');)
+                }, 10000);
             </script>
         </div>
 	</body>

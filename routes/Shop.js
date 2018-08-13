@@ -135,7 +135,6 @@ router.get('/Success', RequireLogin(), async(req, res, next) => {
 
 router.get('/Cancel', RequireLogin(), async(req, res, next) => {
     try {
-        console.log(req.query)
         return res.redirect('/Shop');
     } catch (error) {
         return res.json({Error: error})

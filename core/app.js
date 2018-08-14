@@ -40,9 +40,12 @@ hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
 const Footer = '<footer class="page-footer font-small blue pt-4">'+
 '		<div class="container-fluid text-center text-md-left">'+
 '			<div class="row">'+
-'				<div class="col-md-6 mt-md-0 mt-3">'+
-'					<a href="https://discord.gg/fbbAe3U"><i class="fab fa-discord fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>'+
-'					<a href="ts3server://ts.orion-entertainment.net"><i class="fab fa-teamspeak fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>'+
+//'				<div class="col-md-6 mt-md-0 mt-3">'+
+'				<div class="col-md-12 py-5">'+
+'					<div class="mb-5 flex-center">'+
+'					    <a href="https://discord.gg/fbbAe3U"><i class="fab fa-discord fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>'+
+'					    <a href="ts3server://ts.orion-entertainment.net"><i class="fab fa-teamspeak fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>'+
+'					</div>'+
 '				</div>'+
 ''+
 '				<hr class="clearfix w-100 d-md-none pb-3">'+

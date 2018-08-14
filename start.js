@@ -7,6 +7,7 @@ const app = require('./core/app');
 const http = require('http');
 const debug = require('debug')('demo:server');
 process.env.TZ = 'America/Montreal';
+process.env.NODE_ENV = 'production';
 
 const port = normalizePort(process.env.PORT || Port);
 app.set('port', port);

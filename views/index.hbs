@@ -156,14 +156,18 @@
 							var totalPlayers = new Chart(ctx,{
 								type: 'doughnut',
 								data: {
-									labels: ["Total Players"],
+									labels: ["New Month","Active Month","Bans Month"],
 									datasets: [{
 										label: 'players',
-										data: [data.TotalPlayers.Total],
+										data: [data.TotalPlayers.TotalNewMonth,data.TotalPlayers.TotalMonth,data.TotalPlayers.TotalBans],
 										backgroundColor: [
+											'rgba(98, 247, 255, 0.35)',
+											'rgba(98, 247, 255, 0.35)',
 											'rgba(98, 247, 255, 0.35)'
 										],
 										borderColor: [
+											'rgba(98, 247, 255, 1)',
+											'rgba(98, 247, 255, 1)',
 											'rgba(98, 247, 255, 1)'
 										],
 										borderWidth: 1

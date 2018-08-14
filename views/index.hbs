@@ -108,8 +108,7 @@
             </div>
 
 			<hr width="75%">
-            <h1 class="MainText centerText">Community Statistics</h1>
-			<p class="SubText centerText">Monthly</p>
+            <h1 class="MainText centerText">Monthly Community Statistics</h1>
 			<hr width="50%">
 			<div class="PlayerBoxes">
 				<div class="Item">
@@ -157,7 +156,7 @@
 							var totalPlayers = new Chart(ctx,{
 								type: 'doughnut',
 								data: {
-									labels: ["New Month","Active Month","Bans Month"],
+									labels: ["Active","New","Bans"],
 									datasets: [{
 										label: 'players',
 										data: [data.TotalPlayers.TotalNewMonth,data.TotalPlayers.TotalMonth,data.TotalPlayers.TotalBans],

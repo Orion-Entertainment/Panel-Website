@@ -53,7 +53,7 @@ router.post('/GetData', async(req, res, next) => {
                     } else return res.json({Error: "API: Response Error"})
                 }
             );
-        } else if (await moment(GetData[0]).add(30, 'minutes') < await moment(new Data())) {
+        } else if (await moment(GetData[0]).add(30, 'minutes') < await moment(new Date())) {
             request.post(
                 'https://panelapi.orion-entertainment.net/v1/home/getdata',
                 { json: { 
@@ -71,7 +71,6 @@ router.post('/GetData', async(req, res, next) => {
                 }
             );
         } else {
-            console.log(GetData[1])
             return res.send(GetData[1]);
         }
     } catch (error) {

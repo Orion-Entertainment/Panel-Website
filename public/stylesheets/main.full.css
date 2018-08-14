@@ -13,6 +13,11 @@ body {
     background: linear-gradient(to right, #07d5c4 0%,#08e8d5 50%,#07d5c4 100%);
 }
 
+footer {
+    left: 0;
+    bottom: 0;
+}
+
 a,a:hover {
     color: rgba(0,0,0,.9);
     text-decoration: none;

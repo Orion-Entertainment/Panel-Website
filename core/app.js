@@ -37,8 +37,10 @@ hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
     }[operator];
 });
 
-const Footer = '<footer class="page-footer font-small blue pt-4">'+
-'		<div class="container-fluid text-center text-md-left">'+
+const Footer = ''+
+//'	<footer class="page-footer font-small blue pt-4">'+
+'	<footer class="page-footer font-small unique-color-dark pt-4">'+
+/*'		<div class="container-fluid text-center text-md-left">'+
 '			<div class="row">'+
 '				<div class="col-md-6 mt-md-0 mt-3">'+
 '					<div class="mb-5 flex-center">'+
@@ -69,7 +71,7 @@ const Footer = '<footer class="page-footer font-small blue pt-4">'+
 '				</div>'+
 '			</div>'+
 '		</div>'+
-''+
+''+*/
 '		<div class="footer-copyright text-center py-3">© 2018 Copyright:'+
 '			<a href="https://orion-entertainment.net/"> Orion-Entertainment</a>'+
 '		</div>'+

@@ -72,8 +72,8 @@ const Footer = ''+
 '			</div>'+
 '		</div>'+
 ''+*/
-'		<div class="footer-copyright text-center py-3">© 2018 Copyright:'+
-'			<a href="https://orion-entertainment.net/"> Orion-Entertainment</a>'+
+'		<div class="footer-copyright text-center py-3">© 2018 '+
+'			<a href="https://orion-entertainment.net/">Orion-Entertainment.</a>'+
 '		</div>'+
 '	</footer>';
 	

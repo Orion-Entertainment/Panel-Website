@@ -21,6 +21,8 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.8/js/mdb.min.js"></script>
         <!-- Moment.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+        <!-- Chart.js -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js" integrity="sha256-CfcERD4Ov4+lKbWbYqXD6aFM9M51gN4GUEtDhkWABMo=" crossorigin="anonymous"></script>
         <!-- Orion-Entertainment Home JS -->
         <script type="text/javascript" src="/js/home.full.js"></script>
 	</head>
@@ -92,7 +94,7 @@
 		<div class="Content">
 			<h1 class="MainText centerText">Orion-Entertainment Panel Home</h1>
 			{{#if Login}}
-				<p class="SubText centerText">This website currently in ~pre-alpha~</p>
+				<p class="SubText centerText">Website currently in beta</p>
 			{{else}}
 				<p class="SubText centerText">Register/Login at <a href="https://panel.orion-entertainment.net/login">https://orion-entertainment.net/login</a></p>
 			{{/if}}
@@ -112,7 +114,7 @@
 					<h1 class="AltText centerText">Total Players</h1>
 					<hr width="75%">
 
-					<p class="SubText centerText">Test</p>
+					<canvas id="totalPlayers" width="400" height="400"></canvas>
 				</div>
 
 				<div class="Item">
@@ -148,6 +150,25 @@
                         success: function(data) {
                             if (data.Error !== undefined) {console.log(data.Error); return alert(data.Error);}
                             else console.log(data);
+
+							var ctx = document.getElementById("totalPlayers");
+							var totalPlayers = new Chart(ctx,{
+								type: 'doughnut',
+								data: {
+									labels: ["Total Players"],
+									datasets: [{
+										label: 'players',
+										data: [data.TotalPlayers],
+										backgroundColor: [
+											'rgba(255, 99, 132, 0.2)'
+										],
+										borderColor: [
+											'rgba(255,99,132,1)'
+										],
+										borderWidth: 1
+									}]
+								}
+							});
                         },
                         error: function(error) {
                             console.log(error)

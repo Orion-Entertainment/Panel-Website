@@ -114,7 +114,7 @@
 					<h1 class="AltText centerText">Total Players</h1>
 					<hr width="75%">
 
-					<canvas id="totalPlayers"></canvas>
+					<canvas id="totalPlayers" width="500" height="500"></canvas>
 				</div>
 
 				<div class="Item">
@@ -154,10 +154,6 @@
 							var ctx = document.getElementById("totalPlayers");
 							var totalPlayers = new Chart(ctx,{
 								type: 'doughnut',
-								size: {
-									width: 600,
-									height: 600
-								},
 								data: {
 									labels: ["Total Players"],
 									datasets: [{

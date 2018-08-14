@@ -152,13 +152,11 @@
                             else console.log(data);
 
 							var ctx = document.getElementById("totalPlayers");
-							ctx.getContext("2d").font="36px verdana";
-							ctx.getContext("2d").fillText(data.TotalPlayers,200,200);
 							var totalPlayers = new Chart(ctx,{
 								type: 'doughnut',
 								size: {
-									width: 400,
-									height: 400
+									width: 600,
+									height: 600
 								},
 								data: {
 									labels: ["Total Players"],
@@ -169,7 +167,7 @@
 											'rgba(98, 247, 255, 0.35)'
 										],
 										borderColor: [
-											'rgba(98, 247, 255,1)'
+											'rgba(98, 247, 255, 1)'
 										],
 										borderWidth: 1
 									}]

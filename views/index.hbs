@@ -120,6 +120,21 @@
                             return alert("Error");
                         }
                     });
+					
+					$.ajax({
+                        async: true,
+                        type: 'POST',
+                        url: '/GetData',
+                        data: {},
+                        success: function(data) {
+                            if (data.Error !== undefined) {console.log(data.Error); return alert(data.Error);}
+                            else console.log(data);
+                        },
+                        error: function(error) {
+                            console.log(error)
+                            return alert("Error");
+                        }
+                    });
 				});
 			</script>
 		</div>

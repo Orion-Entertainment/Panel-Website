@@ -32,6 +32,32 @@ router.post('/RecentChangelogs', async(req, res, next) => {
     }
 });
 
+let GetData = [];
+router.post('/GetData', async(req, res, next) => {
+    try {
+        if (GetData.length < 1) {
+            request.post(
+                'https://panelapi.orion-entertainment.net/v1/home/getdata',
+                { json: { 
+                    "client_id": await req.APIKey.client_id,
+                    "token": await req.APIKey.token
+                } },
+                async function (error, response, body) {
+                    if (!error && response.statusCode == 200) {
+                        if (body.Error !== undefined) return res.json({Error: body.Error})
+                        else {
+                            GetData = [new Date(),body];
+                            return res.send(body);
+                        }
+                    } else return res.json({Error: "API: Response Error"})
+                }
+            );
+        }
+    } catch (error) {
+        return res.json({Error: error})
+    }
+});
+
 router.get('/privacy-policy', async(req, res, next) => {
     try {
         return res.redirect('https://orion-entertainment.net/privacy-policy');

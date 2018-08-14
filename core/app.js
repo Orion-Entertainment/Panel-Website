@@ -42,27 +42,29 @@ const Footer = '<footer class="page-footer font-small blue pt-4">'+
 '			<div class="row">'+
 '				<div class="col-md-6 mt-md-0 mt-3">'+
 '					<h5 class="text-uppercase">Footer Content</h5>'+
-'					<p>Here you can use rows and columns here to organize your footer content.</p>'+
+'					<div class="mb-5 flex-center">'+
+'					    <i class="fab fa-discord fa-lg white-text mr-md-5 mr-3 fa-2x"></i>'+
+'					</div>'+
 '				</div>'+
 ''+
 '				<hr class="clearfix w-100 d-md-none pb-3">'+
 '				<div class="col-md-3 mb-md-0 mb-3">'+
-'					<h5 class="text-uppercase">Links</h5>'+
+'					<h5 class="text-uppercase">Community</h5>'+
 '					<ul class="list-unstyled">'+
-'						<li><a href="#!">Link 1</a></li>'+
-'						<li><a href="#!">Link 2</a></li>'+
-'						<li><a href="#!">Link 3</a></li>'+
-'						<li><a href="#!">Link 4</a></li>'+
+'						<li><a href="ts3server://ts.orion-entertainment.net">Teamspeak</a></li>'+
+'						<li><a href="https://discord.gg/fbbAe3U ">Discord</a></li>'+
+//'						<li><a href="#!">Link 3</a></li>'+
+//'						<li><a href="#!">Link 4</a></li>'+
 '					</ul>'+
 '				</div>'+
 ''+
 '				<div class="col-md-3 mb-md-0 mb-3">'+
-'					<h5 class="text-uppercase">Links</h5>'+
+'					<h5 class="text-uppercase">Information</h5>'+
 '					<ul class="list-unstyled">'+
-'						<li><a href="#!">Link 1</a></li>'+
-'						<li><a href="#!">Link 2</a></li>'+
-'						<li><a href="#!">Link 3</a></li>'+
-'						<li><a href="#!">Link 4</a></li>'+
+'						<li><a href="https://orion-entertainment.net/terms-of-service">Terms of Service</a></li>'+
+'						<li><a href="https://orion-entertainment.net/privacy-policy!">Privacy Policy</a></li>'+
+//'						<li><a href="#!">Link 3</a></li>'+
+//'						<li><a href="#!">Link 4</a></li>'+
 '					</ul>'+
 '				</div>'+
 '			</div>'+

@@ -1,10 +1,9 @@
 /* --------------- */
 /* /players/search */
 /* --------------- */
-let q = 0;
 function SearchPlayer(searchVal) {
-    const searchField = searchVal;
-    const ResultsTable = document.getElementById("results");
+    var searchField = searchVal;
+    var ResultsTable = document.getElementById("results");
     if (q > 0) {return};
     if (searchField == "" | searchField.length < 2)  {
         if (ResultsTable.style.display === "table") {
@@ -56,7 +55,7 @@ function SearchPlayer(searchVal) {
 /* /players/:playerid */
 /* ------------------ */
 function LoadPlayer(load, playerID) {
-    const Load = load;
+    var Load = load;
     Load.forEach(function(item) {
         $.ajax({
             async: true,
@@ -97,7 +96,7 @@ function LoadPlayer(load, playerID) {
                             break;
                     }
                 } else {
-                    const Data = data[item];
+                    var Data = data[item];
                     for (i = 0; i < Data.length; i++) {
                         info = Data[i];
                         switch (item) {
@@ -195,7 +194,7 @@ function getPlayerData(playerID, item, option) {
                 }
             } else {
                 $('#'+item+' tbody').empty();
-                const Data = data[item];
+                var Data = data[item];
                 for (i = 0; i < Data.length; i++) {
                     info = Data[i];
                     switch (item) {
@@ -250,10 +249,10 @@ function getPlayerData(playerID, item, option) {
 /* /players/topcharts */
 /* ------------------ */
 function LoadTopCharts(load) {
-    const Load = load;
+    var Load = load;
     for (i = 0; i < Load.length; i++) {
-        const Server = Load[i].Server;
-        const Data = Load[i].Data;
+        var Server = Load[i].Server;
+        var Data = Load[i].Data;
         Data.forEach(function(Category) {
             $.ajax({
                 async: true,
@@ -269,7 +268,7 @@ function LoadTopCharts(load) {
                     } else if (data[Category] == false) {
                         $('#'+Category+' > tbody:last-child').append('<tr><td>No Players Found</td></tr>');
                     } else {
-                        const Data = data[Category];
+                        var Data = data[Category];
                         for (i = 0; i < Data.length; i++) {
                             info = Data[i];
                             switch (Category) {
@@ -314,7 +313,7 @@ function LoadKillFeed() {
             } else if (data["Kills"] == false) {
                 $('#'+Category+' > tbody:last-child').append('<tr><td>No Kills Found</td></tr>');
             } else {
-                const Data = data["Kills"];
+                var Data = data["Kills"];
                 for (i = 0; i < Data.length; i++) {
                     info = Data[i];
                     $('#Kills > tbody:last-child').append('<tr><td>'+info["Server"]+'</td><td><strong><a href="/Players/Search?q='+info["Killer"]+'">'+info["KillerName"]+'('+info["KillerGroup"]+')</a></strong></td><td><strong><a href="/Players/Search?q='+info["Killed"]+'">'+info["KilledName"]+'('+info["KilledGroup"]+')</a></strong></td><td>'+info["Weapon"]+'</td><td>'+info["Distance"]+'</td><td>'+moment(info["Time"]).format('YYYY/MM/DD HH:mm:ss')+'</td></tr>');

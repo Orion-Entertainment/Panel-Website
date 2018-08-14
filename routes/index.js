@@ -70,6 +70,7 @@ router.post('/GetData', async(req, res, next) => {
                 }
             );
         } else {
+            console.log(GetData[1])
             return res.send(GetData[1]);
         }
     } catch (error) {
